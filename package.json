@@ -1,7 +1,13 @@
 {
   "name": "zlendy.github.io",
-  "type": "module",
   "version": "0.0.1",
+  "dependencies": {
+    "@astrojs/tailwind": "^5.0.0",
+    "@astrojs/vue": "^3.0.0",
+    "astro": "^3.0.7",
+    "tailwindcss": "^3.0.24",
+    "vue": "^3.2.30"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -9,11 +15,8 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "dependencies": {
-    "@astrojs/tailwind": "^5.0.0",
-    "@astrojs/vue": "^3.0.0",
-    "astro": "^3.0.7",
-    "tailwindcss": "^3.0.24",
-    "vue": "^3.2.30"
+  "type": "module",
+  "devDependencies": {
+    "daisyui": "^3.7.3"
   }
 }
