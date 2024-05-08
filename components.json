@@ -3,7 +3,7 @@
   "style": "default",
   "typescript": true,
   "tailwind": {
-    "config": "tailwind.config.cjs",
+    "config": "tailwind.config.mjs",
     "css": "src/styles/globals.css",
     "baseColor": "zinc",
     "cssVariables": true
