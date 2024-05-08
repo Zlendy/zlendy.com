@@ -1,13 +1,23 @@
 ---
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
+import ModeToggle from "./ModeToggle.vue";
 ---
 
-<footer class="footer items-center p-4 bg-neutral text-neutral-content">
-    <aside class="items-center grid-flow-col">
-      <p>Copyright © 2023 - zlendy.com - All rights reserved.</p>
-    </aside>
-    <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-      <a title="ActivityPub" rel="me" href="https://social.zlendy.com/@zlendy"><Icon name="activitypub" style="height: 24px" /></a>
-      <a title="Twitter / X" href="https://x.com/Zlender02"><Icon name="x" style="height: 24px" /></a>
-    </nav>
-  </footer>
+<footer class="border-t">
+  <div
+    class="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0"
+  >
+    <p>Copyright © 2023 - zlendy.com - All rights reserved.</p>
+    <div
+      class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0"
+    >
+      <a title="ActivityPub" rel="me" href="https://social.zlendy.com/@zlendy">
+        <Icon name="activitypub" />
+      </a>
+      <a title="Twitter / X" href="https://x.com/Zlender02">
+        <Icon name="x" />
+      </a>
+      <ModeToggle client:load />
+    </div>
+  </div>
+</footer>
