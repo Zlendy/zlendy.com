@@ -1,9 +1,13 @@
-export interface Route {
+import { writable } from 'svelte/store';
+
+interface BaseRoute {
 	title: string;
 	href: string;
 }
 
-export const routes: Route[] = [
+export type Route = BaseRoute & { active: boolean };
+
+const base_routes: BaseRoute[] = [
 	{
 		title: 'Home',
 		href: '/'
@@ -17,3 +21,7 @@ export const routes: Route[] = [
 		href: '/about'
 	}
 ];
+
+export const routes = writable<Route[]>(
+	base_routes.map((base_route) => ({ ...base_route, active: false }))
+);

@@ -3,17 +3,18 @@
 	import * as Sheet from '$lib/components/ui/sheet';
 	import { routes } from '$lib/routes';
 	import { Menu, Search } from 'lucide-svelte';
-	import { page } from '$app/stores';
 </script>
 
 <header class="top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
 	<nav
 		class="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6"
 	>
-		{#each routes as route}
+		{#each $routes as route}
 			<a
 				href={route.href}
-				class={`text-foreground transition-colors hover:text-foreground ${$page.url.pathname === route.href ? 'text-foreground' : 'text-muted-foreground'}`}
+				class="text-foreground transition-colors hover:text-foreground {route.active
+					? 'text-foreground'
+					: 'text-muted-foreground'}"
 			>
 				{route.title}
 			</a>
@@ -28,11 +29,11 @@
 		</Sheet.Trigger>
 		<Sheet.Content side="left">
 			<nav class="grid gap-6 text-lg font-medium">
-				{#each routes as route}
+				{#each $routes as route}
 					<a
 						href={route.href}
 						class="hover:text-foreground"
-						class:text-muted-foreground={$page.url.pathname !== route.href}
+						class:text-muted-foreground={!route.active}
 					>
 						{route.title}
 					</a>
