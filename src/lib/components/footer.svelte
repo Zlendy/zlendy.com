@@ -12,8 +12,8 @@
 			<a title="ActivityPub" rel="me" href="https://social.zlendy.com/@zlendy">
 				<Icon name="activitypub" />
 			</a>
-			<a title="Twitter / X" href="https://x.com/Zlender02">
-				<Icon name="x" />
+			<a title="Bluesky" rel="me" href="https://bsky.app/profile/zlendy.com">
+				<Icon name="bluesky" />
 			</a>
 			<ModeToggle />
 		</div>
