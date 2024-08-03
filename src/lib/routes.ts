@@ -17,6 +17,10 @@ const base_routes: BaseRoute[] = [
 		href: '/blog'
 	},
 	{
+		title: 'Board',
+		href: '/board'
+	},
+	{
 		title: 'About',
 		href: '/about'
 	}
