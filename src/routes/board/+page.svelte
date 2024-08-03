@@ -1,9 +1,13 @@
 <script lang="ts">
+	import Button from '$lib/components/ui/button/button.svelte';
 	import { onMount } from 'svelte';
+	import { flip } from 'svelte/animate';
+	import { quintOut } from 'svelte/easing';
 
 	const host = 'https://social.zlendy.com';
 
 	interface NoteImage {
+		id: string;
 		href: string;
 		text: string;
 		src: string;
@@ -11,27 +15,15 @@
 
 	let notes: NoteImage[] = [];
 
-	let innerWidth = 0;
-	let columns = 4;
-	$: columns = innerWidth < 768 ? 2 : 4;
-
-	let columnPercent: number;
-	$: columnPercent = parseInt((100 / columns).toFixed(0));
-
 	onMount(async () => {
-		const response = await fetch(`${host}/api/users/notes`, {
+		const response = await fetch(`${host}/api/clips/notes`, {
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				userId: '9o1mf96bw4ni0001',
-				withRenotes: false,
-				withReplies: false,
-				withChannelNotes: false,
-				withFiles: true,
-				limit: 50,
 				allowPartial: true,
-				i: 'bZpFORLD9wsO9wAo'
+				clipId: '9whhk416yuba00ni',
+				limit: 50
 			}),
 			method: 'POST'
 		});
@@ -41,8 +33,9 @@
 		const new_notes: NoteImage[] = data
 			.map((note: any) =>
 				note.files.map((file: any) => ({
+					id: file.id,
 					href: `${host}/notes/${note.id}`,
-					text: note.text,
+					text: file.comment || note.text || 'Image by Zlendy',
 					src: file.thumbnailUrl
 				}))
 			)
@@ -52,18 +45,26 @@
 	});
 </script>
 
-<svelte:window bind:innerWidth />
-
-<div class="my-4 flex h-full min-h-screen flex-wrap justify-center gap-4 px-4 md:px-[20vw]">
-	{#each { length: columns } as _, column}
-		<div class="flex flex-col gap-4" style="flex-basis: calc({columnPercent}% - 1rem)">
-			{#each notes as { href, text, src }, index}
-				{#if index % columns === column}
-					<a {href}>
-						<img class="w-full" alt={text} title={text} {src} />
-					</a>
-				{/if}
-			{/each}
-		</div>
+<div
+	class="zy-shadow-inner-container my-4 columns-1 gap-0 leading-[0] sm:columns-2 md:mx-[20vw] md:columns-3 lg:columns-4 xl:columns-5"
+>
+	{#each notes as { id, href, text, src } (id)}
+		<a class="zy-shadow-inner" animate:flip={{ duration: 250, easing: quintOut }} {href}>
+			<img class="h-auto w-full" alt={text} title={text} {src} />
+		</a>
 	{/each}
 </div>
+
+<style>
+	.zy-shadow-inner-container:has(.zy-shadow-inner:hover) .zy-shadow-inner:not(:hover) {
+		filter: grayscale(75%) opacity(75%);
+	}
+
+	.zy-shadow-inner {
+		transition: filter 250ms ease-in-out;
+		display: block;
+		position: relative;
+		width: fit-content;
+		height: fit-content;
+	}
+</style>
