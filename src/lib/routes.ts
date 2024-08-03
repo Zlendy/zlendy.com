@@ -1,11 +1,12 @@
 import { writable } from 'svelte/store';
 
-interface BaseRoute {
+export interface Route {
 	title: string;
 	href: string;
+	active: boolean;
 }
 
-export type Route = BaseRoute & { active: boolean };
+type BaseRoute = Omit<Route, 'active'>;
 
 const base_routes: BaseRoute[] = [
 	{
