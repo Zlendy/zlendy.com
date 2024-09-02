@@ -110,16 +110,20 @@
 	{/await}
 </div>
 
-<style>
+<style lang="scss">
+	// Hides loaded elements while the animation is in progress
 	.zy-shadow-inner-container:has(.zy-shadow-loading) .zy-shadow-loaded {
+		// Using "display: none" would cancel the animation in .zy-shadow-loaded
 		width: 0;
 		height: 0;
 	}
 
+	// Fancy hover effect
 	.zy-shadow-inner-container:has(.zy-shadow-inner:hover) .zy-shadow-inner:not(:hover) {
 		filter: grayscale(75%) opacity(75%);
 	}
 
+	// Deduplicates common styles
 	.zy-shadow-inner {
 		transition: filter 250ms ease-in-out;
 		display: block;
