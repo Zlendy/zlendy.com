@@ -2,52 +2,72 @@
 	import { onMount } from 'svelte';
 	import { flip } from 'svelte/animate';
 	import { quintOut } from 'svelte/easing';
+	import * as v from 'valibot';
 
 	const host = 'https://social.zlendy.com';
 
-	interface NoteImage {
+	const NotesSchema = v.array(
+		v.object({
+			id: v.string(),
+			text: v.nullish(v.string()),
+			files: v.array(
+				v.object({
+					id: v.string(),
+					comment: v.nullish(v.string()),
+					thumbnailUrl: v.string()
+				})
+			)
+		})
+	);
+
+	interface Image {
 		id: string;
 		href: string;
 		text: string;
 		src: string;
 	}
 
-	let notes: NoteImage[] = [];
+	let image: Image[] = [];
 
 	onMount(async () => {
-		const response = await fetch(`${host}/api/clips/notes`, {
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				allowPartial: true,
-				clipId: '9whhk416yuba00ni',
-				limit: 50
-			}),
-			method: 'POST'
-		});
+		try {
+			const response = await fetch(`${host}/api/clips/notes`, {
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					allowPartial: true,
+					clipId: '9whhk416yuba00ni',
+					limit: 50
+				}),
+				method: 'POST'
+			});
 
-		const data: any[] = await response.json();
+			const json = await response.json();
+			const data = v.parse(NotesSchema, json);
 
-		const new_notes: NoteImage[] = data
-			.map((note: any) =>
-				note.files.map((file: any) => ({
-					id: file.id,
-					href: `${host}/notes/${note.id}`,
-					text: file.comment || note.text || 'Image by Zlendy',
-					src: file.thumbnailUrl
-				}))
-			)
-			.flat();
+			const new_notes: Image[] = data
+				.map((note) =>
+					note.files.map((file) => ({
+						id: file.id,
+						href: `${host}/notes/${note.id}`,
+						text: file.comment || note.text || 'Image by Zlendy',
+						src: file.thumbnailUrl
+					}))
+				)
+				.flat();
 
-		notes = new_notes;
+			image = new_notes;
+		} catch (e) {
+			console.error(e);
+		}
 	});
 </script>
 
 <div
 	class="zy-shadow-inner-container mx-[20vw] my-4 columns-1 gap-0 leading-[0] sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5"
 >
-	{#each notes as { id, href, text, src } (id)}
+	{#each image as { id, href, text, src } (id)}
 		<a class="zy-shadow-inner" animate:flip={{ duration: 250, easing: quintOut }} {href}>
 			<img class="h-auto w-full" alt={text} title={text} {src} />
 		</a>
