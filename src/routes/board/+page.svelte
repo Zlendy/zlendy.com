@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Button from '$lib/components/ui/button/button.svelte';
 	import { onMount } from 'svelte';
 	import { flip } from 'svelte/animate';
 	import { quintOut } from 'svelte/easing';
@@ -46,7 +45,7 @@
 </script>
 
 <div
-	class="zy-shadow-inner-container my-4 columns-1 gap-0 leading-[0] sm:columns-2 md:mx-[20vw] md:columns-3 lg:columns-4 xl:columns-5"
+	class="zy-shadow-inner-container mx-[20vw] my-4 columns-1 gap-0 leading-[0] sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5"
 >
 	{#each notes as { id, href, text, src } (id)}
 		<a class="zy-shadow-inner" animate:flip={{ duration: 250, easing: quintOut }} {href}>
@@ -64,7 +63,6 @@
 		transition: filter 250ms ease-in-out;
 		display: block;
 		position: relative;
-		width: fit-content;
 		height: fit-content;
 	}
 </style>
