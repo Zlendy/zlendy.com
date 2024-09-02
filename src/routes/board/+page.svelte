@@ -5,6 +5,8 @@
 	import * as v from 'valibot';
 
 	const host = 'https://social.zlendy.com';
+	const clipId = '9whhk416yuba00ni';
+	const limit = 50;
 
 	const NotesSchema = v.array(
 		v.object({
@@ -37,8 +39,8 @@
 				},
 				body: JSON.stringify({
 					allowPartial: true,
-					clipId: '9whhk416yuba00ni',
-					limit: 50
+					clipId,
+					limit
 				}),
 				method: 'POST'
 			});
