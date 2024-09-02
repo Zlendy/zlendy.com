@@ -1,12 +1,24 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { Skeleton } from '$lib/components/ui/skeleton';
 	import { flip } from 'svelte/animate';
 	import { quintOut } from 'svelte/easing';
+	import { fade } from 'svelte/transition';
 	import * as v from 'valibot';
 
 	const host = 'https://social.zlendy.com';
 	const clipId = '9whhk416yuba00ni';
 	const limit = 50;
+
+	function getRandomIntInclusive(min: number, max: number) {
+		const minCeiled = Math.ceil(min);
+		const maxFloored = Math.floor(max);
+		return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+	}
+
+	const loading = Array.from({ length: limit }, () => ({
+		height: getRandomIntInclusive(100, 600), // px
+		opacity: getRandomIntInclusive(50, 100) // %
+	}));
 
 	const NotesSchema = v.array(
 		v.object({
@@ -29,54 +41,81 @@
 		src: string;
 	}
 
-	let image: Image[] = [];
+	async function loadData() {
+		const response = await fetch(`${host}/api/clips/notes`, {
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				allowPartial: true,
+				clipId,
+				limit
+			}),
+			method: 'POST'
+		});
 
-	onMount(async () => {
-		try {
-			const response = await fetch(`${host}/api/clips/notes`, {
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					allowPartial: true,
-					clipId,
-					limit
-				}),
-				method: 'POST'
-			});
+		const json = await response.json();
+		const data = v.parse(NotesSchema, json);
 
-			const json = await response.json();
-			const data = v.parse(NotesSchema, json);
+		const images: Image[] = data
+			.map((note) =>
+				note.files.map((file) => ({
+					id: file.id,
+					href: `${host}/notes/${note.id}`,
+					text: file.comment || note.text || 'Image by Zlendy',
+					src: file.thumbnailUrl
+				}))
+			)
+			.flat();
 
-			const new_notes: Image[] = data
-				.map((note) =>
-					note.files.map((file) => ({
-						id: file.id,
-						href: `${host}/notes/${note.id}`,
-						text: file.comment || note.text || 'Image by Zlendy',
-						src: file.thumbnailUrl
-					}))
-				)
-				.flat();
-
-			image = new_notes;
-		} catch (e) {
-			console.error(e);
-		}
-	});
+		return images;
+	}
 </script>
 
 <div
 	class="zy-shadow-inner-container mx-[20vw] my-4 columns-1 gap-0 leading-[0] sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5"
 >
-	{#each image as { id, href, text, src } (id)}
-		<a class="zy-shadow-inner" animate:flip={{ duration: 250, easing: quintOut }} {href}>
-			<img class="h-auto w-full" alt={text} title={text} {src} />
-		</a>
-	{/each}
+	{#await loadData()}
+		<!-- TODO: Create a reusable component -->
+		<div class="zy-shadow-loading" out:fade={{ duration: 250 }}>
+			{#each loading as { height, opacity }}
+				<div class="zy-shadow-inner absolute left-0 right-0">
+					<Skeleton
+						class="inline-block w-full"
+						style="height: {height}px; filter: opacity({opacity}%);"
+					/>
+				</div>
+			{/each}
+		</div>
+	{:then images}
+		<div class="zy-shadow-loaded" in:fade={{ delay: 251, duration: 250 }}>
+			{#each images as { id, href, text, src } (id)}
+				<a class="zy-shadow-inner" animate:flip={{ duration: 250, easing: quintOut }} {href}>
+					<img class="h-auto w-full" alt={text} title={text} {src} />
+				</a>
+			{/each}
+		</div>
+	{:catch _}
+		<!-- TODO: Create a reusable component -->
+		<div class="zy-shadow-loaded" in:fade={{ delay: 251, duration: 250 }}>
+			{#each loading as { height, opacity }}
+				<div class="zy-shadow-inner absolute left-0 right-0">
+					<Skeleton
+						class="inline-block w-full bg-red-500"
+						style="height: {height}px; filter: opacity({opacity}%);"
+					/>
+				</div>
+			{/each}
+		</div>
+	{/await}
 </div>
 
 <style>
+	.zy-shadow-inner-container:has(.zy-shadow-loading) .zy-shadow-loaded {
+		width: 0;
+		height: 0;
+	}
+
 	.zy-shadow-inner-container:has(.zy-shadow-inner:hover) .zy-shadow-inner:not(:hover) {
 		filter: grayscale(75%) opacity(75%);
 	}
