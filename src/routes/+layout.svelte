@@ -20,5 +20,7 @@
 
 <ModeWatcher />
 <Header />
-<slot></slot>
+<main class="h-full min-h-screen">
+	<slot></slot>
+</main>
 <Footer />
