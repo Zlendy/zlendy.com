@@ -73,13 +73,13 @@
 </script>
 
 <div
-	class="zy-shadow-inner-container mx-[20vw] my-4 columns-1 gap-0 leading-[0] sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5"
+	class="zy-shadow-inner-container mx-[20vw] my-4 columns-1 gap-1 leading-[0] sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5"
 >
 	{#await loadData()}
 		<!-- TODO: Create a reusable component -->
 		<div class="zy-shadow-loading" out:fade={{ duration: 250 }}>
 			{#each loading as { height, opacity }}
-				<div class="zy-shadow-inner absolute left-0 right-0">
+				<div class="zy-shadow-inner left-0 right-0 mb-1">
 					<Skeleton
 						class="inline-block w-full"
 						style="height: {height}px; filter: opacity({opacity}%);"
@@ -90,7 +90,7 @@
 	{:then images}
 		<div class="zy-shadow-loaded" in:fade={{ delay: 251, duration: 250 }}>
 			{#each images as { id, href, text, src } (id)}
-				<a class="zy-shadow-inner" animate:flip={{ duration: 250, easing: quintOut }} {href}>
+				<a class="zy-shadow-inner mb-1" animate:flip={{ duration: 250, easing: quintOut }} {href}>
 					<img class="h-auto w-full" alt={text} title={text} {src} />
 				</a>
 			{/each}
@@ -99,7 +99,7 @@
 		<!-- TODO: Create a reusable component -->
 		<div class="zy-shadow-loaded" in:fade={{ delay: 251, duration: 250 }}>
 			{#each loading as { height, opacity }}
-				<div class="zy-shadow-inner absolute left-0 right-0">
+				<div class="zy-shadow-inner left-0 right-0 mb-1">
 					<Skeleton
 						class="inline-block w-full bg-red-500"
 						style="height: {height}px; filter: opacity({opacity}%);"
