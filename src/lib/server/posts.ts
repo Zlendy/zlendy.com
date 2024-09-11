@@ -1,30 +1,41 @@
 import { parse } from 'path';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 
-type GlobEntry = {
-	metadata: Post;
-	default: unknown;
-};
+dayjs.extend(customParseFormat);
 
-export interface Post {
+type RawPost = {
 	title: string;
 	description: string;
 	date: string;
-}
+	slug: string;
+};
+
+export type Post = Override<
+	RawPost,
+	{
+		date: Date;
+	}
+>;
+
+type GlobEntry = {
+	metadata: RawPost;
+	default: unknown;
+};
 
 // Get all posts and add metadata
 export const posts = Object.entries(
 	import.meta.glob<GlobEntry>('/src/lib/posts/**/*.md', { eager: true })
 )
-	.map(([filepath, globEntry]) => {
+	.map(([filepath, globEntry]): Post => {
 		return {
 			...globEntry.metadata,
-
-			// generate the slug from the file path
-			slug: parse(filepath).name
+			date: dayjs(globEntry.metadata.date, ['YYYY-MM-DD HH-mm', 'YYYY-MM-DD']).toDate(),
+			slug: parse(filepath).name // generate the slug from the file path
 		};
 	})
 	// sort by date
-	.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+	.sort((a, b) => b.date.getTime() - a.date.getTime())
 	// add references to the next/previous post
 	.map((post, index, allPosts) => ({
 		...post,

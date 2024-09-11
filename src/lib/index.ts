@@ -1,1 +1,1 @@
-// place files you want to import through the `$lib` alias in this folder.
+type Override<Type, NewType> = Omit<Type, keyof NewType> & NewType;
