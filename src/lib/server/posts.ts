@@ -25,7 +25,7 @@ type GlobEntry = {
 
 // Get all posts and add metadata
 export const posts = Object.entries(
-	import.meta.glob<GlobEntry>('/src/lib/posts/**/*.md', { eager: true })
+	import.meta.glob<GlobEntry>('/src/posts/**/*.md', { eager: true })
 )
 	.map(([filepath, globEntry]): Post => {
 		return {
