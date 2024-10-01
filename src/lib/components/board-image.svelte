@@ -1,7 +1,8 @@
 <script lang="ts" context="module">
 	export enum Status {
-		Loading = 'loading',
-		Loaded = 'loaded',
+		LoadingList = 'loading-list',
+		LoadingImage = 'loading-image',
+		LoadedImage = 'loaded-image',
 		Error = 'error'
 	}
 
@@ -43,37 +44,54 @@
 <script lang="ts">
 	import { Skeleton } from '$lib/components/ui/skeleton';
 
-	type Loaded = {
-		status: Status.Loaded;
+	const ImageStatus = [Status.LoadingImage, Status.LoadedImage];
+	type ImageStatus = Status.LoadingImage | Status.LoadedImage;
+
+	type HasImage = {
+		index: number;
+		status: ImageStatus;
 	} & BoardImageData;
 
-	type NotLoaded = {
-		status: Exclude<Status, Status.Loaded>;
+	type NoImage = {
+		index: number;
+		status: Exclude<Status, ImageStatus>;
 	};
 
-	type $$Props = { index: number } & (Loaded | NotLoaded);
+	type $$Props = HasImage | NoImage;
 	let props = $$props as $$Props;
+
+	function hasImage(props: $$Props): props is HasImage {
+		return ImageStatus.includes(props.status);
+	}
 
 	function handleError() {
 		props.status = Status.Error;
 	}
+
+	function handleLoad() {
+		props.status = Status.LoadedImage;
+	}
+
+	const data = placeholder.get(props.index);
 </script>
 
-<a class="zy-shadow-inner mb-1" href={props.status === Status.Loaded ? props.href : undefined}>
-	{#if props.status === Status.Loaded}
+<a class="zy-shadow-inner mb-1" href={hasImage(props) ? props.href : undefined}>
+	{#if props.status !== Status.LoadedImage}
+		<Skeleton
+			class="inline-block w-full {props.status === Status.Error && 'bg-red-500'}"
+			style="height: {data.height}px; filter: opacity({data.opacity}%);"
+		/>
+	{/if}
+
+	{#if hasImage(props)}
 		<img
 			class="h-auto w-full"
+			class:hidden={props.status !== Status.LoadedImage}
 			alt={props.text}
 			title={props.text}
 			src={props.src}
 			on:error={handleError}
-		/>
-	{:else}
-		{@const data = placeholder.get(props.index)}
-
-		<Skeleton
-			class="inline-block w-full {props.status === Status.Error && 'bg-red-500'}"
-			style="height: {data.height}px; filter: opacity({data.opacity}%);"
+			on:load={handleLoad}
 		/>
 	{/if}
 </a>
