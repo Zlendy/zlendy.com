@@ -23,16 +23,15 @@
 				<Card.Title>{post.title}</Card.Title>
 				<Card.Description>
 					{@const date = dayjs(post.date)}
-					{@const formatDate = date.format('DD/MMM/YYYY @ HH:mm')}
 
 					<Tooltip.Root>
 						<Tooltip.Trigger>
 							{now.diff(date, 'days', true) < 7 // Posted in the last week
 								? date.from(now) // Show relative time
-								: formatDate}
+								: date.format('DD/MMM/YYYY [at] HH:mm')}
 						</Tooltip.Trigger>
 						<Tooltip.Content>
-							{formatDate}
+							{date.format('dddd, MMMM DD, YYYY [at] HH:mm')}
 						</Tooltip.Content>
 					</Tooltip.Root>
 				</Card.Description>
