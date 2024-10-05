@@ -9,7 +9,13 @@
 		<h1 class="mb-4 text-5xl font-bold leading-tight">{data.post.title}</h1>
 	</header>
 	<!-- render the post -->
-	<div class="mx-[10vw]">
+	<div class="post-container mx-[10vw]">
 		<svelte:component this={data.component} />
 	</div>
 </article>
+
+<style lang="scss">
+	.post-container :global(p) {
+		margin: 1rem;
+	}
+</style>
