@@ -3,7 +3,7 @@ import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { createHighlighter } from 'shiki';
 
-const mdsvexExtensions = ['.svx', '.md'];
+const mdsvexExtensions = ['.md'];
 
 const theme = 'github-dark';
 const highlighter = await createHighlighter({
