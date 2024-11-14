@@ -1,0 +1,29 @@
+<script lang="ts" context="module">
+	// headings
+	export { default as h1 } from '../h1.svelte';
+	export { default as h2 } from '../h2.svelte';
+	export { default as h3 } from '../h3.svelte';
+	export { default as h4 } from '../h4.svelte';
+	export { default as h5 } from '../h5.svelte';
+	export { default as h6 } from '../h6.svelte';
+
+	// code blocks
+	export { default as pre } from '../pre.svelte';
+
+	// text
+	export { default as blockquote } from '../blockquote.svelte';
+	export { default as p } from '../p.svelte';
+	export { default as a } from '../a.svelte';
+
+	// lists
+	export { default as ul } from '../ul.svelte';
+	export { default as ol } from '../ol.svelte';
+
+	// table
+	export { default as tbody } from '../tbody.svelte';
+	export { default as tr } from '../tr.svelte';
+	export { default as th } from '../th.svelte';
+	export { default as td } from '../td.svelte';
+</script>
+
+<slot></slot>

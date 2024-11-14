@@ -26,8 +26,11 @@ const config = {
 			highlight: {
 				highlighter: async (code, lang = 'text') => {
 					const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme }));
-					return `{@html \`${html}\` }`;
+					return `<Components.pre>{@html \`${html}\` }</Components.pre>`;
 				}
+			},
+			layout: {
+				_: './src/lib/components/mdsvex/layouts/blog.svelte'
 			}
 		})
 	],
