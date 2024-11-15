@@ -1,40 +1,22 @@
 <script lang="ts">
 	import BoardImage, { Status, type BoardImageData } from '$lib/components/board-image.svelte';
 	import { fade } from 'svelte/transition';
-	import * as v from 'valibot';
 	import { PUBLIC_FEDIVERSE_HOST, PUBLIC_FEDIVERSE_BOARD } from '$env/static/public';
+	import { NoteListSchema } from '$lib/components/fediverse/types';
+	import { fediverseRequest } from '$lib/components/fediverse/api';
 
 	const limit = 50;
 
-	const NotesSchema = v.array(
-		v.object({
-			id: v.string(),
-			text: v.nullish(v.string()),
-			files: v.array(
-				v.object({
-					id: v.string(),
-					comment: v.nullish(v.string()),
-					thumbnailUrl: v.string()
-				})
-			)
-		})
-	);
-
 	async function loadData() {
-		const response = await fetch(`${PUBLIC_FEDIVERSE_HOST}/api/clips/notes`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
+		const data = await fediverseRequest({
+			url: '/api/clips/notes',
+			body: {
 				allowPartial: true,
 				clipId: PUBLIC_FEDIVERSE_BOARD,
 				limit
-			})
+			},
+			schema: NoteListSchema
 		});
-
-		const json = await response.json();
-		const data = v.parse(NotesSchema, json);
 
 		const images: BoardImageData[] = data
 			.map((note) =>
