@@ -6,6 +6,10 @@ on:
 
 jobs:
   build_site:
+    environment: github-pages
+    env:
+      PUBLIC_FEDIVERSE_HOST: ${{ vars.PUBLIC_FEDIVERSE_HOST }}
+      PUBLIC_FEDIVERSE_BOARD: ${{ vars.PUBLIC_FEDIVERSE_BOARD }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
