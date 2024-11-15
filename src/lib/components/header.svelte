@@ -3,7 +3,22 @@
 	import * as Sheet from '$lib/components/ui/sheet';
 	import { routes } from '$lib/routes';
 	import { Menu, Search } from 'lucide-svelte';
+
+	let title: string = '';
+	routes.subscribe((value) => {
+		const route = value.find((route) => route.active);
+		if (!route) {
+			title = '';
+			return;
+		}
+
+		title = `${route.title} - `;
+	});
 </script>
+
+<svelte:head>
+	<title>{title}Zlendy</title>
+</svelte:head>
 
 <header class="top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
 	<nav
