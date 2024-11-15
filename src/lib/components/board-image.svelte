@@ -21,17 +21,11 @@
 	class Placeholder {
 		private list: PlaceholderData[] = [];
 
-		private getRandomIntInclusive(min: number, max: number) {
-			const minCeiled = Math.ceil(min);
-			const maxFloored = Math.floor(max);
-			return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
-		}
-
 		get(index: number) {
 			if (this.list.at(index) === undefined)
 				this.list[index] = {
-					height: this.getRandomIntInclusive(100, 300), // px
-					opacity: this.getRandomIntInclusive(50, 100) // %
+					height: getRandomIntInclusive(100, 300), // px
+					opacity: getRandomIntInclusive(50, 100) // %
 				};
 
 			return this.list[index];
@@ -43,6 +37,7 @@
 
 <script lang="ts">
 	import { Skeleton } from '$lib/components/ui/skeleton';
+	import { getRandomIntInclusive } from '$lib/utils';
 
 	const ImageStatus = [Status.LoadingImage, Status.LoadedImage];
 	type ImageStatus = Status.LoadingImage | Status.LoadedImage;
