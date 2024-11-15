@@ -2,9 +2,8 @@
 	import BoardImage, { Status, type BoardImageData } from '$lib/components/board-image.svelte';
 	import { fade } from 'svelte/transition';
 	import * as v from 'valibot';
+	import { PUBLIC_FEDIVERSE_HOST, PUBLIC_FEDIVERSE_BOARD } from '$env/static/public';
 
-	const host = 'https://social.zlendy.com';
-	const clipId = '9whhk416yuba00ni';
 	const limit = 50;
 
 	const NotesSchema = v.array(
@@ -22,16 +21,16 @@
 	);
 
 	async function loadData() {
-		const response = await fetch(`${host}/api/clips/notes`, {
+		const response = await fetch(`${PUBLIC_FEDIVERSE_HOST}/api/clips/notes`, {
+			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
 				allowPartial: true,
-				clipId,
+				clipId: PUBLIC_FEDIVERSE_BOARD,
 				limit
-			}),
-			method: 'POST'
+			})
 		});
 
 		const json = await response.json();
@@ -41,7 +40,7 @@
 			.map((note) =>
 				note.files.map((file) => ({
 					id: file.id,
-					href: `${host}/notes/${note.id}`,
+					href: `${PUBLIC_FEDIVERSE_HOST}/notes/${note.id}`,
 					text: file.comment || note.text || 'Image by Zlendy',
 					src: file.thumbnailUrl
 				}))
