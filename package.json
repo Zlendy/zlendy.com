@@ -52,6 +52,7 @@
 	"dependencies": {
 		"clsx": "^2.1.1",
 		"lucide-svelte": "^0.438.0",
+		"medium-zoom": "^1.1.0",
 		"mode-watcher": "^0.4.1",
 		"simple-icons": "^13.8.0",
 		"tailwind-merge": "^2.5.2",
