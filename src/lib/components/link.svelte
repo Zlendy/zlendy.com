@@ -1,13 +1,24 @@
 <script lang="ts">
+	import * as HoverCard from '$lib/components/ui/hover-card';
 	import { SquareArrowOutUpRight } from 'lucide-svelte';
 
 	export let href: string;
+	export let title: string | undefined = undefined;
 </script>
 
-<a class="relative px-1" {href} {...$$restProps}>
-	<slot></slot>
-	<SquareArrowOutUpRight class="inline h-[1em] w-[1em]" />
-</a>
+<HoverCard.Root>
+	<HoverCard.Trigger>
+		<a class="relative px-1" {href} {...$$restProps}>
+			<slot></slot>
+			<SquareArrowOutUpRight class="inline h-[1em] w-[1em]" />
+		</a>
+	</HoverCard.Trigger>
+	{#if title}
+		<HoverCard.Content>
+			{title}
+		</HoverCard.Content>
+	{/if}
+</HoverCard.Root>
 
 <style lang="scss">
 	a::before {
