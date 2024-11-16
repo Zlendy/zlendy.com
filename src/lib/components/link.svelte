@@ -6,7 +6,7 @@
 
 <a class="relative px-1" {href} {...$$restProps}>
 	<slot></slot>
-	<SquareArrowOutUpRight class="inline" />
+	<SquareArrowOutUpRight class="inline h-[1em] w-[1em]" />
 </a>
 
 <style lang="scss">
