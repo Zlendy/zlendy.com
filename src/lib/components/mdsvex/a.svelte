@@ -1,13 +1,12 @@
 <script lang="ts">
-	import Fa from 'svelte-fa';
-	import { faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+	import { SquareArrowOutUpRight } from 'lucide-svelte';
 
 	export let href: string;
 </script>
 
 <a class="relative px-1" {href} {...$$restProps}>
 	<slot></slot>
-	<Fa class="inline" icon={faUpRightFromSquare} />
+	<SquareArrowOutUpRight class="inline" />
 </a>
 
 <style lang="scss">
