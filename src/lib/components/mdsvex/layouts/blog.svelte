@@ -13,7 +13,7 @@
 	// text
 	export { default as blockquote } from '../blockquote.svelte';
 	export { default as p } from '../p.svelte';
-	export { default as a } from '../a.svelte';
+	export { default as a } from '$lib/components/link.svelte';
 
 	// lists
 	export { default as ul } from '../ul.svelte';
