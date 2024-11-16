@@ -9,6 +9,7 @@ type RawPost = {
 	description: string;
 	date: string;
 	slug: string;
+	fediverse?: string;
 };
 
 export type Post = Override<
