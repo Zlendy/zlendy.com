@@ -26,7 +26,7 @@
 	export { default as td } from '../td.svelte';
 
 	// misc
-	export { default as img } from '$lib/components/image-zoom.svelte';
+	export { default as img } from '../img.svelte';
 </script>
 
 <slot></slot>

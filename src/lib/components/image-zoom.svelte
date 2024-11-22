@@ -2,9 +2,10 @@
 	import mediumZoom from 'medium-zoom';
 	import type { Zoom, ZoomOptions } from 'medium-zoom';
 	import type { Action } from 'svelte/action';
+	import type { HTMLImgAttributes } from 'svelte/elements';
 
-	export let src: string | undefined = undefined;
-	export let alt: string | undefined = undefined;
+	interface $$Props extends HTMLImgAttributes {}
+
 	export let options: ZoomOptions | undefined = undefined;
 	let customOptions: ZoomOptions | undefined = options;
 	$: customOptions = { background: 'hsl(var(--background))', ...options };
@@ -38,13 +39,5 @@
 	};
 </script>
 
-<figure class="w-fit">
-	<img
-		class="max-h-96 w-full max-w-96 object-contain"
-		{src}
-		{alt}
-		{...$$restProps}
-		use:attachZoom={customOptions}
-	/>
-	<figcaption class="p-4 text-center text-muted-foreground">{alt}</figcaption>
-</figure>
+<!-- svelte-ignore a11y-missing-attribute -->
+<img {...$$restProps} use:attachZoom={customOptions} />
