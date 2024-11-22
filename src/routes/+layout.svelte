@@ -6,6 +6,7 @@
 	import { page } from '$app/stores';
 	import { routes } from '$lib/routes';
 	import { PlausibleAnalytics } from '@accuser/svelte-plausible-analytics';
+	import { PUBLIC_PLAUSIBLE_HOST } from '$env/static/public';
 
 	page.subscribe((page_value) => {
 		routes.update((routes_value) =>
@@ -20,7 +21,7 @@
 </script>
 
 <ModeWatcher />
-<PlausibleAnalytics apiHost="https://pce.zlendy.com" outboundLinks={true} />
+<PlausibleAnalytics apiHost={PUBLIC_PLAUSIBLE_HOST} outboundLinks={true} />
 
 <Header />
 <main class="h-full min-h-screen">

@@ -10,6 +10,7 @@ jobs:
     env:
       PUBLIC_FEDIVERSE_HOST: ${{ vars.PUBLIC_FEDIVERSE_HOST }}
       PUBLIC_FEDIVERSE_BOARD: ${{ vars.PUBLIC_FEDIVERSE_BOARD }}
+      PUBLIC_PLAUSIBLE_HOST: ${{ vars.PUBLIC_PLAUSIBLE_HOST }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
