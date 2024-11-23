@@ -1,11 +1,14 @@
 <script lang="ts">
 	import * as HoverCard from '$lib/components/ui/hover-card';
+	import type { HTMLAnchorAttributes } from 'svelte/elements';
 
-	export let title: string | undefined = undefined;
+	interface $$Props extends HTMLAnchorAttributes {}
+
+	export let title: HTMLAnchorAttributes['title'] = undefined;
 </script>
 
 <HoverCard.Root>
-	<HoverCard.Trigger>
+	<HoverCard.Trigger {...$$restProps}>
 		<slot></slot>
 	</HoverCard.Trigger>
 	{#if title}
