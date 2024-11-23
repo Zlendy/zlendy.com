@@ -7,27 +7,14 @@
 </script>
 
 <HoverTitle {title}>
-	<a class="relative px-1" {href} {...$$restProps}>
+	<a
+		class="relative px-1
+		before:pointer-events-none before:absolute before:left-0 before:right-0 before:top-[calc(100%-0.25rem)] before:h-1 before:bg-foreground/25 before:transition-all
+		hover:before:top-0 hover:before:h-full"
+		{href}
+		{...$$restProps}
+	>
 		<slot></slot>
 		<SquareArrowOutUpRight class="inline h-[1em] w-[1em]" />
 	</a>
 </HoverTitle>
-
-<style lang="scss">
-	a::before {
-		content: '';
-		position: absolute;
-		background-color: hsl(var(--foreground) / 25%);
-		top: calc(100% - 0.25rem);
-		left: 0;
-		right: 0;
-		height: 0.25rem;
-		transition: all 250ms ease-in-out;
-		pointer-events: none;
-	}
-
-	a:hover::before {
-		top: 0;
-		height: 100%;
-	}
-</style>
