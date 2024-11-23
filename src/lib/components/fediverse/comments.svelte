@@ -6,7 +6,7 @@
 	import { NoteListSchema, type Note } from './types';
 	import { PUBLIC_FEDIVERSE_HOST } from '$env/static/public';
 	import Engagement from './engagement.svelte';
-	import Link from '../link.svelte';
+	import LinkArrow from '../link-arrow.svelte';
 
 	export let note: string;
 	export let layer = 0;
@@ -67,7 +67,7 @@
 						{:else if hasReplies}
 							<Card.Root>
 								<div class="p-6">
-									<Link href={postLink}>View thread continuation</Link>
+									<LinkArrow href={postLink}>View thread continuation</LinkArrow>
 								</div>
 							</Card.Root>
 						{/if}
