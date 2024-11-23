@@ -38,6 +38,7 @@
 <script lang="ts">
 	import { Skeleton } from '$lib/components/ui/skeleton';
 	import { getRandomIntInclusive } from '$lib/utils';
+	import LinkHoverTitle from './link-hover-title.svelte';
 
 	const ImageStatus = [Status.LoadingImage, Status.LoadedImage];
 	type ImageStatus = Status.LoadingImage | Status.LoadedImage;
@@ -70,7 +71,7 @@
 	const data = placeholder.get(props.index);
 </script>
 
-<a class="zy-shadow-inner mb-1" href={hasImage(props) ? props.href : undefined}>
+<div class="zy-shadow-inner mb-1">
 	{#if props.status !== Status.LoadedImage}
 		<Skeleton
 			class="inline-block w-full {props.status === Status.Error && 'bg-red-500'}"
@@ -79,14 +80,15 @@
 	{/if}
 
 	{#if hasImage(props)}
-		<img
-			class="h-auto w-full"
-			class:hidden={props.status !== Status.LoadedImage}
-			alt={props.text}
-			title={props.text}
-			src={props.src}
-			on:error={handleError}
-			on:load={handleLoad}
-		/>
+		<LinkHoverTitle href={props.href} title={props.text}>
+			<img
+				class="h-auto w-full"
+				class:hidden={props.status !== Status.LoadedImage}
+				alt={props.text}
+				src={props.src}
+				on:error={handleError}
+				on:load={handleLoad}
+			/>
+		</LinkHoverTitle>
 	{/if}
-</a>
+</div>
