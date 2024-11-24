@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Comments from '$lib/components/fediverse/comments.svelte';
 	import Post from '$lib/components/fediverse/post.svelte';
+	import dayjs from 'dayjs';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -16,6 +17,7 @@
 <article class="mb-4">
 	<header class="relative z-10 flex min-h-48 flex-col items-center justify-center text-center">
 		<h1 class="mb-4 text-5xl font-bold leading-tight">{title}</h1>
+		<h2>{dayjs(data.post.date).format('DD/MMM/YYYY [at] HH:mm')}</h2>
 	</header>
 	<!-- render the post -->
 	<div class="mx-[10vw]">
