@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Icon from '$lib/components/icon.svelte';
+	import Logo from '$lib/components/logo.svelte';
 	import LinkArrow from '$lib/components/link-arrow.svelte';
 	import * as Avatar from '$lib/components/ui/avatar';
 </script>
@@ -38,20 +38,20 @@
 	<ul class="list-disc pl-10">
 		<li>
 			<LinkArrow rel="me" href="https://github.com/Zlendy">
-				<Icon name="github" />
+				<Logo name="github" />
 				GitHub
 			</LinkArrow>
 		</li>
 		<li>
 			<LinkArrow rel="me" href="https://social.zlendy.com/@zlendy">
-				<Icon name="activitypub" />
+				<Logo name="activitypub" />
 				Sharkey
 			</LinkArrow>
 			(ActivityPub-compatible server)
 		</li>
 		<li>
 			<LinkArrow rel="me" href="https://bsky.app/profile/zlendy.com">
-				<Icon name="bluesky" />
+				<Logo name="bluesky" />
 				Bluesky
 			</LinkArrow>
 		</li>

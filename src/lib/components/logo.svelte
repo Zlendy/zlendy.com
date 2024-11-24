@@ -4,5 +4,5 @@
 
 <i
 	class="inline-block h-[1em] w-[1em] bg-foreground"
-	style="mask: url(/icons/{name}.svg) no-repeat center;"
+	style="mask: url(/icons/logos/{name}.svg) no-repeat center;"
 ></i>
