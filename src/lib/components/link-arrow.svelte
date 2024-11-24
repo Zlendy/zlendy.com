@@ -4,9 +4,8 @@
 </script>
 
 <LinkHoverTitle
-	class="relative px-1
-	before:pointer-events-none before:absolute before:left-0 before:right-0 before:top-[calc(100%-0.25rem)] before:h-1 before:bg-foreground/25 before:transition-all
-	hover:before:top-0 hover:before:h-full"
+	class="bg-[linear-gradient(hsl(var(--foreground)/25%),hsl(var(--foreground)/25%))] bg-[length:100%_0.25rem] bg-[0%_100%] bg-no-repeat
+	px-1 transition-all hover:bg-[length:100%_100%]"
 	{...$$restProps}
 >
 	<slot></slot>
