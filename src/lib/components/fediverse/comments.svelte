@@ -28,10 +28,6 @@
 			schema: NoteListSchema
 		});
 	}
-
-	async function notePromise(post: Note) {
-		return post;
-	}
 </script>
 
 <div use:intersect={{ threshold: 0.4 }} on:intersectonce={() => (visibleNote = true)}>
@@ -69,7 +65,7 @@
 							<p>{post.text}</p>
 						</Card.Content>
 						<Card.Footer>
-							<Engagement dataPromise={notePromise(post)} />
+							<Engagement note={post} />
 						</Card.Footer>
 					</Card.Root>
 				</div>

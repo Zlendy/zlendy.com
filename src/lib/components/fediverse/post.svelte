@@ -5,7 +5,7 @@
 
 	export let note: string;
 
-	async function loadData(): Promise<Note> {
+	async function loadNote(): Promise<Note> {
 		return await fediverseRequest({
 			url: '/api/notes/show',
 			body: {
@@ -16,6 +16,8 @@
 	}
 </script>
 
-<div class="mb-4">
-	<Engagement dataPromise={loadData()} />
-</div>
+{#await loadNote() then note}
+	<div class="mb-4">
+		<Engagement {note} />
+	</div>
+{/await}
