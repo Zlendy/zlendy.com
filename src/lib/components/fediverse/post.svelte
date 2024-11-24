@@ -3,13 +3,13 @@
 	import { NoteSchema, type Note } from './types';
 	import Engagement from './engagement.svelte';
 
-	export let note: string;
+	export let noteId: string;
 
 	async function loadNote(): Promise<Note> {
 		return await fediverseRequest({
 			url: '/api/notes/show',
 			body: {
-				noteId: note
+				noteId
 			},
 			schema: NoteSchema
 		});

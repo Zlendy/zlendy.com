@@ -11,7 +11,7 @@
 	import { intersect } from '@svelte-put/intersect';
 
 	export let style: HTMLBaseAttributes['style'] = undefined;
-	export let note: string;
+	export let noteId: string;
 	export let layer = 0;
 	const fadeInDelay = 250; // ms;
 
@@ -21,7 +21,7 @@
 		return await fediverseRequest({
 			url: '/api/notes/children',
 			body: {
-				noteId: note,
+				noteId,
 				limit: 5,
 				showQuotes: false
 			},
@@ -33,9 +33,9 @@
 <div use:intersect={{ threshold: 0.4 }} on:intersectonce={() => (visibleNote = true)}>
 	{#if visibleNote}
 		{#await loadData() then comments}
-			{#each comments as post, index (post.id)}
-				{@const hasReplies = post.repliesCount > 0}
-				{@const postLink = `${PUBLIC_FEDIVERSE_HOST}/notes/${post.id}`}
+			{#each comments as note, index (note.id)}
+				{@const hasReplies = note.repliesCount > 0}
+				{@const postLink = `${PUBLIC_FEDIVERSE_HOST}/notes/${note.id}`}
 				{@const replyLayer = layer + 1}
 				{@const replyMarginLeft = `${replyLayer * 10}%`}
 
@@ -45,7 +45,7 @@
 					in:fade|global={{ duration: 250, delay: fadeInDelay * index + fadeInDelay * layer }}
 				>
 					<Card.Root>
-						{@const user = post.user}
+						{@const user = note.user}
 						{@const handle = `@${user.username}@${user.host}`}
 						<a href="{PUBLIC_FEDIVERSE_HOST}/{handle}" class="flex items-center space-y-1.5 p-6">
 							<Avatar.Root>
@@ -62,16 +62,16 @@
 							</Card.Header>
 						</a>
 						<Card.Content class="break-words">
-							<p>{post.text}</p>
+							<p>{note.text}</p>
 						</Card.Content>
 						<Card.Footer>
-							<Engagement note={post} />
+							<Engagement {note} />
 						</Card.Footer>
 					</Card.Root>
 				</div>
 
 				{#if layer < 2}
-					<svelte:self style="margin-left: {replyMarginLeft}" note={post.id} layer={replyLayer} />
+					<svelte:self style="margin-left: {replyMarginLeft}" noteId={note.id} layer={replyLayer} />
 				{:else if hasReplies}
 					<Card.Root class="mb-4" style="margin-left: {replyMarginLeft}">
 						<div class="p-6">

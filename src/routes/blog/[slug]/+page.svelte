@@ -25,7 +25,7 @@
 
 {#if fediverse}
 	<section id="fediverse" class="mx-[10vw]">
-		<Post note={fediverse} />
-		<Comments note={fediverse} />
+		<Post noteId={fediverse} />
+		<Comments noteId={fediverse} />
 	</section>
 {/if}
