@@ -2,6 +2,7 @@
 title: First post
 date: '2024-11-24 19-07'
 description: Hello world! This blog is now live
+fediverse: a0zhni07qhel00bx
 ---
 
 **Hello, world!**
