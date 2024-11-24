@@ -12,5 +12,6 @@
 		class:invert={$mode !== 'dark'}
 	/>
 	<h1 class="mb-4 text-5xl font-bold leading-tight">Zlendy</h1>
-	<p class="mb-8 text-lg">Work in Progress</p>
+	<p class="text-lg">Hi there! Welcome to my little slice of the internet</p>
+	<p class="mb-8 text-lg">I'm a web developer from Spain who loves contributing to FOSS projects</p>
 </div>
