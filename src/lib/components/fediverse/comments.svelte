@@ -7,7 +7,9 @@
 	import { PUBLIC_FEDIVERSE_HOST } from '$env/static/public';
 	import Engagement from './engagement.svelte';
 	import LinkArrow from '../link-arrow.svelte';
+	import type { HTMLBaseAttributes } from 'svelte/elements';
 
+	export let style: HTMLBaseAttributes['style'] = undefined;
 	export let note: string;
 	export let layer = 0;
 	const fadeInDelay = 250; // ms;
@@ -32,14 +34,18 @@
 {#await loadData() then comments}
 	{#each comments as post, index}
 		{@const hasReplies = post.repliesCount > 0}
+		{@const postLink = `${PUBLIC_FEDIVERSE_HOST}/notes/${post.id}`}
+		{@const replyLayer = layer + 1}
+		{@const replyMarginLeft = `${replyLayer * 10}%`}
+
 		<div
-			class:mb-4={hasReplies}
+			{style}
+			class="mb-4"
 			in:fade|global={{ duration: 250, delay: fadeInDelay * index + fadeInDelay * layer }}
 		>
 			<Card.Root>
 				{@const user = post.user}
 				{@const handle = `@${user.username}@${user.host}`}
-				{@const postLink = `${PUBLIC_FEDIVERSE_HOST}/notes/${post.id}`}
 				<a href="{PUBLIC_FEDIVERSE_HOST}/{handle}" class="flex items-center space-y-1.5 p-6">
 					<Avatar.Root>
 						<Avatar.Image src={user.avatarUrl} alt="{handle}'s avatar" />
@@ -49,31 +55,28 @@
 							{firstLetter}{lastLetter}
 						</Avatar.Fallback>
 					</Avatar.Root>
-					<Card.Header class="p-0 pl-6">
-						<Card.Title>{user.name}</Card.Title>
-						<Card.Description>{handle}</Card.Description>
+					<Card.Header class="overflow-hidden  p-0 pl-6">
+						<Card.Title class="break-words">{user.name}</Card.Title>
+						<Card.Description class="break-words">{handle}</Card.Description>
 					</Card.Header>
 				</a>
-				<a href={postLink}>
-					<Card.Content>
-						<p>{post.text}</p>
-					</Card.Content>
-				</a>
-				<Card.Footer class={hasReplies ? '' : 'pb-4'}>
-					<div class="flex w-full flex-col">
-						<Engagement dataPromise={notePromise(post)} class={hasReplies ? '' : 'mb-0'} />
-						{#if layer < 2}
-							<svelte:self note={post.id} layer={layer + 1} />
-						{:else if hasReplies}
-							<Card.Root>
-								<div class="p-6">
-									<LinkArrow href={postLink}>View thread continuation</LinkArrow>
-								</div>
-							</Card.Root>
-						{/if}
-					</div>
+				<Card.Content class="break-words">
+					<p>{post.text}</p>
+				</Card.Content>
+				<Card.Footer>
+					<Engagement dataPromise={notePromise(post)} />
 				</Card.Footer>
 			</Card.Root>
 		</div>
+
+		{#if layer < 2}
+			<svelte:self style="margin-left: {replyMarginLeft}" note={post.id} layer={replyLayer} />
+		{:else if hasReplies}
+			<Card.Root class="mb-4" style="margin-left: {replyMarginLeft}">
+				<div class="p-6">
+					<LinkArrow href={postLink}>View thread continuation</LinkArrow>
+				</div>
+			</Card.Root>
+		{/if}
 	{/each}
 {/await}

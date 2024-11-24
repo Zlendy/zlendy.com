@@ -16,4 +16,6 @@
 	}
 </script>
 
-<Engagement dataPromise={loadData()} />
+<div class="mb-4">
+	<Engagement dataPromise={loadData()} />
+</div>
