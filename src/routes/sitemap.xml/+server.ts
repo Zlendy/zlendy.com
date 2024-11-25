@@ -1,6 +1,8 @@
 import { PUBLIC_WEBSITE_HOST } from '$env/static/public';
 import { posts } from '$lib/server/posts';
 
+export const prerender = true;
+
 // Thank you Casper Feng!
 // https://www.casperfeng.com/blog/generating-dynamic-sitemaps-in-sveltekit
 
