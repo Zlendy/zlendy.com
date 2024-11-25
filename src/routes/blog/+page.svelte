@@ -3,6 +3,7 @@
 	import * as Tooltip from '$lib/components/ui/tooltip';
 	import dayjs from 'dayjs';
 	import relativeTime from 'dayjs/plugin/relativeTime';
+	import LinkArrow from '$lib/components/link-arrow.svelte';
 
 	export let data: PageServerData;
 
@@ -19,9 +20,11 @@
 	{#each data.posts as post}
 		<article class="w-full rounded-lg border bg-card text-card-foreground shadow-sm">
 			<div class="flex flex-col space-y-1.5 p-6">
-				<a class="hover:underline" href="/blog/{post.slug}">
-					<h3 class="text-lg font-semibold leading-none tracking-tight">{post.title}</h3>
-				</a>
+				<h3 class="text-lg font-semibold leading-none tracking-tight">
+					<LinkArrow href="/blog/{post.slug}">
+						{post.title}
+					</LinkArrow>
+				</h3>
 				<p class="text-sm text-muted-foreground">
 					<Tooltip.Root>
 						{@const date = dayjs(post.createdAt)}
