@@ -4,7 +4,7 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 </script>
 
-<div class="relative z-10 mx-8 flex h-screen flex-col items-center justify-center text-center">
+<div class="mx-auto flex h-screen max-w-2xl flex-col items-center justify-center px-4 text-center">
 	<Avatar.Root class="h-[192px] w-[192px]">
 		<Avatar.Image src="https://avatars.githubusercontent.com/u/22578704" alt="Zlendy's avatar" />
 		<Avatar.Fallback class="text-[5rem]">ZY</Avatar.Fallback>
@@ -17,7 +17,7 @@
 	<p class="mb-8 text-lg">...nor I want to let you down ;)</p>
 </div>
 
-<div class="mx-8 mb-4 sm:mx-16 md:mx-32">
+<div class="mx-auto mb-4 max-w-2xl px-4">
 	<h2 class="text-4xl">Quick facts</h2>
 	<ul class="mb-8 list-disc pl-10">
 		<li>

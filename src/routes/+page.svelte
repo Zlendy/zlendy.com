@@ -2,7 +2,7 @@
 	import { mode } from 'mode-watcher';
 </script>
 
-<div class="relative z-10 mx-8 flex h-screen flex-col items-center justify-center text-center">
+<div class="mx-auto flex h-screen max-w-2xl flex-col items-center justify-center px-4 text-center">
 	<img
 		src="/favicon.png"
 		width="192"

@@ -11,11 +11,11 @@
 	const now = dayjs();
 </script>
 
-<header class="relative flex min-h-48 flex-col items-center justify-center text-center">
+<header class="flex min-h-48 flex-col items-center justify-center text-center">
 	<h1 class="mb-4 text-5xl font-bold leading-tight">Blog</h1>
 </header>
 
-<div class="relative mx-16 flex flex-wrap items-center justify-center gap-4 sm:mx-32 lg:mx-64">
+<div class="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-4 px-4">
 	{#each data.posts as post}
 		<article class="w-full rounded-lg border bg-card text-card-foreground shadow-sm">
 			<div class="flex flex-col space-y-1.5 p-6">
