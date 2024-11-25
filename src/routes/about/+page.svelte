@@ -43,11 +43,14 @@
 			</LinkArrow>
 		</li>
 		<li>
-			<LinkArrow rel="me" href="https://social.zlendy.com/@zlendy">
+			<LinkArrow
+				rel="me"
+				href="https://social.zlendy.com/@zlendy"
+				title="ActivityPub-compatible server"
+			>
 				<Logo name="activitypub" />
 				Sharkey
 			</LinkArrow>
-			(ActivityPub-compatible server)
 		</li>
 		<li>
 			<LinkArrow rel="me" href="https://bsky.app/profile/zlendy.com">
