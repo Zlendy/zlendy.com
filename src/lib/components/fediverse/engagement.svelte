@@ -18,10 +18,10 @@
 
 <div class="flex flex-col gap-4">
 	<div class="flex flex-wrap justify-start gap-2">
-		<Button size="sm" {href}>
+		<Button size="sm" {href} target="_blank">
 			<Fa icon={faReply} /> &nbsp; {note.repliesCount}
 		</Button>
-		<Button size="sm" {href}>
+		<Button size="sm" {href} target="_blank">
 			<Fa icon={faRepeat} /> &nbsp; {note.renoteCount}
 		</Button>
 	</div>
@@ -30,7 +30,7 @@
 		<div class="flex flex-wrap justify-start gap-2">
 			{#each reactions as reaction, index}
 				<div in:fade|global={{ duration: 250, delay: 100 * index }}>
-					<Badge variant="default" class="h-6 text-sm" {href}>
+					<Badge variant="default" class="h-6 text-sm" {href} target="_blank">
 						{reaction.name}
 						{reaction.amount}
 					</Badge>

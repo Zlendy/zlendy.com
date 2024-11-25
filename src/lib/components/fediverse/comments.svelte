@@ -47,7 +47,11 @@
 					<Card.Root>
 						{@const user = note.user}
 						{@const handle = `@${user.username}@${user.host}`}
-						<a href="{PUBLIC_FEDIVERSE_HOST}/{handle}" class="flex items-center space-y-1.5 p-6">
+						<a
+							href="{PUBLIC_FEDIVERSE_HOST}/{handle}"
+							target="_blank"
+							class="flex items-center space-y-1.5 p-6"
+						>
 							<Avatar.Root>
 								<Avatar.Image src={user.avatarUrl} alt="{handle}'s avatar" />
 								<Avatar.Fallback>

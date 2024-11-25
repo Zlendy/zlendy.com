@@ -80,7 +80,7 @@
 	{/if}
 
 	{#if hasImage(props)}
-		<LinkHoverTitle href={props.href} title={props.text}>
+		<LinkHoverTitle href={props.href} title={props.text} target="_blank">
 			<img
 				class="h-auto w-full"
 				class:hidden={props.status !== Status.LoadedImage}
