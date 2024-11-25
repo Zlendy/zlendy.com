@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
-	import * as Card from '$lib/components/ui/card';
 	import * as Tooltip from '$lib/components/ui/tooltip';
 	import dayjs from 'dayjs';
 	import relativeTime from 'dayjs/plugin/relativeTime';
