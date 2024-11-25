@@ -17,7 +17,7 @@
 <article class="mb-4">
 	<header class="relative z-10 flex min-h-48 flex-col items-center justify-center text-center">
 		<h1 class="mb-4 text-5xl font-bold leading-tight">{title}</h1>
-		<h2>{dayjs(data.post.date).format('DD/MMM/YYYY [at] HH:mm')}</h2>
+		<h2>{dayjs(data.post.createdAt).format('DD/MMM/YYYY [at] HH:mm')}</h2>
 	</header>
 	<!-- render the post -->
 	<div class="mx-[10vw]">

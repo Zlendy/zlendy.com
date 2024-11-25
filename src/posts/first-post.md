@@ -1,6 +1,7 @@
 ---
 title: First post
-date: '2024-11-24 18:07 UTC'
+createdAt: '2024-11-24 18:07 UTC'
+updatedAt: null
 description: Hello world! This blog is now live
 fediverse: a0zhni07qhel00bx
 ---

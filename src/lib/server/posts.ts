@@ -8,7 +8,8 @@ for (const plugin of [customParseFormat, utc]) dayjs.extend(plugin);
 type RawPost = {
 	title: string;
 	description: string;
-	date: string;
+	createdAt: string;
+	updatedAt: string | null;
 	slug: string;
 	fediverse?: string;
 };
@@ -16,7 +17,7 @@ type RawPost = {
 export type Post = Override<
 	RawPost,
 	{
-		date: Date;
+		createdAt: Date;
 	}
 >;
 
@@ -32,12 +33,12 @@ export const posts = Object.entries(
 	.map(([filepath, globEntry]): Post => {
 		return {
 			...globEntry.metadata,
-			date: dayjs(globEntry.metadata.date, ['YYYY-MM-DD HH:mm [UTC]']).utc(true).toDate(),
+			createdAt: dayjs(globEntry.metadata.createdAt, ['YYYY-MM-DD HH:mm [UTC]']).utc(true).toDate(),
 			slug: parse(filepath).name // generate the slug from the file path
 		};
 	})
 	// sort by date
-	.sort((a, b) => b.date.getTime() - a.date.getTime())
+	.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
 	// add references to the next/previous post
 	.map((post, index, allPosts) => ({
 		...post,

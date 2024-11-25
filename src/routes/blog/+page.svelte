@@ -25,7 +25,7 @@
 				</a>
 				<p class="text-sm text-muted-foreground">
 					<Tooltip.Root>
-						{@const date = dayjs(post.date)}
+						{@const date = dayjs(post.createdAt)}
 
 						<Tooltip.Trigger>
 							{now.diff(date, 'days', true) < 7 // Posted in the last week
