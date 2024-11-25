@@ -5,13 +5,14 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	const title = data.post.title;
-	const fediverse = data.post.fediverse;
+	const { title, description, fediverse } = data.post;
 </script>
 
 <svelte:head>
 	<title>{title} - Zlendy</title>
+	<meta name="description" content={description} />
 	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
 </svelte:head>
 
 <article class="mb-4">
