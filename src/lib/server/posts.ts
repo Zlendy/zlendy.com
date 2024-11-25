@@ -18,6 +18,7 @@ export type Post = Override<
 	RawPost,
 	{
 		createdAt: Date;
+		updatedAt: Date | null;
 	}
 >;
 
@@ -34,6 +35,9 @@ export const posts = Object.entries(
 		return {
 			...globEntry.metadata,
 			createdAt: dayjs(globEntry.metadata.createdAt, ['YYYY-MM-DD HH:mm [UTC]']).utc(true).toDate(),
+			updatedAt: globEntry.metadata.updatedAt
+				? dayjs(globEntry.metadata.updatedAt, ['YYYY-MM-DD HH:mm [UTC]']).utc(true).toDate()
+				: null,
 			slug: parse(filepath).name // generate the slug from the file path
 		};
 	})
