@@ -1,8 +1,8 @@
 <script lang="ts">
 	import ModeToggle from '$lib/components/modetoggle.svelte';
-	import Logo from '$lib/components/logo.svelte';
 	import LinkHoverTitle from './link-hover-title.svelte';
 	import LinkArrow from './link-arrow.svelte';
+	import { CodeXml } from 'lucide-svelte';
 </script>
 
 <footer class="border-t">
@@ -17,11 +17,12 @@
 		</p>
 		<div class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
 			<div class="flex flex-wrap gap-4">
-				<LinkHoverTitle title="ActivityPub" rel="me" href="https://social.zlendy.com/@zlendy">
-					<Logo name="activitypub" />
-				</LinkHoverTitle>
-				<LinkHoverTitle title="Bluesky" rel="me" href="https://bsky.app/profile/zlendy.com">
-					<Logo name="bluesky" />
+				<LinkHoverTitle
+					title="Website source code"
+					href="https://github.com/Zlendy/zlendy.com"
+					target="_blank"
+				>
+					<CodeXml />
 				</LinkHoverTitle>
 			</div>
 			<ModeToggle />
