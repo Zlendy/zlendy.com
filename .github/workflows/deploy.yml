@@ -8,6 +8,7 @@ jobs:
   build_site:
     environment: github-pages
     env:
+      PUBLIC_WEBSITE_HOST: ${{ vars.PUBLIC_WEBSITE_HOST }}
       PUBLIC_FEDIVERSE_HOST: ${{ vars.PUBLIC_FEDIVERSE_HOST }}
       PUBLIC_FEDIVERSE_BOARD: ${{ vars.PUBLIC_FEDIVERSE_BOARD }}
       PUBLIC_PLAUSIBLE_HOST: ${{ vars.PUBLIC_PLAUSIBLE_HOST }}
