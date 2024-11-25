@@ -2,7 +2,10 @@
 	import ModeToggle from '$lib/components/modetoggle.svelte';
 	import LinkHoverTitle from './link-hover-title.svelte';
 	import LinkArrow from './link-arrow.svelte';
-	import { CodeXml } from 'lucide-svelte';
+	import { ChartNoAxesCombined, CodeXml } from 'lucide-svelte';
+	import { PUBLIC_PLAUSIBLE_HOST, PUBLIC_WEBSITE_HOST } from '$env/static/public';
+
+	const WEBSITE_HOST_NOPROTOCOL = PUBLIC_WEBSITE_HOST.replace(/^https?:\/\//, '');
 </script>
 
 <footer class="border-t">
@@ -17,6 +20,15 @@
 		</p>
 		<div class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
 			<div class="flex flex-wrap gap-4">
+				{#if PUBLIC_PLAUSIBLE_HOST}
+					<LinkHoverTitle
+						title="Public website analytics"
+						href="{PUBLIC_PLAUSIBLE_HOST}/{WEBSITE_HOST_NOPROTOCOL}"
+						target="_blank"
+					>
+						<ChartNoAxesCombined />
+					</LinkHoverTitle>
+				{/if}
 				<LinkHoverTitle
 					title="Website source code"
 					href="https://github.com/Zlendy/zlendy.com"
