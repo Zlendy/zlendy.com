@@ -55,5 +55,11 @@
 				Bluesky
 			</LinkArrow>
 		</li>
+		<li>
+			<LinkArrow rel="me" href="https://www.pixiv.net/en/users/88820373">
+				<Logo name="pixiv" />
+				Pixiv
+			</LinkArrow>
+		</li>
 	</ul>
 </div>
