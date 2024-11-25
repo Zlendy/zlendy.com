@@ -27,6 +27,7 @@ export const NoteSchema = v.object({
 	text: v.nullish(v.string()),
 	files: NoteFileListSchema,
 	reactions: v.record(v.string(), v.number()),
+	reactionEmojis: v.record(v.string(), v.string()),
 	user: NoteUserSchema,
 	renoteCount: v.number(),
 	repliesCount: v.number()
@@ -34,3 +35,14 @@ export const NoteSchema = v.object({
 
 export type NoteList = v.InferInput<typeof NoteListSchema>;
 export const NoteListSchema = v.array(NoteSchema);
+
+export type Emoji = v.InferInput<typeof EmojiSchema>;
+export const EmojiSchema = v.object({
+	name: v.string(),
+	url: v.string()
+});
+
+export type EmojiList = v.InferInput<typeof EmojiListSchema>;
+export const EmojiListSchema = v.object({
+	emojis: v.array(EmojiSchema)
+});

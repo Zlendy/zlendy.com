@@ -6,6 +6,7 @@
 	import Fa from 'svelte-fa';
 	import { faRepeat, faReply } from '@fortawesome/free-solid-svg-icons';
 	import { PUBLIC_FEDIVERSE_HOST } from '$env/static/public';
+	import Emoji from './emoji.svelte';
 
 	export let note: Note;
 	const href = `${PUBLIC_FEDIVERSE_HOST}/notes/${note.id}`;
@@ -31,7 +32,7 @@
 			{#each reactions as reaction, index}
 				<div in:fade|global={{ duration: 250, delay: 100 * index }}>
 					<Badge variant="default" class="h-6 text-sm" {href} target="_blank">
-						{reaction.name}
+						<Emoji {note} name={reaction.name} />
 						{reaction.amount}
 					</Badge>
 				</div>
