@@ -1,8 +1,9 @@
 import { parse } from 'path';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import utc from 'dayjs/plugin/utc';
 
-dayjs.extend(customParseFormat);
+for (const plugin of [customParseFormat, utc]) dayjs.extend(plugin);
 
 type RawPost = {
 	title: string;
@@ -31,7 +32,7 @@ export const posts = Object.entries(
 	.map(([filepath, globEntry]): Post => {
 		return {
 			...globEntry.metadata,
-			date: dayjs(globEntry.metadata.date, ['YYYY-MM-DD HH-mm', 'YYYY-MM-DD']).toDate(),
+			date: dayjs(globEntry.metadata.date, ['YYYY-MM-DD HH:mm [UTC]']).utc(true).toDate(),
 			slug: parse(filepath).name // generate the slug from the file path
 		};
 	})
