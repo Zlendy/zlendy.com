@@ -38,9 +38,6 @@
 				</p>
 			</div>
 			<div class="p-6 pt-0">{post.description}</div>
-			<div class="flex items-center p-6 pt-0">
-				<a class="hover:underline" href="/blog/{post.slug}">Read more</a>
-			</div>
 		</article>
 	{/each}
 </div>
