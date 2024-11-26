@@ -29,7 +29,8 @@
 			top: element.offsetTop,
 			behavior: 'smooth'
 		});
-		window.history.pushState({}, '', `#${id}`);
+
+		window.history.pushState({}, '', `#${id}`); // Change current URL without refreshing and add new entry to history
 	}
 
 	let hover = false;
@@ -46,10 +47,13 @@
 	on:pointerenter={() => (hover = true)}
 	on:pointerleave={() => (hover = false)}
 >
+	<!-- Workaround to get slotted content as text -->
 	<span bind:textContent contenteditable="true" class="hidden">
 		<slot></slot>
 	</span>
+
 	<slot></slot>
+
 	<a href="#{id}" on:click|preventDefault={smoothScroll}>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
