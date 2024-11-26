@@ -1,3 +1,7 @@
-<h2 class="text-4xl">
+<script>
+	import Heading from '../heading.svelte';
+</script>
+
+<Heading tag="h2" {...$$restProps}>
 	<slot></slot>
-</h2>
+</Heading>
