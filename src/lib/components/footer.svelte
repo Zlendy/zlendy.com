@@ -2,7 +2,7 @@
 	import ModeToggle from '$lib/components/modetoggle.svelte';
 	import LinkHoverTitle from './link-hover-title.svelte';
 	import LinkArrow from './link-arrow.svelte';
-	import { ChartNoAxesCombined, CodeXml } from 'lucide-svelte';
+	import { Activity, ChartNoAxesCombined, CodeXml } from 'lucide-svelte';
 	import { PUBLIC_PLAUSIBLE_HOST, PUBLIC_WEBSITE_HOST } from '$env/static/public';
 
 	const WEBSITE_HOST_NOPROTOCOL = PUBLIC_WEBSITE_HOST.replace(/^https?:\/\//, '');
@@ -35,6 +35,13 @@
 					target="_blank"
 				>
 					<CodeXml />
+				</LinkHoverTitle>
+				<LinkHoverTitle
+					title="Services uptime monitor"
+					href="https://status.zlendy.com"
+					target="_blank"
+				>
+					<Activity />
 				</LinkHoverTitle>
 			</div>
 			<ModeToggle />
