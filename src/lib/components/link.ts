@@ -9,5 +9,5 @@ export function isSameOrigin(href: HTMLAnchorAttributes['href']) {
 }
 
 export function getAnchorTarget(sameorigin: boolean): HTMLAnchorAttributes['target'] {
-	return sameorigin ? '_self' : '_blank';
+	return sameorigin ? undefined : '_blank';
 }
