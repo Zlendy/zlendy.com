@@ -2,7 +2,7 @@
 	import ModeToggle from '$lib/components/modetoggle.svelte';
 	import LinkHoverTitle from './link-hover-title.svelte';
 	import LinkArrow from './link-arrow.svelte';
-	import { Activity, ChartNoAxesCombined, CodeXml } from 'lucide-svelte';
+	import { Activity, ChartNoAxesCombined, CodeXml, Rss } from 'lucide-svelte';
 	import { PUBLIC_PLAUSIBLE_HOST, PUBLIC_WEBSITE_HOST } from '$env/static/public';
 
 	const WEBSITE_HOST_NOPROTOCOL = PUBLIC_WEBSITE_HOST.replace(/^https?:\/\//, '');
@@ -20,6 +20,9 @@
 		</p>
 		<div class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
 			<div class="flex flex-wrap gap-4">
+				<LinkHoverTitle title="RSS feed" href="/rss.xml" target="_blank">
+					<Rss />
+				</LinkHoverTitle>
 				{#if PUBLIC_PLAUSIBLE_HOST}
 					<LinkHoverTitle
 						title="Public website analytics"
