@@ -7,6 +7,8 @@
 	import { routes } from '$lib/routes';
 	import { PlausibleAnalytics } from '@accuser/svelte-plausible-analytics';
 	import { PUBLIC_PLAUSIBLE_HOST } from '$env/static/public';
+	import type { LayoutData } from './$types';
+	import { fade } from 'svelte/transition';
 
 	page.subscribe((page_value) => {
 		routes.update((routes_value) =>
@@ -18,13 +20,21 @@
 			}))
 		);
 	});
+
+	export let data: LayoutData;
 </script>
 
 <ModeWatcher />
 <PlausibleAnalytics apiHost={PUBLIC_PLAUSIBLE_HOST} outboundLinks={true} />
 
 <Header />
-<main class="h-full min-h-screen">
-	<slot></slot>
-</main>
+{#key data.currentRoute}
+	<main
+		class="h-full min-h-screen"
+		in:fade={{ duration: 150, delay: 150 }}
+		out:fade={{ duration: 150 }}
+	>
+		<slot />
+	</main>
+{/key}
 <Footer />
