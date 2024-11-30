@@ -8,7 +8,7 @@ const mdsvexExtensions = ['.md'];
 const theme = 'github-dark';
 const highlighter = await createHighlighter({
 	themes: [theme],
-	langs: ['javascript', 'typescript', 'python', 'c#', 'vb', 'rust', 'docker', 'dockerfile']
+	langs: ['javascript', 'typescript', 'python', 'c#', 'vb', 'rust', 'docker', 'dockerfile', 'bash']
 });
 
 /** @type {import('@sveltejs/kit').Config} */
