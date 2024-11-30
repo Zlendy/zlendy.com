@@ -59,6 +59,7 @@
 			--toc-title-margin="0 0 2rem 0"
 			--toc-active-font-weight="bold"
 			--toc-active-bg="none"
+			--toc-active-color="hsl(var(--foreground)"
 			--toc-li-hover-color="none"
 		/>
 	</Sheet.Content>
