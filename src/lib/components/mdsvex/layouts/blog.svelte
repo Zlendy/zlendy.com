@@ -20,6 +20,7 @@
 	export { default as ol } from '../ol.svelte';
 
 	// table
+	export { default as table } from '../table.svelte';
 	export { default as tbody } from '../tbody.svelte';
 	export { default as tr } from '../tr.svelte';
 	export { default as th } from '../th.svelte';
