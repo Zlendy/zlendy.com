@@ -1,7 +1,7 @@
 ---
 title: First post
 createdAt: '2024-11-24 18:07 UTC'
-updatedAt: null
+updatedAt: '2024-11-30 14:36 UTC'
 description: Hello world! This blog is now live
 fediverse: a0zhni07qhel00bx
 ---
@@ -17,8 +17,8 @@ My first real post will be an in-depth guide of how to install Arch Linux using 
 There are some features still missing from the blog, though. Some of them are:
 
 - [ ] View counter
-- [ ] Table of Contents
+- [x] Table of Contents
 - [ ] Share button
 - [ ] Tags
 - [ ] Post search
-- [ ] RSS
+- [x] RSS
