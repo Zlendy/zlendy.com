@@ -38,11 +38,11 @@
 	bind:this={element}
 	class="{styles[tag]} hyphens-auto break-words"
 	{id}
-	on:pointerenter={() => (hover = true)}
-	on:pointerleave={() => (hover = false)}
 	role="heading"
 >
-	<slot></slot>
+	<span on:pointerenter={() => (hover = true)} on:pointerleave={() => (hover = false)}>
+		<slot></slot>
+	</span>
 
 	<button on:click|preventDefault={() => smoothScroll(element)}>
 		<svg
