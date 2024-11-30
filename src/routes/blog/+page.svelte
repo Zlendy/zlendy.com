@@ -40,7 +40,7 @@
 					</Tooltip.Root>
 				</p>
 			</div>
-			<div class="p-6 pt-0">{post.description}</div>
+			<div class="whitespace-pre-wrap p-6 pt-0">{post.description}</div>
 		</article>
 	{/each}
 </div>
