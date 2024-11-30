@@ -40,7 +40,7 @@
 			builders={[builder]}
 			variant="outline"
 			size={tocPinned ? 'icon' : undefined}
-			class="invisible sticky  left-full top-4 z-50 mr-4 mt-4 shrink-0 transition-all {tocEnabled &&
+			class="invisible sticky left-full top-4 z-50 mr-4 mt-4 shrink-0 transition-all {tocEnabled &&
 				'visible'}"
 		>
 			<TableOfContents class="h-5 w-5" />
