@@ -12,13 +12,16 @@
 	export let data: PageData;
 	const { title, description, fediverse } = data.post;
 
+	let articleElement: HTMLElement;
+
 	let windowScrollY: number = 0;
 	$: tocPinned = windowScrollY !== 0;
 
 	const tocHeadingSelector = 'article :is(h1, h2, h3, h4, h5, h6):not(.toc-exclude)';
 	let tocEnabled = false;
+
 	onMount(() => {
-		tocEnabled = document.querySelector(tocHeadingSelector) !== null;
+		tocEnabled = articleElement.querySelector(tocHeadingSelector) !== null;
 	});
 </script>
 
@@ -61,7 +64,7 @@
 	</Sheet.Content>
 </Sheet.Root>
 
-<article class="mx-auto mb-4 max-w-2xl px-4">
+<article bind:this={articleElement} class="mx-auto mb-4 max-w-2xl px-4">
 	<header class="flex min-h-48 flex-col items-center justify-center text-center">
 		<h1 class="toc-exclude mb-4 text-5xl font-bold leading-tight">{title}</h1>
 		<h2 class="toc-exclude">{dayjs(data.post.createdAt).format('DD/MMM/YYYY [at] HH:mm')}</h2>
