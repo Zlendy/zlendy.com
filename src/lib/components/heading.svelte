@@ -14,7 +14,9 @@
 	export let tag: keyof typeof styles;
 
 	let element: HTMLElement;
+
 	let textContent: string;
+	$: textContent = element?.textContent ?? '';
 
 	function generateId(textContent: string) {
 		if (!textContent) return '';
@@ -42,16 +44,11 @@
 <svelte:element
 	this={tag}
 	bind:this={element}
-	class="{styles[tag]} inline"
+	class={styles[tag]}
 	{id}
 	on:pointerenter={() => (hover = true)}
 	on:pointerleave={() => (hover = false)}
 >
-	<!-- Workaround to get slotted content as text -->
-	<span bind:textContent contenteditable="true" class="hidden">
-		<slot></slot>
-	</span>
-
 	<slot></slot>
 
 	<a href="#{id}" on:click|preventDefault={smoothScroll}>
