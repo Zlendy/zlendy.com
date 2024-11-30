@@ -36,7 +36,7 @@
 <svelte:element
 	this={tag}
 	bind:this={element}
-	class={styles[tag]}
+	class="{styles[tag]} hyphens-auto break-words"
 	{id}
 	on:pointerenter={() => (hover = true)}
 	on:pointerleave={() => (hover = false)}
