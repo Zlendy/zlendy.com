@@ -26,13 +26,13 @@
 
 	$: id = generateId(textContent);
 
-	function smoothScroll() {
+	function smoothScroll(element: HTMLElement) {
 		window.scrollTo({
 			top: element.offsetTop,
 			behavior: 'smooth'
 		});
 
-		window.history.pushState({}, '', `#${id}`); // Change current URL without refreshing and add new entry to history
+		window.history.pushState({}, '', `#${element.id}`); // Change current URL without refreshing and add new entry to history
 	}
 
 	let hover = false;
@@ -48,28 +48,29 @@
 	{id}
 	on:pointerenter={() => (hover = true)}
 	on:pointerleave={() => (hover = false)}
+	on:click|preventDefault={() => smoothScroll(element)}
+	role="link"
+	tabindex="-1"
 >
 	<slot></slot>
 
-	<a href="#{id}" on:click|preventDefault={smoothScroll}>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="2"
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			class="lucide-icon lucide lucide-hash inline h-[1em] w-[1em]"
-		>
-			{#if hover}
-				<line transition:draw={drawParams1} x1="4" x2="20" y1="9" y2="9"></line>
-				<line transition:draw={drawParams2} x2="4" x1="20" y2="15" y1="15"></line>
-				<line transition:draw={drawParams2} x2="10" x1="8" y2="3" y1="21"></line>
-				<line transition:draw={drawParams1} x1="16" x2="14" y1="3" y2="21"></line>
-			{/if}
-		</svg>
-	</a>
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="24"
+		height="24"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		class="lucide-icon lucide lucide-hash inline h-[1em] w-[1em]"
+	>
+		{#if hover}
+			<line transition:draw={drawParams1} x1="4" x2="20" y1="9" y2="9"></line>
+			<line transition:draw={drawParams2} x2="4" x1="20" y2="15" y1="15"></line>
+			<line transition:draw={drawParams2} x2="10" x1="8" y2="3" y1="21"></line>
+			<line transition:draw={drawParams1} x1="16" x2="14" y1="3" y2="21"></line>
+		{/if}
+	</svg>
 </svelte:element>
