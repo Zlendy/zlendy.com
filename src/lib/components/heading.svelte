@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { pushState } from '$app/navigation';
 	import { sineInOut } from 'svelte/easing';
 	import { draw, type DrawParams } from 'svelte/transition';
 
@@ -32,7 +33,7 @@
 			behavior: 'smooth'
 		});
 
-		window.history.pushState({}, '', `#${element.id}`); // Change current URL without refreshing and add new entry to history
+		pushState(`#${element.id}`, {}); // Change current URL without refreshing and add new entry to history
 	}
 
 	let hover = false;
