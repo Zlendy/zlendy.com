@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { pushState } from '$app/navigation';
 	import { sineInOut } from 'svelte/easing';
 	import { draw, type DrawParams } from 'svelte/transition';
+	import { smoothScroll } from './link';
 
 	const styles = {
 		h1: 'text-5xl',
@@ -26,15 +26,6 @@
 	}
 
 	$: id = generateId(textContent);
-
-	function smoothScroll(element: HTMLElement) {
-		window.scrollTo({
-			top: element.offsetTop,
-			behavior: 'smooth'
-		});
-
-		pushState(`#${element.id}`, {}); // Change current URL without refreshing and add new entry to history
-	}
 
 	let hover = false;
 	const millis = 100;
