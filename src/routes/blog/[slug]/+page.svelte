@@ -61,6 +61,7 @@
 			--toc-active-bg="none"
 			--toc-active-color="hsl(var(--foreground)"
 			--toc-li-hover-color="none"
+			--toc-max-height="90dvh"
 		/>
 	</Sheet.Content>
 </Sheet.Root>
