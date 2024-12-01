@@ -85,7 +85,9 @@
 <Progress
 	value={progressValue}
 	max={contentOffsetHeight}
-	class="fixed top-0 z-50 hidden h-1 transition-all {progressValue > 0 ? 'block' : undefined}"
+	class="fixed top-0 z-50 hidden h-1 transition-all {progressValue > 0 && contentOffsetHeight
+		? 'block'
+		: undefined}"
 />
 
 <article bind:this={articleElement} class="mx-auto mb-4 max-w-2xl px-4">
