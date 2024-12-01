@@ -9,22 +9,34 @@
 	import { TableOfContents } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 	import Datetooltip from '$lib/components/datetooltip.svelte';
+	import Progress from '$lib/components/ui/progress/progress.svelte';
+	import { PAGE_TRANSITION_MS } from '../../+layout.svelte';
 
 	export let data: PageData;
 	const { title, description, fediverse, createdAt, updatedAt } = data.post;
 
-	let articleElement: HTMLElement;
-
+	const now = dayjs();
 	let windowScrollY: number = 0;
+
+	let articleElement: HTMLElement;
 	$: tocPinned = windowScrollY > 64;
 
 	const tocHeadingSelector = 'article :is(h1, h2, h3, h4, h5, h6):not(.toc-exclude)';
 	let tocEnabled = false;
 
-	const now = dayjs();
+	let contentElement: HTMLElement;
+	let progressValue = 0;
+	let contentOffsetTop = 0;
+	let contentOffsetHeight = 0;
+	$: progressValue = windowScrollY - contentOffsetTop;
 
 	onMount(() => {
 		tocEnabled = articleElement.querySelector(tocHeadingSelector) !== null;
+
+		setTimeout(() => {
+			contentOffsetTop = contentElement.offsetTop;
+			contentOffsetHeight = contentElement.offsetHeight;
+		}, PAGE_TRANSITION_MS * 2); // Wait until the page transition is completed to store this value
 	});
 </script>
 
@@ -69,6 +81,12 @@
 	</Sheet.Content>
 </Sheet.Root>
 
+<Progress
+	value={progressValue}
+	max={contentOffsetHeight}
+	class="fixed top-0 z-50 hidden h-1 transition-all {progressValue > 0 ? 'block' : undefined}"
+/>
+
 <article bind:this={articleElement} class="mx-auto mb-4 max-w-2xl px-4">
 	<header class="flex min-h-48 flex-col items-center justify-center text-center">
 		<h1 class="toc-exclude mb-4 text-5xl font-bold leading-tight">{title}</h1>
@@ -82,8 +100,10 @@
 		{/if}
 	</header>
 
-	<!-- render the post -->
-	<svelte:component this={data.component} />
+	<div bind:this={contentElement}>
+		<!-- render the post -->
+		<svelte:component this={data.component} />
+	</div>
 </article>
 
 {#if fediverse}

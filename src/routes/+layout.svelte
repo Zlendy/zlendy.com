@@ -1,3 +1,7 @@
+<script lang="ts" context="module">
+	export const PAGE_TRANSITION_MS = 150;
+</script>
+
 <script lang="ts">
 	import '../app.css';
 	import Header from '$lib/components/header.svelte';
@@ -31,8 +35,8 @@
 {#key data.currentRoute}
 	<main
 		class="h-full min-h-screen"
-		in:fade={{ duration: 150, delay: 150 }}
-		out:fade={{ duration: 150 }}
+		in:fade={{ duration: PAGE_TRANSITION_MS, delay: PAGE_TRANSITION_MS }}
+		out:fade={{ duration: PAGE_TRANSITION_MS }}
 	>
 		<slot />
 	</main>
