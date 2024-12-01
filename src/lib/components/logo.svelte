@@ -12,6 +12,6 @@
 
 <i
 	class="inline-block h-[1em] w-[1em] bg-foreground {className}"
-	style="mask: url(/icons/logos/{name}.svg) no-repeat center;"
+	style="mask: url(/icons/logos/{name}.svg) center center / cover no-repeat"
 	{...$$restProps}
 ></i>
