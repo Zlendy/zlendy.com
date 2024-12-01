@@ -4,6 +4,7 @@
 	import LinkArrow from './link-arrow.svelte';
 	import { Activity, ChartNoAxesCombined, CodeXml, Rss } from 'lucide-svelte';
 	import { PUBLIC_PLAUSIBLE_HOST, PUBLIC_WEBSITE_HOST } from '$env/static/public';
+	import Logo from './logo.svelte';
 
 	const WEBSITE_HOST_NOPROTOCOL = PUBLIC_WEBSITE_HOST.replace(/^https?:\/\//, '');
 </script>
@@ -24,6 +25,14 @@
 		</p>
 		<div class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
 			<div class="flex flex-wrap gap-4">
+				<LinkHoverTitle
+					rel="me"
+					title="Fediverse blog account"
+					href="https://social.zlendy.com/@blog"
+					target="_blank"
+				>
+					<Logo name="activitypub" class="!h-[1.5em] !w-[1.5em]" />
+				</LinkHoverTitle>
 				<LinkHoverTitle title="RSS feed" href="/rss.xml" target="_blank">
 					<Rss />
 				</LinkHoverTitle>
