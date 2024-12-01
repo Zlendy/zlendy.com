@@ -11,12 +11,13 @@
 	import Datetooltip from '$lib/components/datetooltip.svelte';
 	import Progress from '$lib/components/ui/progress/progress.svelte';
 	import { PAGE_TRANSITION_MS } from '../../+layout.svelte';
+	import { browser } from '$app/environment';
 
 	export let data: PageData;
 	const { title, description, fediverse, createdAt, updatedAt } = data.post;
 
 	const now = dayjs();
-	let windowScrollY: number = 0;
+	let windowScrollY: number = (browser && window.scrollY) || 0;
 
 	let articleElement: HTMLElement;
 	$: tocPinned = windowScrollY > 64;
