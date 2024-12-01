@@ -9,6 +9,10 @@
 </script>
 
 <footer class="border-t">
+	<a class="hidden" rel="me" href="https://social.zlendy.com/@zlendy">
+		Fediverse link verification
+	</a>
+
 	<div
 		class="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0"
 	>
