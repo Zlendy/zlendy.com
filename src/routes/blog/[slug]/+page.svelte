@@ -85,7 +85,8 @@
 <Progress
 	value={progressValue}
 	max={contentOffsetHeight}
-	class="fixed top-0 z-50 hidden h-1 transition-all {progressValue > 0 && contentOffsetHeight
+	class="fixed top-0 z-50 hidden h-1 transition-all {0 < progressValue &&
+	progressValue < contentOffsetHeight
 		? 'block'
 		: undefined}"
 />
