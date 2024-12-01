@@ -14,6 +14,8 @@
 
 		title = `${route.title} - `;
 	});
+
+	let menuOpen = false;
 </script>
 
 <svelte:head>
@@ -35,7 +37,7 @@
 			</a>
 		{/each}
 	</nav>
-	<Sheet.Root>
+	<Sheet.Root bind:open={menuOpen}>
 		<Sheet.Trigger asChild let:builder>
 			<Button builders={[builder]} variant="outline" size="icon" class="shrink-0 md:hidden">
 				<Menu class="h-5 w-5" />
@@ -49,6 +51,7 @@
 						href={route.href}
 						class="hover:text-foreground"
 						class:text-muted-foreground={!route.active}
+						on:click={() => (menuOpen = false)}
 					>
 						{route.title}
 					</a>
