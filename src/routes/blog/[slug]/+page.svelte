@@ -12,6 +12,7 @@
 	import Progress from '$lib/components/ui/progress/progress.svelte';
 	import { PAGE_TRANSITION_MS } from '../../+layout.svelte';
 	import { browser } from '$app/environment';
+	import { fade } from 'svelte/transition';
 
 	export let data: PageData;
 	const { title, description, fediverse, createdAt, updatedAt } = data.post;
@@ -82,14 +83,11 @@
 	</Sheet.Content>
 </Sheet.Root>
 
-<Progress
-	value={progressValue}
-	max={contentOffsetHeight}
-	class="fixed top-0 z-50 hidden h-1 transition-all {0 < progressValue &&
-	progressValue < contentOffsetHeight
-		? 'block'
-		: undefined}"
-/>
+{#if 0 < progressValue && progressValue < contentOffsetHeight}
+	<div transition:fade={{ duration: 500 }}>
+		<Progress value={progressValue} max={contentOffsetHeight} class="fixed top-0 z-50 h-1" />
+	</div>
+{/if}
 
 <article bind:this={articleElement} class="mx-auto mb-4 max-w-2xl px-4">
 	<header class="flex min-h-48 flex-col items-center justify-center text-center">
