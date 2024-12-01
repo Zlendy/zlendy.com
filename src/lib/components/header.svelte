@@ -30,7 +30,7 @@
 			<a
 				href={route.href}
 				class="text-foreground transition-colors hover:text-foreground {route.active
-					? 'text-foreground'
+					? 'font-bold text-foreground'
 					: 'text-muted-foreground'}"
 			>
 				{route.title}
@@ -51,6 +51,7 @@
 						href={route.href}
 						class="hover:text-foreground"
 						class:text-muted-foreground={!route.active}
+						class:font-bold={route.active}
 						on:click={() => (menuOpen = false)}
 					>
 						{route.title}
