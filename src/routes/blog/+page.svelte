@@ -1,13 +1,10 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
-	import * as Tooltip from '$lib/components/ui/tooltip';
-	import dayjs from 'dayjs';
-	import relativeTime from 'dayjs/plugin/relativeTime';
 	import LinkArrow from '$lib/components/link-arrow.svelte';
+	import Datetooltip from '../../lib/components/datetooltip.svelte';
+	import dayjs from 'dayjs';
 
 	export let data: PageServerData;
-
-	dayjs.extend(relativeTime);
 
 	const now = dayjs();
 </script>
@@ -25,20 +22,16 @@
 						{post.title}
 					</LinkArrow>
 				</h3>
-				<p class="text-sm text-muted-foreground">
-					<Tooltip.Root>
-						{@const date = dayjs(post.createdAt)}
-
-						<Tooltip.Trigger>
-							{now.diff(date, 'days', true) < 7 // Posted in the last week
-								? date.from(now) // Show relative time
-								: date.format('DD/MMM/YYYY [at] HH:mm')}
-						</Tooltip.Trigger>
-						<Tooltip.Content>
-							{date.format('dddd, MMMM DD, YYYY [at] HH:mm')}
-						</Tooltip.Content>
-					</Tooltip.Root>
-				</p>
+				<div class="mt-1">
+					<p class="!mt-0 text-sm text-muted-foreground">
+						<Datetooltip prefix="Created" {now} date={dayjs(post.createdAt)} />
+					</p>
+					{#if post.updatedAt}
+						<p class="!mt-0 text-sm text-muted-foreground">
+							<Datetooltip prefix="Updated" {now} date={dayjs(post.updatedAt)} />
+						</p>
+					{/if}
+				</div>
 			</div>
 			<div class="whitespace-pre-wrap p-6 pt-0">{post.description}</div>
 		</article>

@@ -8,9 +8,10 @@
 	import { Button } from '$lib/components/ui/button';
 	import { TableOfContents } from 'lucide-svelte';
 	import { onMount } from 'svelte';
+	import Datetooltip from '$lib/components/datetooltip.svelte';
 
 	export let data: PageData;
-	const { title, description, fediverse } = data.post;
+	const { title, description, fediverse, createdAt, updatedAt } = data.post;
 
 	let articleElement: HTMLElement;
 
@@ -19,6 +20,8 @@
 
 	const tocHeadingSelector = 'article :is(h1, h2, h3, h4, h5, h6):not(.toc-exclude)';
 	let tocEnabled = false;
+
+	const now = dayjs();
 
 	onMount(() => {
 		tocEnabled = articleElement.querySelector(tocHeadingSelector) !== null;
@@ -69,7 +72,14 @@
 <article bind:this={articleElement} class="mx-auto mb-4 max-w-2xl px-4">
 	<header class="flex min-h-48 flex-col items-center justify-center text-center">
 		<h1 class="toc-exclude mb-4 text-5xl font-bold leading-tight">{title}</h1>
-		<h2 class="toc-exclude">{dayjs(data.post.createdAt).format('DD/MMM/YYYY [at] HH:mm')}</h2>
+		<h2 class="toc-exclude">
+			<Datetooltip prefix="Created" {now} date={dayjs(createdAt)} />
+		</h2>
+		{#if updatedAt}
+			<h2 class="toc-exclude">
+				<Datetooltip prefix="Updated" {now} date={dayjs(updatedAt)} />
+			</h2>
+		{/if}
 	</header>
 
 	<!-- render the post -->
