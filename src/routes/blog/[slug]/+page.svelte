@@ -15,7 +15,7 @@
 	let articleElement: HTMLElement;
 
 	let windowScrollY: number = 0;
-	$: tocPinned = windowScrollY !== 0;
+	$: tocPinned = windowScrollY > 64;
 
 	const tocHeadingSelector = 'article :is(h1, h2, h3, h4, h5, h6):not(.toc-exclude)';
 	let tocEnabled = false;
