@@ -51,7 +51,7 @@
 
 <svelte:window on:scroll={() => (windowScrollY = window.scrollY)} />
 
-<Sheet.Root>
+<Sheet.Root preventScroll={false}>
 	<Sheet.Trigger asChild let:builder>
 		<Button
 			builders={[builder]}
