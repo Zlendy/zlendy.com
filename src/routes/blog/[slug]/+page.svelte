@@ -68,6 +68,7 @@
 		</Button>
 	</Sheet.Trigger>
 	<Sheet.Content side="right" class="toc-sheet">
+		<Sheet.Overlay slot="overlay" class="bg-transparent backdrop-blur-none" />
 		<Toc
 			autoHide={false}
 			title="Table of Contents"
