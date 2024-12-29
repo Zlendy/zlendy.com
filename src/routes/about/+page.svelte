@@ -64,5 +64,11 @@
 				Pixiv
 			</LinkArrow>
 		</li>
+		<li>
+			<LinkArrow rel="me" href="https://anilist.co/user/Zlendy">
+				<Logo name="anilist" />
+				AniList
+			</LinkArrow>
+		</li>
 	</ul>
 </div>
