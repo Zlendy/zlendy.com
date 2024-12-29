@@ -70,5 +70,11 @@
 				AniList
 			</LinkArrow>
 		</li>
+		<li>
+			<LinkArrow rel="me" href="https://steamcommunity.com/id/Zlendy">
+				<Logo name="steam" />
+				Steam
+			</LinkArrow>
+		</li>
 	</ul>
 </div>
