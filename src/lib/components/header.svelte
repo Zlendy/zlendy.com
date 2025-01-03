@@ -7,7 +7,7 @@
 	let title: string = '';
 	routes.subscribe((value) => {
 		const route = value.find((route) => route.active);
-		if (!route) {
+		if (!route || route.href === '/') {
 			title = '';
 			return;
 		}
