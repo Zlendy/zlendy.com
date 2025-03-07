@@ -17,6 +17,7 @@
 	"devDependencies": {
 		"@fortawesome/free-brands-svg-icons": "^6.7.2",
 		"@fortawesome/free-solid-svg-icons": "^6.7.2",
+		"@lukulent/svelte-umami": "^0.0.4",
 		"@playwright/test": "^1.51.0",
 		"@svelte-put/intersect": "^4.0.0",
 		"@sveltejs/adapter-static": "^3.0.8",

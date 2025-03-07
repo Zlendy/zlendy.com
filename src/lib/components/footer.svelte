@@ -3,10 +3,8 @@
 	import LinkHoverTitle from './link-hover-title.svelte';
 	import LinkArrow from './link-arrow.svelte';
 	import { Activity, ChartNoAxesCombined, CodeXml, Rss } from 'lucide-svelte';
-	import { PUBLIC_PLAUSIBLE_HOST, PUBLIC_WEBSITE_HOST } from '$env/static/public';
+	import { PUBLIC_UMAMI_WEBSITE_STATS } from '$env/static/public';
 	import Logo from './logo.svelte';
-
-	const WEBSITE_HOST_NOPROTOCOL = PUBLIC_WEBSITE_HOST.replace(/^https?:\/\//, '');
 </script>
 
 <footer class="border-t">
@@ -36,10 +34,10 @@
 				<LinkHoverTitle title="RSS feed" href="/rss.xml" target="_blank">
 					<Rss />
 				</LinkHoverTitle>
-				{#if PUBLIC_PLAUSIBLE_HOST}
+				{#if PUBLIC_UMAMI_WEBSITE_STATS}
 					<LinkHoverTitle
 						title="Public website analytics"
-						href="{PUBLIC_PLAUSIBLE_HOST}/{WEBSITE_HOST_NOPROTOCOL}"
+						href={PUBLIC_UMAMI_WEBSITE_STATS}
 						target="_blank"
 					>
 						<ChartNoAxesCombined />

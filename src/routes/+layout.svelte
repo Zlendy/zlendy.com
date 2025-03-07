@@ -11,6 +11,8 @@
 	import { routes } from '$lib/routes';
 	import type { LayoutData } from './$types';
 	import { fade } from 'svelte/transition';
+	import { UmamiAnalytics } from '@lukulent/svelte-umami';
+	import { PUBLIC_UMAMI_WEBSITE_ID, PUBLIC_UMAMI_SRC } from '$env/static/public';
 
 	page.subscribe((page_value) => {
 		routes.update((routes_value) =>
@@ -31,6 +33,7 @@
 	let { data, children }: Props = $props();
 </script>
 
+<UmamiAnalytics websiteID={PUBLIC_UMAMI_WEBSITE_ID} srcURL={PUBLIC_UMAMI_SRC} />
 <ModeWatcher />
 
 <Header />

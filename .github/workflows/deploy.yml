@@ -11,6 +11,9 @@ jobs:
       PUBLIC_WEBSITE_HOST: ${{ vars.PUBLIC_WEBSITE_HOST }}
       PUBLIC_FEDIVERSE_HOST: ${{ vars.PUBLIC_FEDIVERSE_HOST }}
       PUBLIC_FEDIVERSE_BOARD: ${{ vars.PUBLIC_FEDIVERSE_BOARD }}
+      PUBLIC_UMAMI_SRC: ${{ vars.PUBLIC_UMAMI_SRC }}
+      PUBLIC_UMAMI_WEBSITE_ID: ${{ vars.PUBLIC_UMAMI_WEBSITE_ID }}
+      PUBLIC_UMAMI_WEBSITE_STATS: ${{ vars.PUBLIC_UMAMI_WEBSITE_STATS }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
