@@ -9,8 +9,6 @@
 	import Footer from '$lib/components/footer.svelte';
 	import { page } from '$app/stores';
 	import { routes } from '$lib/routes';
-	import { PlausibleAnalytics } from '@accuser/svelte-plausible-analytics';
-	import { PUBLIC_PLAUSIBLE_HOST } from '$env/static/public';
 	import type { LayoutData } from './$types';
 	import { fade } from 'svelte/transition';
 
@@ -29,7 +27,6 @@
 </script>
 
 <ModeWatcher />
-<PlausibleAnalytics apiHost={PUBLIC_PLAUSIBLE_HOST} outboundLinks={true} />
 
 <Header />
 {#key data.currentRoute}
