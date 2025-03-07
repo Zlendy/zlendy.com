@@ -4,7 +4,7 @@
 	import { routes } from '$lib/routes';
 	import { Menu, Search } from 'lucide-svelte';
 
-	let title: string = '';
+	let title: string = $state('');
 	routes.subscribe((value) => {
 		const route = value.find((route) => route.active);
 		if (!route || route.href === '/') {
@@ -15,7 +15,7 @@
 		title = `${route.title} - `;
 	});
 
-	let menuOpen = false;
+	let menuOpen = $state(false);
 </script>
 
 <svelte:head>
@@ -38,12 +38,15 @@
 		{/each}
 	</nav>
 	<Sheet.Root bind:open={menuOpen}>
-		<Sheet.Trigger asChild let:builder>
-			<Button builders={[builder]} variant="outline" size="icon" class="shrink-0 md:hidden">
-				<Menu class="h-5 w-5" />
-				<span class="sr-only">Toggle navigation menu</span>
-			</Button>
-		</Sheet.Trigger>
+		<Button
+			variant="outline"
+			size="icon"
+			class="shrink-0 md:hidden"
+			onclick={() => (menuOpen = !menuOpen)}
+		>
+			<Menu class="h-5 w-5" />
+			<span class="sr-only">Toggle navigation menu</span>
+		</Button>
 		<Sheet.Content side="left">
 			<nav class="grid gap-6 text-lg font-medium">
 				{#each $routes as route}
@@ -52,7 +55,7 @@
 						class="hover:text-foreground"
 						class:text-muted-foreground={!route.active}
 						class:font-bold={route.active}
-						on:click={() => (menuOpen = false)}
+						onclick={() => (menuOpen = false)}
 					>
 						{route.title}
 					</a>

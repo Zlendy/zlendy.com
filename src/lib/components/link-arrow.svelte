@@ -4,20 +4,26 @@
 	import type { HTMLAnchorAttributes } from 'svelte/elements';
 	import { getAnchorTarget, isSameOrigin } from './link';
 
-	interface $$Props extends HTMLAnchorAttributes {}
+	
 
-	export let href: HTMLAnchorAttributes['href'] = undefined;
+	interface Props {
+		href?: HTMLAnchorAttributes['href'];
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let { href = undefined, children, ...rest }: Props = $props();
 	const sameorigin = isSameOrigin(href);
 </script>
 
 <LinkHoverTitle
 	class="bg-[linear-gradient(hsl(var(--foreground)/25%),hsl(var(--foreground)/25%))] bg-[length:100%_0.25rem] bg-[0%_100%] bg-no-repeat
 	px-1 transition-all hover:bg-[length:100%_100%]"
-	{...$$restProps}
+	{...rest}
 	{href}
 	target={getAnchorTarget(sameorigin)}
 >
-	<slot></slot>
+	{@render children?.()}
 	{#if !sameorigin}
 		<SquareArrowOutUpRight class="inline h-[1em] w-[1em]" />
 	{/if}

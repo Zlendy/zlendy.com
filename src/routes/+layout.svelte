@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
 	export const PAGE_TRANSITION_MS = 150;
 </script>
 
@@ -23,7 +23,12 @@
 		);
 	});
 
-	export let data: LayoutData;
+	interface Props {
+		data: LayoutData;
+		children?: import('svelte').Snippet;
+	}
+
+	let { data, children }: Props = $props();
 </script>
 
 <ModeWatcher />
@@ -35,7 +40,7 @@
 		in:fade={{ duration: PAGE_TRANSITION_MS, delay: PAGE_TRANSITION_MS }}
 		out:fade={{ duration: PAGE_TRANSITION_MS }}
 	>
-		<slot />
+		{@render children?.()}
 	</main>
 {/key}
 <Footer />

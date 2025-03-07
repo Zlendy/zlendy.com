@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Comments from './comments.svelte';
 	import * as Card from '$lib/components/ui/card';
 	import * as Avatar from '$lib/components/ui/avatar';
 	import { fade } from 'svelte/transition';
@@ -10,12 +11,16 @@
 	import type { HTMLBaseAttributes } from 'svelte/elements';
 	import { intersect } from '@svelte-put/intersect';
 
-	export let style: HTMLBaseAttributes['style'] = undefined;
-	export let noteId: string;
-	export let layer = 0;
+	interface Props {
+		style?: HTMLBaseAttributes['style'];
+		noteId: string;
+		layer?: number;
+	}
+
+	let { style = undefined, noteId, layer = 0 }: Props = $props();
 	const fadeInDelay = 250; // ms;
 
-	let visibleNote = false;
+	let visibleNote = $state(false);
 
 	async function loadData() {
 		return await fediverseRequest({
@@ -30,7 +35,7 @@
 	}
 </script>
 
-<div use:intersect={{ threshold: 0.4 }} on:intersectonce={() => (visibleNote = true)}>
+<div use:intersect={{ threshold: 0.4 }} onintersectonce={() => (visibleNote = true)}>
 	{#if visibleNote}
 		{#await loadData() then comments}
 			{#each comments as note, index (note.id)}
@@ -75,7 +80,7 @@
 				</div>
 
 				{#if layer < 2}
-					<svelte:self style="margin-left: {replyMarginLeft}" noteId={note.id} layer={replyLayer} />
+					<Comments style="margin-left: {replyMarginLeft}" noteId={note.id} layer={replyLayer} />
 				{:else if hasReplies}
 					<Card.Root class="mb-4" style="margin-left: {replyMarginLeft}">
 						<div class="p-6">

@@ -8,7 +8,11 @@
 	import { PUBLIC_FEDIVERSE_HOST } from '$env/static/public';
 	import Emoji from './emoji.svelte';
 
-	export let note: Note;
+	interface Props {
+		note: Note;
+	}
+
+	let { note }: Props = $props();
 	const href = `${PUBLIC_FEDIVERSE_HOST}/notes/${note.id}`;
 	const reactions = getReactions(note);
 

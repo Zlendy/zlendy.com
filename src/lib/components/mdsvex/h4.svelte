@@ -1,7 +1,13 @@
-<script>
+<script lang="ts">
 	import Heading from '../heading.svelte';
+	interface Props {
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let { children, ...rest }: Props = $props();
 </script>
 
-<Heading tag="h4" {...$$restProps}>
-	<slot></slot>
+<Heading tag="h4" {...rest}>
+	{@render children?.()}
 </Heading>

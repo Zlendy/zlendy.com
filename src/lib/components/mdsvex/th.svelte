@@ -1,5 +1,14 @@
-<th class="px-4" {...$$restProps}>
-	<slot></slot>
+<script lang="ts">
+	interface Props {
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let { children, ...rest }: Props = $props();
+</script>
+
+<th class="px-4" {...rest}>
+	{@render children?.()}
 </th>
 
 <style lang="scss">

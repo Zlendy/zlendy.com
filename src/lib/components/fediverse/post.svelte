@@ -3,7 +3,11 @@
 	import { NoteSchema, type Note } from './types';
 	import Engagement from './engagement.svelte';
 
-	export let noteId: string;
+	interface Props {
+		noteId: string;
+	}
+
+	let { noteId }: Props = $props();
 
 	async function loadNote(): Promise<Note> {
 		return await fediverseRequest({

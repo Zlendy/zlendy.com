@@ -1,4 +1,12 @@
-<script lang="ts" context="module">
+<script lang="ts">
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
+</script>
+
+<script lang="ts" module>
 	// headings
 	export { default as h1 } from '../h1.svelte';
 	export { default as h2 } from '../h2.svelte';
@@ -30,4 +38,4 @@
 	export { default as img } from '../img.svelte';
 </script>
 
-<slot></slot>
+{@render children?.()}

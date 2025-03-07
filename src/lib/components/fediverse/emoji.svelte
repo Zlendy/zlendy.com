@@ -3,8 +3,12 @@
 	import { fediverseEmojis } from './store';
 	import { EmojiListSchema, type Note } from './types';
 
-	export let note: Note;
-	export let name: string;
+	interface Props {
+		note: Note;
+		name: string;
+	}
+
+	let { note, name }: Props = $props();
 
 	const isCustomEmoji = name.startsWith(':');
 	const nameWithoutColon = name.substring(1, name.length - 1);

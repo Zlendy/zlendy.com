@@ -14,23 +14,27 @@
 	import { browser } from '$app/environment';
 	import { fade } from 'svelte/transition';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 	const { title, description, fediverse, createdAt, updatedAt } = data.post;
 
 	const now = dayjs();
-	let windowScrollY: number = (browser && window.scrollY) || 0;
+	let windowScrollY: number = $state((browser && window.scrollY) || 0);
 
-	let articleElement: HTMLElement;
-	$: tocPinned = windowScrollY > 64;
+	let articleElement: HTMLElement = $state()!;
+	let tocPinned = $derived(windowScrollY > 64);
 
 	const tocHeadingSelector = 'article :is(h1, h2, h3, h4, h5, h6):not(.toc-exclude)';
-	let tocEnabled = false;
+	let tocEnabled = $state(false);
 
-	let contentElement: HTMLElement;
-	let progressValue = 0;
-	let contentOffsetTop = 0;
-	let contentOffsetHeight = 0;
-	$: progressValue = windowScrollY - contentOffsetTop;
+	let contentElement: HTMLElement = $state()!;
+	let contentOffsetTop = $state(0);
+	let contentOffsetHeight = $state(0);
+	let progressValue = $derived(windowScrollY - contentOffsetTop);
+	let tocOpen = $state(false);
 
 	onMount(() => {
 		tocEnabled = articleElement.querySelector(tocHeadingSelector) !== null;
@@ -49,26 +53,26 @@
 	<meta property="og:description" content={description} />
 </svelte:head>
 
-<svelte:window on:scroll={() => (windowScrollY = window.scrollY)} />
+<svelte:window onscroll={() => (windowScrollY = window.scrollY)} />
 
-<Sheet.Root preventScroll={false}>
-	<Sheet.Trigger asChild let:builder>
-		<Button
-			builders={[builder]}
-			variant="outline"
-			size={tocPinned ? 'icon' : undefined}
-			class="invisible sticky left-full top-4 z-50 mr-4 mt-4 shrink-0 transition-all
-			{tocEnabled && 'visible'}"
-		>
-			<TableOfContents class="h-5 w-5" />
-			<span class="sr-only">Table of Contents</span>
-			<span class="not-sr-only {tocPinned ? 'size-0 text-transparent' : undefined}">
-				&nbspTable of Contents
-			</span>
-		</Button>
-	</Sheet.Trigger>
-	<Sheet.Content side="right" class="toc-sheet">
-		<Sheet.Overlay slot="overlay" class="bg-transparent backdrop-blur-none" />
+<Sheet.Root bind:open={tocOpen}>
+	<Button
+		variant="outline"
+		size={tocPinned ? 'icon' : undefined}
+		class="invisible sticky left-full top-4 z-50 mr-4 mt-4 shrink-0 transition-all
+		{tocEnabled && 'visible'}"
+		onclick={() => (tocOpen = !tocOpen)}
+	>
+		<TableOfContents class="h-5 w-5" />
+		<span class="sr-only">Table of Contents</span>
+		<span class="not-sr-only {tocPinned ? 'size-0 text-transparent' : undefined}">
+			&nbspTable of Contents
+		</span>
+	</Button>
+	<Sheet.Content side="right" class="toc-sheet" preventScroll={false}>
+		{#snippet overlay()}
+			<Sheet.Overlay class="bg-transparent backdrop-blur-none" />
+		{/snippet}
 		<Toc
 			autoHide={false}
 			title="Table of Contents"
@@ -105,7 +109,7 @@
 
 	<div bind:this={contentElement}>
 		<!-- render the post -->
-		<svelte:component this={data.component} />
+		<data.component />
 	</div>
 </article>
 

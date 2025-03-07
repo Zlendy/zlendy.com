@@ -1,14 +1,23 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import mediumZoom from 'medium-zoom';
 	import type { Zoom, ZoomOptions } from 'medium-zoom';
 	import type { Action } from 'svelte/action';
 	import type { HTMLImgAttributes } from 'svelte/elements';
 
-	interface $$Props extends HTMLImgAttributes {}
+	
 
-	export let options: ZoomOptions | undefined = undefined;
-	let customOptions: ZoomOptions | undefined = options;
-	$: customOptions = { background: 'hsl(var(--background))', ...options };
+	interface Props {
+		options?: ZoomOptions | undefined;
+		[key: string]: any
+	}
+
+	let { options = undefined, ...rest }: Props = $props();
+	let customOptions: ZoomOptions | undefined = $state(options);
+	run(() => {
+		customOptions = { background: 'hsl(var(--background))', ...options };
+	});
 
 	let zoom: Zoom;
 
@@ -39,5 +48,5 @@
 	};
 </script>
 
-<!-- svelte-ignore a11y-missing-attribute -->
-<img {...$$restProps} use:attachZoom={customOptions} />
+<!-- svelte-ignore a11y_missing_attribute -->
+<img {...rest} use:attachZoom={customOptions} />

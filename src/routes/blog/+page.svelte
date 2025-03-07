@@ -4,7 +4,11 @@
 	import Datetooltip from '../../lib/components/datetooltip.svelte';
 	import dayjs from 'dayjs';
 
-	export let data: PageServerData;
+	interface Props {
+		data: PageServerData;
+	}
+
+	let { data }: Props = $props();
 
 	const now = dayjs();
 </script>

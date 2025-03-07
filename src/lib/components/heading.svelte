@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { preventDefault } from 'svelte/legacy';
+
 	import { sineInOut } from 'svelte/easing';
 	import { draw, type DrawParams } from 'svelte/transition';
 	import { smoothScroll } from './link';
@@ -12,12 +14,17 @@
 		h6: 'text-md'
 	} as const;
 
-	export let tag: keyof typeof styles;
+	interface Props {
+		tag: keyof typeof styles;
+		children?: import('svelte').Snippet;
+	}
 
-	let element: HTMLElement;
+	let { tag, children }: Props = $props();
 
-	let textContent: string;
-	$: textContent = element?.textContent ?? '';
+	let element: HTMLElement = $state();
+
+	let textContent: string = $derived(element?.textContent ?? '');
+	
 
 	function generateId(textContent: string) {
 		if (!textContent) return '';
@@ -25,9 +32,9 @@
 		return textContent.toLowerCase().matchAll(/\w+/g).toArray().join('-');
 	}
 
-	$: id = generateId(textContent);
+	let id = $derived(generateId(textContent));
 
-	let hover = false;
+	let hover = $state(false);
 	const millis = 100;
 	const drawParams1: DrawParams = { duration: millis, easing: sineInOut, delay: millis };
 	const drawParams2: DrawParams = { duration: millis, easing: sineInOut };
@@ -40,10 +47,10 @@
 	{id}
 	role="heading"
 >
-	<span on:pointerenter={() => (hover = true)} on:pointerleave={() => (hover = false)}>
-		<slot></slot>
+	<span onpointerenter={() => (hover = true)} onpointerleave={() => (hover = false)}>
+		{@render children?.()}
 
-		<button on:click|preventDefault={() => smoothScroll(element)}>
+		<button onclick={preventDefault(() => smoothScroll(element))}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				width="24"
