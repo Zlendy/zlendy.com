@@ -1,12 +1,46 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import { Button } from '$lib/components/ui/button';
 	import * as Sheet from '$lib/components/ui/sheet';
-	import { routes } from '$lib/routes';
 	import { Menu, Search } from 'lucide-svelte';
 
+	interface Route {
+		title: string;
+		href: string;
+		active?: boolean;
+	}
+
+	const base_routes: Route[] = [
+		{
+			title: 'Home',
+			href: '/'
+		},
+		{
+			title: 'Blog',
+			href: '/blog'
+		},
+		{
+			title: 'Board',
+			href: '/board'
+		},
+		{
+			title: 'About',
+			href: '/about'
+		}
+	];
+
+	const routes = $derived(
+		base_routes.map((route) => ({
+			...route,
+			active:
+				page.url.pathname === route.href ||
+				(route.href !== '/' && page.url.pathname.startsWith(route.href))
+		}))
+	);
+
 	let title: string = $state('');
-	routes.subscribe((value) => {
-		const route = value.find((route) => route.active);
+	$effect(() => {
+		const route = routes.find((route) => route.active);
 		if (!route || route.href === '/') {
 			title = '';
 			return;
@@ -26,7 +60,7 @@
 	<nav
 		class="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6"
 	>
-		{#each $routes as route}
+		{#each routes as route}
 			<a
 				href={route.href}
 				class="text-foreground transition-colors hover:text-foreground {route.active
@@ -49,7 +83,7 @@
 		</Button>
 		<Sheet.Content side="left">
 			<nav class="grid gap-6 text-lg font-medium">
-				{#each $routes as route}
+				{#each routes as route}
 					<a
 						href={route.href}
 						class="hover:text-foreground"

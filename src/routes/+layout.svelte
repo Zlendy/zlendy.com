@@ -7,8 +7,6 @@
 	import Header from '$lib/components/header.svelte';
 	import { ModeWatcher } from 'mode-watcher';
 	import Footer from '$lib/components/footer.svelte';
-	import { page } from '$app/stores';
-	import { routes } from '$lib/routes';
 	import type { LayoutData } from './$types';
 	import { fade } from 'svelte/transition';
 	import { UmamiAnalytics } from '@lukulent/svelte-umami';
@@ -17,20 +15,9 @@
 		PUBLIC_UMAMI_SRC,
 		PUBLIC_WEBSITE_HOST
 	} from '$env/static/public';
-	import type { Snippet } from 'svelte';
+	import { type Snippet } from 'svelte';
 
 	const WEBSITE_HOST_NOPROTOCOL = PUBLIC_WEBSITE_HOST.replace(/^https?:\/\//, '');
-
-	page.subscribe((page_value) => {
-		routes.update((routes_value) =>
-			routes_value.map((route) => ({
-				...route,
-				active:
-					page_value.url.pathname === route.href ||
-					(route.href !== '/' && page_value.url.pathname.startsWith(route.href))
-			}))
-		);
-	});
 
 	interface Props {
 		data: LayoutData;
