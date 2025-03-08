@@ -53,7 +53,7 @@
 			bind:masonryWidth
 			bind:masonryHeight
 		>
-			{#snippet children({ item: { src, text, href } }: { item: BoardImageData })}
+			{#snippet children({ item: { src, text, href } })}
 				<LinkHoverTitle {href} title={text} target="_blank">
 					<img class="w-full" alt={text} {src} />
 				</LinkHoverTitle>
