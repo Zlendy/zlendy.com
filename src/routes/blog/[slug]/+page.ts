@@ -1,3 +1,4 @@
+import type { Component } from 'svelte';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ data }) => {
@@ -6,7 +7,7 @@ export const load: PageLoad = async ({ data }) => {
 
 	return {
 		post: data.post,
-		component: component.default,
+		component: component.default as Component,
 		layout: {
 			fullWidth: true
 		}
