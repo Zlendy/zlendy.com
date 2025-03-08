@@ -1,13 +1,14 @@
 <script lang="ts">
+	import type { ComponentProps, Snippet } from 'svelte';
 	import Heading from '../heading.svelte';
-	interface Props {
-		children?: import('svelte').Snippet;
-		[key: string]: any
+
+	interface Props extends ComponentProps<typeof Heading> {
+		children?: Snippet;
 	}
 
 	let { children, ...rest }: Props = $props();
 </script>
 
-<Heading tag="h2" {...rest}>
+<Heading {...rest} tag="h2">
 	{@render children?.()}
 </Heading>

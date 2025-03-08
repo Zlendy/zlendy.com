@@ -1,12 +1,14 @@
 <script lang="ts">
-	interface Props {
-		children?: import('svelte').Snippet;
-		[key: string]: any
+	import type { Snippet } from 'svelte';
+	import type { HTMLOlAttributes } from 'svelte/elements';
+
+	interface Props extends HTMLOlAttributes {
+		children?: Snippet;
 	}
 
 	let { children, ...rest }: Props = $props();
 </script>
 
-<ol class="my-4 list-decimal pl-10" {...rest}>
+<ol {...rest} class="my-4 list-decimal pl-10">
 	{@render children?.()}
 </ol>

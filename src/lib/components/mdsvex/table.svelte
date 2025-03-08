@@ -1,7 +1,9 @@
 <script lang="ts">
-	interface Props {
-		children?: import('svelte').Snippet;
-		[key: string]: any
+	import type { Snippet } from 'svelte';
+	import type { HTMLTableAttributes } from 'svelte/elements';
+
+	interface Props extends HTMLTableAttributes {
+		children?: Snippet;
 	}
 
 	let { children, ...rest }: Props = $props();

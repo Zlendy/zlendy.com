@@ -1,16 +1,11 @@
 <script lang="ts">
-	import type { HTMLBaseAttributes } from 'svelte/elements';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	
-
-	interface Props {
+	interface Props extends HTMLAttributes<HTMLElement> {
 		name: string;
-		class?: HTMLBaseAttributes['class'];
-		[key: string]: any
 	}
 
 	let { name, class: className = undefined, ...rest }: Props = $props();
-	
 </script>
 
 <i

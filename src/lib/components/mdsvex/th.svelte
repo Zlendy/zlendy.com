@@ -1,13 +1,15 @@
 <script lang="ts">
-	interface Props {
-		children?: import('svelte').Snippet;
-		[key: string]: any
+	import type { Snippet } from 'svelte';
+	import type { HTMLThAttributes } from 'svelte/elements';
+
+	interface Props extends HTMLThAttributes {
+		children?: Snippet;
 	}
 
 	let { children, ...rest }: Props = $props();
 </script>
 
-<th class="px-4" {...rest}>
+<th {...rest} class="px-4">
 	{@render children?.()}
 </th>
 

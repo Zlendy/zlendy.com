@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { preventDefault } from 'svelte/legacy';
-
 	import { sineInOut } from 'svelte/easing';
 	import { draw, type DrawParams } from 'svelte/transition';
 	import { smoothScroll } from './link';
+	import type { Snippet } from 'svelte';
 
 	const styles = {
 		h1: 'text-5xl',
@@ -16,15 +15,14 @@
 
 	interface Props {
 		tag: keyof typeof styles;
-		children?: import('svelte').Snippet;
+		children?: Snippet;
 	}
 
 	let { tag, children }: Props = $props();
 
-	let element: HTMLElement = $state();
+	let element: HTMLElement = $state()!;
 
 	let textContent: string = $derived(element?.textContent ?? '');
-	
 
 	function generateId(textContent: string) {
 		if (!textContent) return '';
@@ -50,7 +48,12 @@
 	<span onpointerenter={() => (hover = true)} onpointerleave={() => (hover = false)}>
 		{@render children?.()}
 
-		<button onclick={preventDefault(() => smoothScroll(element))}>
+		<button
+			onclick={(e) => {
+				e.preventDefault();
+				smoothScroll(element);
+			}}
+		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				width="24"

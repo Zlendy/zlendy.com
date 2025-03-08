@@ -1,15 +1,11 @@
 <script lang="ts">
 	import { SquareArrowOutUpRight } from 'lucide-svelte';
 	import LinkHoverTitle from './link-hover-title.svelte';
-	import type { HTMLAnchorAttributes } from 'svelte/elements';
 	import { getAnchorTarget, isSameOrigin } from './link';
+	import type { ComponentProps, Snippet } from 'svelte';
 
-	
-
-	interface Props {
-		href?: HTMLAnchorAttributes['href'];
-		children?: import('svelte').Snippet;
-		[key: string]: any
+	interface Props extends ComponentProps<typeof LinkHoverTitle> {
+		children?: Snippet;
 	}
 
 	let { href = undefined, children, ...rest }: Props = $props();
