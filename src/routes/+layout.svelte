@@ -12,7 +12,14 @@
 	import type { LayoutData } from './$types';
 	import { fade } from 'svelte/transition';
 	import { UmamiAnalytics } from '@lukulent/svelte-umami';
-	import { PUBLIC_UMAMI_WEBSITE_ID, PUBLIC_UMAMI_SRC } from '$env/static/public';
+	import {
+		PUBLIC_UMAMI_WEBSITE_ID,
+		PUBLIC_UMAMI_SRC,
+		PUBLIC_WEBSITE_HOST
+	} from '$env/static/public';
+	import type { Snippet } from 'svelte';
+
+	const WEBSITE_HOST_NOPROTOCOL = PUBLIC_WEBSITE_HOST.replace(/^https?:\/\//, '');
 
 	page.subscribe((page_value) => {
 		routes.update((routes_value) =>
@@ -27,13 +34,17 @@
 
 	interface Props {
 		data: LayoutData;
-		children?: import('svelte').Snippet;
+		children?: Snippet;
 	}
 
 	let { data, children }: Props = $props();
 </script>
 
-<UmamiAnalytics websiteID={PUBLIC_UMAMI_WEBSITE_ID} srcURL={PUBLIC_UMAMI_SRC} />
+<UmamiAnalytics
+	websiteID={PUBLIC_UMAMI_WEBSITE_ID}
+	srcURL={PUBLIC_UMAMI_SRC}
+	configuration={{ 'data-domains': WEBSITE_HOST_NOPROTOCOL }}
+/>
 <ModeWatcher />
 
 <Header />
