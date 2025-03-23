@@ -65,9 +65,7 @@
 	>
 		<TableOfContents class="h-5 w-5" />
 		<span class="sr-only">Table of Contents</span>
-		<span class="not-sr-only {tocPinned ? 'size-0 text-transparent' : undefined}">
-			&nbspTable of Contents
-		</span>
+		<span class="not-sr-only {tocPinned ? 'hidden' : undefined}">Table of Contents</span>
 	</Button>
 	<Sheet.Content side="right" class="toc-sheet" preventScroll={false}>
 		{#snippet overlay()}
