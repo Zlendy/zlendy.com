@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	const post = posts.find((post) => slug === post.slug);
 
 	if (!post) {
-		throw error(404, {
+		error(404, {
 			id: 'notfound',
 			code: 'notfound',
 			message: 'Post not found'
