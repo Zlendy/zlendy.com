@@ -22,6 +22,8 @@
 		--accent-foreground: 32 57% 20%;
 		--destructive: 6 95% 20%;
 		--destructive-foreground: 6 95% 80%;
+		--warning: 39.8 77.2% 31%;
+		--warning-foreground: 6 95% 80%;
 		--ring: 248 19% 40%;
 		--radius: 0.5rem;
 
@@ -54,8 +56,10 @@
 		--accent-foreground: 249 22% 87%;
 		--destructive: 1 80% 60%;
 		--destructive-foreground: 0 0% 100%;
+		--warning: 41.4 64.9% 55.3%;
+		--warning-foreground: 0 0% 100%;
 		--ring: 245 50% 91%;
-		
+
 		--sidebar-background: 240 5.9% 10%;
 		--sidebar-foreground: 240 4.8% 95.9%;
 		--sidebar-primary: 224.3 76.3% 48%;
