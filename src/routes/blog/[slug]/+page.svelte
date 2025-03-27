@@ -11,7 +11,6 @@
 	import Datetooltip from '$lib/components/datetooltip.svelte';
 	import Progress from '$lib/components/ui/progress/progress.svelte';
 	import { PAGE_TRANSITION_MS } from '../../+layout.svelte';
-	import { browser } from '$app/environment';
 	import { fade } from 'svelte/transition';
 
 	interface Props {
@@ -22,7 +21,7 @@
 	const { title, description, fediverse, createdAt, updatedAt } = data.post;
 
 	const now = dayjs();
-	let windowScrollY: number = $state((browser && window.scrollY) || 0);
+	let windowScrollY: number = $state(0);
 
 	let articleElement: HTMLElement = $state()!;
 	let tocPinned = $derived(windowScrollY > 64);
@@ -53,7 +52,7 @@
 	<meta property="og:description" content={description} />
 </svelte:head>
 
-<svelte:window onscroll={() => (windowScrollY = window.scrollY)} />
+<svelte:window bind:scrollY={windowScrollY} />
 
 <Sheet.Root bind:open={tocOpen}>
 	<Button
