@@ -8,7 +8,7 @@
 	let { children }: Props = $props();
 </script>
 
-<div class="relative">
+<div class="relative my-4">
 	{@render children?.()}
 </div>
 

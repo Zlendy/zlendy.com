@@ -9,7 +9,7 @@
 	let { children, ...rest }: Props = $props();
 </script>
 
-<div class="overflow-auto">
+<div class="my-4 overflow-auto">
 	<table {...rest}>
 		{@render children?.()}
 	</table>
