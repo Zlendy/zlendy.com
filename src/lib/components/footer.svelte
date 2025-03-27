@@ -5,6 +5,7 @@
 	import { Activity, ChartNoAxesCombined, CodeXml, Rss } from 'lucide-svelte';
 	import { PUBLIC_UMAMI_WEBSITE_STATS } from '$env/static/public';
 	import Logo from './logo.svelte';
+	import dayjs from 'dayjs';
 </script>
 
 <footer class="border-t">
@@ -16,7 +17,7 @@
 		class="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0"
 	>
 		<p>
-			zlendy.com © 2024 Zlendy.
+			zlendy.com © {dayjs().year()} Zlendy.
 			<LinkArrow href="https://github.com/Zlendy/zlendy.com/blob/main/LICENSE.md">
 				Read the license
 			</LinkArrow>
