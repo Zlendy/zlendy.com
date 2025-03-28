@@ -45,7 +45,8 @@
 		}, PAGE_TRANSITION_MS * 2); // Wait until the page transition is completed to store this value
 
 		mediumZoom('[data-zoomable]', {
-			background: 'hsl(var(--background))'
+			background: 'hsl(var(--background))',
+			margin: 16
 		});
 	});
 </script>
