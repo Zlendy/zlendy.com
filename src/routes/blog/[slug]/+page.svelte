@@ -12,6 +12,7 @@
 	import Progress from '$lib/components/ui/progress/progress.svelte';
 	import { PAGE_TRANSITION_MS } from '../../+layout.svelte';
 	import { fade } from 'svelte/transition';
+	import mediumZoom from 'medium-zoom';
 
 	interface Props {
 		data: PageData;
@@ -42,6 +43,10 @@
 			contentOffsetTop = contentElement.offsetTop;
 			contentOffsetHeight = contentElement.offsetHeight;
 		}, PAGE_TRANSITION_MS * 2); // Wait until the page transition is completed to store this value
+
+		mediumZoom('[data-zoomable]', {
+			background: 'hsl(var(--background))'
+		});
 	});
 </script>
 

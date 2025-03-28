@@ -26,9 +26,6 @@
 	export { default as tr } from '../tr.svelte';
 	export { default as th } from '../th.svelte';
 	export { default as td } from '../td.svelte';
-
-	// misc
-	export { default as img } from '../img.svelte';
 </script>
 
 <script lang="ts">
