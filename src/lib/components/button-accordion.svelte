@@ -18,7 +18,7 @@
 		<Accordion.Trigger class="p-4 text-left hover:no-underline">
 			{@render trigger?.()}
 		</Accordion.Trigger>
-		<Accordion.Content class="p-4">
+		<Accordion.Content class="-mb-4 p-4">
 			{@render content?.()}
 		</Accordion.Content>
 	</Accordion.Item>
