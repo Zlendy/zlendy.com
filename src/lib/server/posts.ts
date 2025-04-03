@@ -1,4 +1,4 @@
-import { parse } from 'path';
+import path from 'node:path';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import utc from 'dayjs/plugin/utc';
@@ -29,7 +29,7 @@ type GlobEntry = {
 
 // Get all posts and add metadata
 export const posts = Object.entries(
-	import.meta.glob<GlobEntry>('/src/posts/**/*.md', { eager: true })
+	import.meta.glob<GlobEntry>('/src/posts/**/+post.md', { eager: true })
 )
 	.map(([filepath, globEntry]): Post => {
 		return {
@@ -38,7 +38,7 @@ export const posts = Object.entries(
 			updatedAt: globEntry.metadata.updatedAt
 				? dayjs(globEntry.metadata.updatedAt, ['YYYY-MM-DD HH:mm [UTC]']).utc(true).toDate()
 				: null,
-			slug: parse(filepath).name // generate the slug from the file path
+			slug: path.basename(path.dirname(filepath)) // generate the slug from the parent directory of a "+post.md" file
 		};
 	})
 	// sort by date
