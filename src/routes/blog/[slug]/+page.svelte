@@ -97,7 +97,7 @@
 	</div>
 {/if}
 
-<article bind:this={articleElement} class="mx-auto mb-4 max-w-2xl px-4">
+<article bind:this={articleElement} class="mx-auto mb-4 max-w-3xl px-4">
 	<header class="flex min-h-48 flex-col items-center justify-center text-center">
 		<h1 class="toc-exclude mb-4 text-5xl font-bold leading-tight">{title}</h1>
 		<h2 class="toc-exclude">
