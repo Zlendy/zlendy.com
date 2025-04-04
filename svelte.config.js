@@ -26,8 +26,10 @@ const config = {
 			},
 			highlight: {
 				highlighter: async (code, lang = 'text') => {
-					const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme }));
-					return `<Components.pre>{@html \`${html}\` }</Components.pre>`;
+					/** @type {string} */
+					let html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme }));
+					html = html.replaceAll('&#123;&#123;', '{').replaceAll('&#125;&#125;', '}');
+					return `<Components.pre>${html}</Components.pre>`;
 				}
 			},
 			layout: {
