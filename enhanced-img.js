@@ -27,28 +27,12 @@ export const enhancedImages = () => {
 
 			let enhancedImgHtml = `<enhanced:img src="${node.url}"`;
 			let imgAlt = node.alt !== null ? escapeHtmlAttribute(node.alt) : null;
-			let captionHtml = '';
 
-			if (imgAlt !== null) {
-				enhancedImgHtml += ` alt="${imgAlt}"`;
-				captionHtml += /* html */ `
-					<figcaption class="p-4 text-center text-muted-foreground">
-						${imgAlt}
-					</figcaption>
-				`;
-			}
-
-			if (node.title !== null && node.title !== undefined && node.title !== '')
-				enhancedImgHtml += ` title="${escapeHtmlAttribute(node.title)}"`;
+			if (imgAlt !== null) enhancedImgHtml += ` alt="${imgAlt}" title="${imgAlt}"`;
 
 			enhancedImgHtml += ` data-zoomable="" />`;
 
-			node.value = /* html */ `
-				<figure class="my-4" style="width: fit-content;">
-					${enhancedImgHtml}
-					${captionHtml}
-				</figure>
-			`;
+			node.value = enhancedImgHtml;
 		});
 	};
 };
