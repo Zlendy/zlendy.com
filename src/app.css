@@ -79,3 +79,7 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+pre.shiki {
+	@apply overflow-auto p-4;
+}

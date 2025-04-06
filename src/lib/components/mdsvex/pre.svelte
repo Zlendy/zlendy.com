@@ -11,10 +11,3 @@
 <div class="relative my-4">
 	{@render children?.()}
 </div>
-
-<style lang="scss">
-	div :global(pre) {
-		padding: 1rem;
-		overflow: auto;
-	}
-</style>
