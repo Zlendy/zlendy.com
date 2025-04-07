@@ -38,7 +38,9 @@ const config = {
 			},
 			remarkPlugins: [customImages]
 		}),
-		importAssets()
+		importAssets({
+			urlFilter: (url) => url !== '/favicon.png'
+		})
 	],
 
 	kit: {
