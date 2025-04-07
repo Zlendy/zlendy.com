@@ -38,23 +38,8 @@
 		}))
 	);
 
-	let title: string = $state('');
-	$effect(() => {
-		const route = routes.find((route) => route.active);
-		if (!route || route.href === '/') {
-			title = '';
-			return;
-		}
-
-		title = `${route.title} - `;
-	});
-
 	let menuOpen = $state(false);
 </script>
-
-<svelte:head>
-	<title>{title}Zlendy</title>
-</svelte:head>
 
 <header class="top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
 	<nav

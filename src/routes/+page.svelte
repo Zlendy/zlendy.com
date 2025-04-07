@@ -2,6 +2,10 @@
 	import { mode } from 'mode-watcher';
 </script>
 
+<svelte:head>
+	<title>Zlendy</title>
+</svelte:head>
+
 <div class="mx-auto flex h-screen max-w-2xl flex-col items-center justify-center px-4 text-center">
 	<img
 		src="/favicon.png"

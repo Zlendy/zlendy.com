@@ -4,6 +4,10 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 </script>
 
+<svelte:head>
+	<title>About - Zlendy</title>
+</svelte:head>
+
 <div class="mx-auto flex h-screen max-w-2xl flex-col items-center justify-center px-4 text-center">
 	<Avatar.Root class="h-[192px] w-[192px]">
 		<Avatar.Image src="https://avatars.githubusercontent.com/u/22578704" alt="Zlendy's avatar" />

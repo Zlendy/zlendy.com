@@ -42,6 +42,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Board - Zlendy</title>
+</svelte:head>
+
 <div class="mx-[20vw] my-4">
 	{#await loadData() then items}
 		<Masonry
