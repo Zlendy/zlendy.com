@@ -8,7 +8,7 @@ description: |
   If you have any kind of problem after updating your system, you'll be able to boot into a previous snapshot and rollback to it, as if nothing had happened.
 
   It's basically like time travel for your computer, but better. Because you'll be able to choose what gets rolled back and what doesn't, so that you don't lose any of your recent work.
-fediverse: null
+fediverse: a6b3n78go85w001k
 ---
 
 <script lang="ts">
