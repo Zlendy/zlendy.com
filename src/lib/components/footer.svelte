@@ -3,7 +3,6 @@
 	import LinkHoverTitle from './link-hover-title.svelte';
 	import LinkArrow from './link-arrow.svelte';
 	import { Activity, ChartNoAxesCombined, CodeXml, Rss } from 'lucide-svelte';
-	import { PUBLIC_UMAMI_WEBSITE_STATS } from '$env/static/public';
 	import Logo from './logo.svelte';
 	import dayjs from 'dayjs';
 </script>
@@ -35,15 +34,6 @@
 				<LinkHoverTitle title="RSS feed" href="/rss.xml" target="_blank">
 					<Rss />
 				</LinkHoverTitle>
-				{#if PUBLIC_UMAMI_WEBSITE_STATS}
-					<LinkHoverTitle
-						title="Public website analytics"
-						href={PUBLIC_UMAMI_WEBSITE_STATS}
-						target="_blank"
-					>
-						<ChartNoAxesCombined />
-					</LinkHoverTitle>
-				{/if}
 				<LinkHoverTitle
 					title="Website source code"
 					href="https://github.com/Zlendy/zlendy.com"
