@@ -17,7 +17,7 @@ function escapeHtmlAttribute(value) {
 		.replace(/>/g, '&gt;');
 }
 
-export const enhancedImages = () => {
+export const customImages = () => {
 	return (tree) => {
 		visit(tree, 'image', (node, index, parent) => {
 			// Ignore images outside of project
@@ -25,7 +25,7 @@ export const enhancedImages = () => {
 
 			node.type = 'html';
 
-			let enhancedImgHtml = `<enhanced:img src="${node.url}"`;
+			let enhancedImgHtml = `<img src="${node.url}" `;
 			let imgAlt = node.alt !== null ? escapeHtmlAttribute(node.alt) : null;
 
 			if (imgAlt !== null) enhancedImgHtml += ` alt="${imgAlt}" title="${imgAlt}"`;

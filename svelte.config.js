@@ -2,7 +2,8 @@ import { mdsvex, escapeSvelte } from 'mdsvex';
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { createHighlighter } from 'shiki';
-import { enhancedImages } from './enhanced-img.js';
+import { importAssets } from 'svelte-preprocess-import-assets';
+import { customImages } from './custom-img.js';
 
 const mdsvexExtensions = ['.md'];
 
@@ -35,8 +36,9 @@ const config = {
 			layout: {
 				_: './src/lib/components/mdsvex/layouts/blog.svelte'
 			},
-			remarkPlugins: [enhancedImages]
-		})
+			remarkPlugins: [customImages]
+		}),
+		importAssets()
 	],
 
 	kit: {
