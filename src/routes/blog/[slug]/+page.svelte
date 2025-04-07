@@ -117,7 +117,7 @@
 </article>
 
 {#if fediverse}
-	<section id="fediverse" class="toc-exclude mx-auto max-w-2xl px-4">
+	<section id="fediverse" class="toc-exclude mx-auto max-w-3xl px-4">
 		<Post noteId={fediverse} />
 		<Comments noteId={fediverse} />
 	</section>
