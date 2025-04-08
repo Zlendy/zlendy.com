@@ -39,37 +39,44 @@
 	{#if visibleNote}
 		{#await loadData() then comments}
 			{#each comments as note, index (note.id)}
-				{@const hasReplies = note.repliesCount > 0}
+				{@const user = note.user}
+				{@const handle = `@${user.username}@${user.host}`}
+
+				{@const userLink = `${PUBLIC_FEDIVERSE_HOST}/${handle}`}
 				{@const postLink = `${PUBLIC_FEDIVERSE_HOST}/notes/${note.id}`}
+
+				{@const hasReplies = note.repliesCount > 0}
 				{@const replyLayer = layer + 1}
 				{@const replyMarginLeft = `${replyLayer * 10}%`}
 
-				<div
+				<a
+					href={postLink}
+					target="_blank"
 					{style}
-					class="mb-4"
+					class="mb-4 block"
 					in:fade|global={{ duration: 250, delay: fadeInDelay * index + fadeInDelay * layer }}
 				>
 					<Card.Root>
-						{@const user = note.user}
-						{@const handle = `@${user.username}@${user.host}`}
-						<a
-							href="{PUBLIC_FEDIVERSE_HOST}/{handle}"
-							target="_blank"
-							class="flex items-center space-y-1.5 p-6"
-						>
-							<Avatar.Root>
-								<Avatar.Image src={user.avatarUrl} alt="{handle}'s avatar" />
-								<Avatar.Fallback>
-									{@const firstLetter = user.username.charAt(0).toUpperCase()}
-									{@const lastLetter = user.username.charAt(user.username.length - 1).toUpperCase()}
-									{firstLetter}{lastLetter}
-								</Avatar.Fallback>
-							</Avatar.Root>
-							<Card.Header class="overflow-hidden  p-0 pl-6">
-								<Card.Title class="break-words">{user.name}</Card.Title>
-								<Card.Description class="break-words">{handle}</Card.Description>
-							</Card.Header>
-						</a>
+						<div class="flex items-center space-y-1.5 p-6 pb-0">
+							<a href={userLink} target="_blank">
+								<Avatar.Root>
+									<Avatar.Image src={user.avatarUrl} alt="{handle}'s avatar" />
+									<Avatar.Fallback>
+										{@const firstLetter = user.username.charAt(0).toUpperCase()}
+										{@const lastLetter = user.username
+											.charAt(user.username.length - 1)
+											.toUpperCase()}
+										{firstLetter}{lastLetter}
+									</Avatar.Fallback>
+								</Avatar.Root>
+							</a>
+							<a class="overflow-hidden break-words" href={userLink} target="_blank">
+								<Card.Header class="p-0 pl-6">
+									<Card.Title>{user.name}</Card.Title>
+									<Card.Description>{handle}</Card.Description>
+								</Card.Header>
+							</a>
+						</div>
 						<Card.Content class="break-words">
 							<p>{note.text}</p>
 						</Card.Content>
@@ -77,7 +84,7 @@
 							<Engagement {note} />
 						</Card.Footer>
 					</Card.Root>
-				</div>
+				</a>
 
 				{#if layer < 2}
 					<Comments style="margin-left: {replyMarginLeft}" noteId={note.id} layer={replyLayer} />
