@@ -13,14 +13,13 @@
 </script>
 
 <LinkHoverTitle
-	class="inline-block bg-[linear-gradient(hsl(var(--foreground)/25%),hsl(var(--foreground)/25%))] bg-[length:100%_0.25rem] bg-[0%_100%]
+	class="bg-[linear-gradient(hsl(var(--foreground)/25%),hsl(var(--foreground)/25%))] bg-[length:100%_0.25rem] bg-[0%_100%]
 	bg-no-repeat px-1 transition-all hover:bg-[length:100%_100%]"
 	{...rest}
 	{href}
 	target={getAnchorTarget(sameorigin)}
 >
-	{@render children?.()}
-	{#if !sameorigin}
-		<SquareArrowOutUpRight class="inline h-[1em] w-[1em]" />
+	{@render children?.()}{#if !sameorigin}
+		&nbsp;<SquareArrowOutUpRight class="inline h-[1em] w-[1em]" />
 	{/if}
 </LinkHoverTitle>
