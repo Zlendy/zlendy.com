@@ -562,7 +562,7 @@ pacman -S snap-pac
 
 At this point, the system should be perfectly suitable for daily usage. But don't stop reading just yet! You should test if booting into a snapshot and rolling back works before finding it out the hard way.
 
-## Recover files or directories from a snapshot
+## Recover data from a snapshot
 
 Browse the contents of `.snapshots/{SNAPPER_ID}/snapshot` and copy any file or directory found there to another writable location. Substitute `{SNAPPER_ID}` with the numerical ID of the snapshot you wish to access.
 
