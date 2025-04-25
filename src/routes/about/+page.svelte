@@ -1,27 +1,23 @@
 <script lang="ts">
 	import Logo from '$lib/components/logo.svelte';
 	import LinkArrow from '$lib/components/link-arrow.svelte';
-	import * as Avatar from '$lib/components/ui/avatar';
 </script>
 
 <svelte:head>
 	<title>About - Zlendy</title>
 </svelte:head>
 
-<div class="mx-auto flex h-screen max-w-2xl flex-col items-center justify-center px-4 text-center">
-	<Avatar.Root class="h-[192px] w-[192px]">
-		<Avatar.Image src="https://avatars.githubusercontent.com/u/22578704" alt="Zlendy's avatar" />
-		<Avatar.Fallback class="text-[5rem]">ZY</Avatar.Fallback>
-	</Avatar.Root>
+<header class="flex min-h-48 flex-col items-center justify-center text-center">
 	<h1 class="mb-4 text-5xl font-bold leading-tight">About</h1>
-	<p class="text-lg">I go by Zlendy on the internet.</p>
-	<p class="text-lg">
-		This has been my username for several years and I don't want to give it up...
-	</p>
-	<p class="mb-8 text-lg">...nor I want to let you down ;)</p>
-</div>
+</header>
 
 <div class="mx-auto mb-4 max-w-2xl px-4">
+	<p class="text-lg">I go by Zlendy on the internet.</p>
+	<p class="mb-8 text-lg">
+		This has been my username for several years and I don't want to give it up, nor I want to let
+		you down ;)
+	</p>
+
 	<h2 class="text-4xl">Quick facts</h2>
 	<ul class="mb-8 list-disc pl-10">
 		<li>
