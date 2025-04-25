@@ -26,8 +26,8 @@
 		</li>
 		<li>
 			My profile picture was commissioned to
-			<LinkArrow href="https://yubrich.carrd.co/">Yubrich.</LinkArrow> I have been a long fan of their
-			work and wanted to personally support them!
+			<LinkArrow href="https://yubrich.carrd.co/">Yubrich.</LinkArrow> I have been a longtime fan of
+			their work and wanted to personally support them!
 		</li>
 		<li>
 			This website's logo was drawn by me on my tablet. I have a long way to go before I can call
