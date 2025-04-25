@@ -49,7 +49,7 @@ It's basically like time travel for your computer, but _better_. Because you'll 
 
 # Boot the live environment
 
-![Arch ISO](./archiso-login.png)
+![Arch ISO](./archiso-login.avif)
 
 Load your preferred keyboard layout if the default (`en`) is not appropriate for you. You can list them all by running the following command:
 
@@ -88,7 +88,7 @@ In every screenshot of this post I will be referring to your target drive as `/d
 
 > <UserInput id="drive" bind:value={drive} validate={(value => new RegExp("^\/dev\/[a-z0-9]{0,20}$").test(value))}>My target drive is</UserInput>
 
-![List of disks](./fdisk-l.png)
+![List of disks](./fdisk-l.avif)
 
 ## Create system partitions
 
@@ -106,7 +106,7 @@ I prefer using `gdisk` instead of `fdisk` as the Arch Wiki suggests because it's
 gdisk {{drive}}
 ```
 
-![Use gdisk on /dev/sda](./gdisk.png)
+![Use gdisk on /dev/sda](./gdisk.avif)
 
 ### Partition 1
 
@@ -120,7 +120,7 @@ Set the last sector (aka: partition size) to 1 Gibibyte. Strictly speaking, this
 
 Change partition type to **EFI system partition** using this hex code: `ef00` (these are two zeros, not two letters "O").
 
-![Create EFI System Partition](./gdisk-partition-1.png)
+![Create EFI System Partition](./gdisk-partition-1.avif)
 
 ### Partition 2
 
@@ -134,13 +134,13 @@ Accept the default last sector (the remainder of the disk) by pressing `ENTER`.
 
 Change partition type to **Linux x86-64 root (/)** using this hex code: `8304` (again, that is a zero, not an "O").
 
-![Create primary Linux partition](./gdisk-partition-2.png)
+![Create primary Linux partition](./gdisk-partition-2.avif)
 
 ### Print the current partition layout
 
 You can print the current partition layout with: `p`
 
-![List of partitions to be created in /dev/sda](./gdisk-partition-layout.png)
+![List of partitions to be created in /dev/sda](./gdisk-partition-layout.avif)
 
 ### Write the changes to the disk
 
@@ -154,7 +154,7 @@ This is a destructive operation, double check that there are no mistakes in the 
 
 Press `w` to write all changes made this far to the disk.
 
-![Write partition layout](./gdisk-write.png)
+![Write partition layout](./gdisk-write.avif)
 
 ### Formatting
 
@@ -170,7 +170,7 @@ Format the second partition: `Linux x86-64 root (/)`
 mkfs.btrfs {{drive}}2
 ```
 
-![Format partitions to FAT32 and btrfs respectively](./mkfs.png)
+![Format partitions to FAT32 and btrfs respectively](./mkfs.avif)
 
 ## Mount the partitions
 
@@ -197,7 +197,7 @@ Mount the boot partition
 mount --mkdir {{drive}}1 /mnt/boot/efi
 ```
 
-![mount /dev/sda2 and then /dev/sda1](./mount.png)
+![mount /dev/sda2 and then /dev/sda1](./mount.avif)
 
 ## Partition results
 
@@ -304,13 +304,13 @@ do
 done
 ```
 
-![Subvolume creation is automated thanks to a shell script](./btrfs-subvolumes.png)
+![Subvolume creation is automated thanks to a shell script](./btrfs-subvolumes.avif)
 
 ## Subvolumes results
 
 You can verify if everything went smoothly by running <Components.code>findmnt -t btrfs {drive}2</Components.code>
 
-![Subvolume list](./findmnt.png)
+![Subvolume list](./findmnt.avif)
 
 # Configure the system from outside
 
@@ -350,7 +350,7 @@ arch-chroot /mnt
 
 Run `passwd` as root to set your password. This step is not mandatory, as you can always elevate to a root shell as a regular user using `sudo`.
 
-![Set root password](./root-passwd.png)
+![Set root password](./root-passwd.avif)
 
 ### Enable sudo for users other than root
 
@@ -366,7 +366,7 @@ Which means: Allow any user in group `wheel` to run any command as root using `s
 
 Save the file using `Ctrl+X` and then press `Y` to confirm.
 
-![Contents of /etc/sudoers](./sudoers.png)
+![Contents of /etc/sudoers](./sudoers.avif)
 
 ### Create an unprivileged user
 
@@ -379,7 +379,7 @@ useradd -m -G wheel {{username}}
 passwd {{username}}
 ```
 
-![Set user password](./user-passwd.png)
+![Set user password](./user-passwd.avif)
 
 ## Time and Localization
 
@@ -407,19 +407,19 @@ Run hwclock to generate `/etc/adjtime`
 hwclock --systohc
 ```
 
-![Setting /etc/localtime](./localtime.png)
+![Setting /etc/localtime](./localtime.avif)
 
 Run `nano /etc/locale.gen` and uncomment at least `en_US.UTF-8 UTF-8`. Uncomment any other [locales](https://wiki.archlinux.org/title/Locale) as needed. (Tip: You can search in `nano` using `Ctrl+W`).
 
 After you finish save the file and run `locale-gen`.
 
-![Generating locales with locale-gen](./locale-gen.png)
+![Generating locales with locale-gen](./locale-gen.avif)
 
 Run `nano /etc/locale.conf` and set the `LANG` variable to your preferred locale from before. Set it to `en_US.UTF-8` if you don't have any preference.
 
 Run `nano /etc/vconsole.conf` and set the `KEYMAP` variable to <Components.code>{keymap}</Components.code>. This change makes it permanent so you won't need to set it again.
 
-![Setting keyboard layout with vconsole.conf](./vconsole.png)
+![Setting keyboard layout with vconsole.conf](./vconsole.avif)
 
 ## Network configuration
 
@@ -440,7 +440,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-![Installing grub](./grub.png)
+![Installing grub](./grub.avif)
 
 # First boot to your new Arch install
 
@@ -469,7 +469,7 @@ snapper -c root create-config /
 snapper -c home create-config /home
 ```
 
-![Creating snapper configs](./snapper-create-config.png)
+![Creating snapper configs](./snapper-create-config.avif)
 
 These newly created subvolumes won't be mounted by default unless you add them to `/etc/fstab`. Replace `{ROOT_UUID}` with the UUID of the other btrfs subvolumes.
 
@@ -485,7 +485,7 @@ UUID={ROOT_UUID}    /home/.snapshots    btrfs    rw,relatime,compress=zstd:1,ssd
 
 After you're done run `systemctl daemon-reload` and then `mount -va`.
 
-![Mounting new .snapshots subvolumes](./snapshots-mount.png)
+![Mounting new .snapshots subvolumes](./snapshots-mount.avif)
 
 ### Configure user permissions
 
@@ -517,7 +517,7 @@ snapper create -d "Initial subvolume" --read-write
 
 Just this once, you will need to add a flag to create it in _read-write_ mode. Do not do this regularly, it is a bad practice to modify btrfs snapshots.
 
-![Creating the first subvolume](./initial-subvolume.png)
+![Creating the first subvolume](./initial-subvolume.avif)
 
 Change the default subvolume of `/` to `/.snapshots/1/snapshot`
 
@@ -526,7 +526,7 @@ SNAPSHOT_ID="$(btrfs inspect-internal rootid /.snapshots/1/snapshot)"
 btrfs subvolume set-default $SNAPSHOT_ID /
 ```
 
-![Setting the default btrfs subvolume](./btrfs-default-subvolume.png)
+![Setting the default btrfs subvolume](./btrfs-default-subvolume.avif)
 
 <Alert.Root variant="destructive" class="my-4">
 <TriangleAlert class="size-4" />
@@ -572,13 +572,13 @@ Remember that `/` and `/home` are different subvolumes and as such have differen
 
 The image below shows an example of data recovery using btrfs subvolumes, feel free to experiment and tinker with alternative methods.
 
-![Recovering data from btrfs subvolumes](./btrfs-recover-data.png)
+![Recovering data from btrfs subvolumes](./btrfs-recover-data.avif)
 
 ## Boot into a snapshot
 
 Make any change that is easily noticeable in `/` (not `/home`), such as installing a package before going on. In this example I installed `cowsay`.
 
-![Installing cowsay](./btrfs-pre-cowsay.png)
+![Installing cowsay](./btrfs-pre-cowsay.avif)
 
 Reboot the system. You will notice there's an additional GRUB menu named "Arch Linux Snapshots" just below "Reboot into UEFI". Select any entry created prior to your change in that list and boot into it.
 
@@ -586,7 +586,7 @@ When you do, that filesystem will be mounted in read-only mode. Meaning that no 
 
 After I boot into snapshot number 4, `cowsay` is gone.
 
-![Booting a snapshot prior to the installation of cowsay](./btrfs-post-cowsay.png)
+![Booting a snapshot prior to the installation of cowsay](./btrfs-post-cowsay.avif)
 
 > What do those symbols beside snapshot IDs mean in `snapper ls`?
 
@@ -616,15 +616,15 @@ That command will do the following:
 2. Create a read-write snapshot of the previous one.
 3. Set the default subvolume of _/_ to the read-write snapshot created in step 2.
 
-![Rolling back to a snapshot](./snapper-rollback.png)
+![Rolling back to a snapshot](./snapper-rollback.avif)
 
 Select "Arch Linux" and press `e`.
 
-![GRUB menu](./snapper-rollback-grub.png)
+![GRUB menu](./snapper-rollback-grub.avif)
 
 Manually edit the number of the subvolume to the newly created one and boot it using `F10` or `Ctrl+X`.
 
-![Manual edit of GRUB entry](./snapper-rollback-grub-edit.png)
+![Manual edit of GRUB entry](./snapper-rollback-grub-edit.avif)
 
 <Alert.Root variant="destructive" class="my-4">
 <TriangleAlert class="size-4" />
