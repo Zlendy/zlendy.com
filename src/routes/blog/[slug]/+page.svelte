@@ -78,7 +78,6 @@
 		{/snippet}
 		<Toc
 			autoHide={false}
-			title="Table of Contents"
 			breakpoint={0}
 			headingSelector={tocHeadingSelector}
 			--toc-title-margin="0 0 2rem 0"
@@ -87,7 +86,12 @@
 			--toc-active-color="hsl(var(--foreground)"
 			--toc-li-hover-color="none"
 			--toc-max-height="90dvh"
-		/>
+			--toc-font-size="0.6em"
+		>
+			{#snippet title_snippet()}
+				<h1 class="text-base">Table of Contents</h1>
+			{/snippet}
+		</Toc>
 	</Sheet.Content>
 </Sheet.Root>
 
