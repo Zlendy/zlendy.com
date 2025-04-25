@@ -34,6 +34,9 @@
 				<LinkHoverTitle title="RSS feed" href="/rss.xml" target="_blank">
 					<Rss />
 				</LinkHoverTitle>
+				<LinkHoverTitle title="Analytics" href="/analytics">
+					<ChartNoAxesCombined />
+				</LinkHoverTitle>
 				<LinkHoverTitle
 					title="Website source code"
 					href="https://github.com/Zlendy/zlendy.com"
