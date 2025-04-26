@@ -46,6 +46,10 @@
 	<title>Board - Zlendy</title>
 </svelte:head>
 
+<header class="flex min-h-48 flex-col items-center justify-center text-center">
+	<h1 class="mb-4 text-5xl font-bold leading-tight">Board</h1>
+</header>
+
 <div class="mx-[20vw] my-4">
 	{#await loadData() then items}
 		<Masonry
