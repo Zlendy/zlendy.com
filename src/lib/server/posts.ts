@@ -46,6 +46,6 @@ export const posts = Object.entries(
 	// add references to the next/previous post
 	.map((post, index, allPosts) => ({
 		...post,
-		next: allPosts[index - 1] || 0,
-		previous: allPosts[index + 1] || 0
+		next: allPosts[index - 1] || null,
+		previous: allPosts[index + 1] || null
 	}));
