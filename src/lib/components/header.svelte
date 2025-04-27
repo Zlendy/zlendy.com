@@ -3,6 +3,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import * as Sheet from '$lib/components/ui/sheet';
 	import { Menu, Search } from 'lucide-svelte';
+	import ModeToggle from './modetoggle.svelte';
 
 	interface Route {
 		title: string;
@@ -41,9 +42,9 @@
 	let menuOpen = $state(false);
 </script>
 
-<header class="top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+<header class="flex h-16 items-center gap-4 border-b bg-background px-4">
 	<nav
-		class="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6"
+		class="hidden gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6"
 	>
 		{#each routes as route}
 			<a
@@ -82,6 +83,9 @@
 			</nav>
 		</Sheet.Content>
 	</Sheet.Root>
+	<div class="ml-auto flex flex-row">
+		<ModeToggle />
+	</div>
 	<!-- <div class="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
         <form class="ml-auto flex-1 sm:flex-initial">
             <div class="relative">

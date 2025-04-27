@@ -1,5 +1,4 @@
 <script lang="ts">
-	import ModeToggle from '$lib/components/modetoggle.svelte';
 	import LinkHoverTitle from './link-hover-title.svelte';
 	import LinkArrow from './link-arrow.svelte';
 	import { Activity, ChartNoAxesCombined, CodeXml, Rss } from 'lucide-svelte';
@@ -24,41 +23,38 @@
 				Read the license
 			</LinkArrow>
 		</p>
-		<div class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
-			<div class="flex flex-wrap gap-4">
-				<LinkHoverTitle
-					rel="me"
-					title="Fediverse blog account"
-					href="https://social.zlendy.com/@blog"
-					target="_blank"
-					data-umami-event="footer-fediverse-blog"
-				>
-					<Logo name="activitypub" class="!h-[1.5em] !w-[1.5em]" />
-				</LinkHoverTitle>
-				<LinkHoverTitle title="RSS feed" href="/rss.xml" target="_blank">
-					<Rss />
-				</LinkHoverTitle>
-				<LinkHoverTitle title="Analytics" href="/analytics">
-					<ChartNoAxesCombined />
-				</LinkHoverTitle>
-				<LinkHoverTitle
-					title="Website source code"
-					href="https://github.com/Zlendy/zlendy.com"
-					target="_blank"
-					data-umami-event="footer-source-code"
-				>
-					<CodeXml />
-				</LinkHoverTitle>
-				<LinkHoverTitle
-					title="Services uptime monitor"
-					href="https://status.zlendy.com"
-					target="_blank"
-					data-umami-event="footer-uptime"
-				>
-					<Activity />
-				</LinkHoverTitle>
-			</div>
-			<ModeToggle />
+		<div class="flex flex-row items-center gap-4 px-8 md:px-0">
+			<LinkHoverTitle
+				rel="me"
+				title="Fediverse blog account"
+				href="https://social.zlendy.com/@blog"
+				target="_blank"
+				data-umami-event="footer-fediverse-blog"
+			>
+				<Logo name="activitypub" class="!block !h-[1.5em] !w-[1.5em]" />
+			</LinkHoverTitle>
+			<LinkHoverTitle title="RSS feed" href="/rss.xml" target="_blank">
+				<Rss />
+			</LinkHoverTitle>
+			<LinkHoverTitle title="Analytics" href="/analytics">
+				<ChartNoAxesCombined />
+			</LinkHoverTitle>
+			<LinkHoverTitle
+				title="Website source code"
+				href="https://github.com/Zlendy/zlendy.com"
+				target="_blank"
+				data-umami-event="footer-source-code"
+			>
+				<CodeXml />
+			</LinkHoverTitle>
+			<LinkHoverTitle
+				title="Services uptime monitor"
+				href="https://status.zlendy.com"
+				target="_blank"
+				data-umami-event="footer-uptime"
+			>
+				<Activity />
+			</LinkHoverTitle>
 		</div>
 	</div>
 </footer>
