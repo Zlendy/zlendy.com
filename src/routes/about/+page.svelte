@@ -26,8 +26,9 @@
 		</li>
 		<li>
 			My profile picture was commissioned to
-			<LinkArrow href="https://yubrich.carrd.co/">Yubrich.</LinkArrow> I have been a longtime fan of
-			their work and wanted to personally support them!
+			<LinkArrow href="https://yubrich.carrd.co/" data-umami-event="about-yubrich">
+				Yubrich.
+			</LinkArrow> I have been a longtime fan of their work and wanted to personally support them!
 		</li>
 		<li>
 			This website's logo was drawn by me on my tablet. I have a long way to go before I can call
@@ -37,7 +38,7 @@
 	<h2 class="text-4xl">Social profiles</h2>
 	<ul class="list-disc pl-10">
 		<li>
-			<LinkArrow rel="me" href="https://github.com/Zlendy">
+			<LinkArrow rel="me" href="https://github.com/Zlendy" data-umami-event="about-github">
 				<Logo name="github" />
 				GitHub
 			</LinkArrow>
@@ -47,31 +48,44 @@
 				rel="me"
 				href="https://social.zlendy.com/@zlendy"
 				title="ActivityPub-compatible server"
+				data-umami-event="about-fediverse"
 			>
 				<Logo name="activitypub" />
 				Sharkey
 			</LinkArrow>
 		</li>
 		<li>
-			<LinkArrow rel="me" href="https://bsky.app/profile/zlendy.com">
+			<LinkArrow
+				rel="me"
+				href="https://bsky.app/profile/zlendy.com"
+				data-umami-event="about-bluesky"
+			>
 				<Logo name="bluesky" />
 				Bluesky
 			</LinkArrow>
 		</li>
 		<li>
-			<LinkArrow rel="me" href="https://www.pixiv.net/en/users/88820373">
+			<LinkArrow
+				rel="me"
+				href="https://www.pixiv.net/en/users/88820373"
+				data-umami-event="about-pixiv"
+			>
 				<Logo name="pixiv" />
 				Pixiv
 			</LinkArrow>
 		</li>
 		<li>
-			<LinkArrow rel="me" href="https://anilist.co/user/Zlendy">
+			<LinkArrow rel="me" href="https://anilist.co/user/Zlendy" data-umami-event="about-anilist">
 				<Logo name="anilist" />
 				AniList
 			</LinkArrow>
 		</li>
 		<li>
-			<LinkArrow rel="me" href="https://steamcommunity.com/id/Zlendy">
+			<LinkArrow
+				rel="me"
+				href="https://steamcommunity.com/id/Zlendy"
+				data-umami-event="about-steam"
+			>
 				<Logo name="steam" />
 				Steam
 			</LinkArrow>

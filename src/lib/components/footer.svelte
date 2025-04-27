@@ -17,7 +17,10 @@
 	>
 		<p>
 			zlendy.com © {dayjs().year()} Zlendy.
-			<LinkArrow href="https://github.com/Zlendy/zlendy.com/blob/main/LICENSE.md">
+			<LinkArrow
+				href="https://github.com/Zlendy/zlendy.com/blob/main/LICENSE.md"
+				data-umami-event="footer-license"
+			>
 				Read the license
 			</LinkArrow>
 		</p>
@@ -28,6 +31,7 @@
 					title="Fediverse blog account"
 					href="https://social.zlendy.com/@blog"
 					target="_blank"
+					data-umami-event="footer-fediverse-blog"
 				>
 					<Logo name="activitypub" class="!h-[1.5em] !w-[1.5em]" />
 				</LinkHoverTitle>
@@ -41,6 +45,7 @@
 					title="Website source code"
 					href="https://github.com/Zlendy/zlendy.com"
 					target="_blank"
+					data-umami-event="footer-source-code"
 				>
 					<CodeXml />
 				</LinkHoverTitle>
@@ -48,6 +53,7 @@
 					title="Services uptime monitor"
 					href="https://status.zlendy.com"
 					target="_blank"
+					data-umami-event="footer-uptime"
 				>
 					<Activity />
 				</LinkHoverTitle>
