@@ -31,7 +31,7 @@
 			</LinkArrow> I have been a longtime fan of their work and wanted to personally support them!
 		</li>
 		<li>
-			This website's logo was drawn by me on my tablet. I have a long way to go before I can call
+			This website's favicon was drawn by me on my tablet. I have a long way to go before I can call
 			myself a good artist, though.
 		</li>
 	</ul>
