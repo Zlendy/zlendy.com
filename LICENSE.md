@@ -14,7 +14,7 @@ All the files inside `src/posts` directory are licensed under
 
 # Logos
 
-All the files inside `static/icons/logos` directory are copyrighted to their respective companies.
+All the files inside `static/icons/logos` and `static/images` directories are copyrighted to their respective authors.
 
 # Other files
 

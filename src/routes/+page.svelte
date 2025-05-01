@@ -24,7 +24,8 @@
 	>
 		<Avatar.Image
 			bind:ref={avatar}
-			src="https://avatars.githubusercontent.com/u/22578704"
+			src="/images/avatar.avif"
+			class="rounded-full"
 			alt="Zlendy's avatar"
 		/>
 		<Avatar.Fallback class="text-[5rem]">ZY</Avatar.Fallback>
