@@ -10,7 +10,7 @@ All the files inside `src/posts` directory are licensed under
 
 # Images
 
-`static/favicon.png` is copyrighted to Zlendy. All rights reserved.
+`static/favicon.png`, `static/favicon192x.png` and `static/favicon.ico` are copyrighted to Zlendy. All rights reserved.
 
 # Logos
 
