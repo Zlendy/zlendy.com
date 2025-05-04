@@ -51,7 +51,7 @@
 	</ul>
 
 	<p>
-		I am a privacy-concious guy, so I have taken measures to collect as little data about you as
+		I am a privacy-conscious guy, so I have taken measures to collect as little data about you as
 		possible.
 	</p>
 	<p>Even so, I understand if you'd like to opt-out of getting tracked.</p>
