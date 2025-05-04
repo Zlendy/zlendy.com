@@ -24,24 +24,24 @@
 <div class="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-4 px-4">
 	{#each data.posts as post}
 		<article class="w-full rounded-lg border bg-card text-card-foreground shadow-sm">
-			<div class="flex flex-col space-y-1.5 p-6">
-				<h3 class="text-lg font-semibold leading-none tracking-tight">
-					<LinkArrow href="/blog/{post.slug}">
+			<a href="/blog/{post.slug}">
+				<div class="flex flex-col space-y-1.5 p-6">
+					<h3 class="text-lg font-semibold leading-none tracking-tight">
 						{post.title}
-					</LinkArrow>
-				</h3>
-				<div class="mt-1">
-					<p class="!mt-0 text-sm text-muted-foreground">
-						<Datetooltip prefix="Created" {now} date={dayjs(post.createdAt)} />
-					</p>
-					{#if post.updatedAt}
+					</h3>
+					<div class="mt-1">
 						<p class="!mt-0 text-sm text-muted-foreground">
-							<Datetooltip prefix="Updated" {now} date={dayjs(post.updatedAt)} />
+							<Datetooltip prefix="Created" {now} date={dayjs(post.createdAt)} />
 						</p>
-					{/if}
+						{#if post.updatedAt}
+							<p class="!mt-0 text-sm text-muted-foreground">
+								<Datetooltip prefix="Updated" {now} date={dayjs(post.updatedAt)} />
+							</p>
+						{/if}
+					</div>
 				</div>
-			</div>
-			<div class="whitespace-pre-wrap p-6 pt-0">{post.description}</div>
+				<div class="whitespace-pre-wrap p-6 pt-0">{post.description}</div>
+			</a>
 		</article>
 	{/each}
 </div>
