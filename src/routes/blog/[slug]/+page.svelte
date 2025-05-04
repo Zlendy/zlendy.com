@@ -13,13 +13,15 @@
 	import { PAGE_TRANSITION_MS } from '../../+layout.svelte';
 	import { fade } from 'svelte/transition';
 	import mediumZoom from 'medium-zoom';
+	import { blogMetadataStore, type BlogMetadata } from '$lib/blog-metadata';
+	import Metadata from '$lib/components/metadata.svelte';
 
 	interface Props {
 		data: PageData;
 	}
 
 	let { data }: Props = $props();
-	const { title, description, fediverse, createdAt, updatedAt } = data.post;
+	const { title, description, fediverse, createdAt, updatedAt, slug } = data.post;
 
 	const now = dayjs();
 	let windowScrollY: number = $state(0);
@@ -36,7 +38,9 @@
 	let progressValue = $derived(windowScrollY - contentOffsetTop);
 	let tocOpen = $state(false);
 
-	onMount(() => {
+	let metadata = $derived<BlogMetadata | undefined>(blogMetadataStore.articles.get(slug));
+
+	onMount(async () => {
 		tocEnabled = articleElement.querySelector(tocHeadingSelector) !== null;
 
 		setTimeout(() => {
@@ -48,6 +52,8 @@
 			background: 'hsl(var(--background))',
 			margin: 16
 		});
+
+		await blogMetadataStore.getOne(slug);
 	});
 </script>
 
@@ -113,6 +119,12 @@
 			</h2>
 		{/if}
 	</header>
+
+	<div class="flex min-h-12 justify-center gap-4 p-4 pb-0">
+		{#if metadata}
+			<Metadata {metadata} />
+		{/if}
+	</div>
 
 	<div bind:this={contentElement}>
 		<!-- render the post -->

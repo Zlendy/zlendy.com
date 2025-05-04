@@ -14,6 +14,7 @@ jobs:
       PUBLIC_FEDIVERSE_BOARD: ${{ vars.PUBLIC_FEDIVERSE_BOARD }}
       PUBLIC_UMAMI_SRC: ${{ vars.PUBLIC_UMAMI_SRC }}
       PUBLIC_UMAMI_WEBSITE_ID: ${{ vars.PUBLIC_UMAMI_WEBSITE_ID }}
+      PUBLIC_API_URL: ${{ vars.PUBLIC_API_URL }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

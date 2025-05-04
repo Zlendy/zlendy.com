@@ -1,8 +1,10 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
-	import LinkArrow from '$lib/components/link-arrow.svelte';
 	import Datetooltip from '../../lib/components/datetooltip.svelte';
 	import dayjs from 'dayjs';
+	import { blogMetadataStore } from '$lib/blog-metadata';
+	import { onMount } from 'svelte';
+	import Metadata from '$lib/components/metadata.svelte';
 
 	interface Props {
 		data: PageServerData;
@@ -11,6 +13,10 @@
 	let { data }: Props = $props();
 
 	const now = dayjs();
+
+	onMount(async () => {
+		await blogMetadataStore.getAll();
+	});
 </script>
 
 <svelte:head>
@@ -23,6 +29,8 @@
 
 <div class="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-4 px-4">
 	{#each data.posts as post}
+		{@const metadata = blogMetadataStore.articles.get(post.slug)}
+
 		<article class="w-full rounded-lg border bg-card text-card-foreground shadow-sm">
 			<a href="/blog/{post.slug}">
 				<div class="flex flex-col space-y-1.5 p-6">
@@ -41,6 +49,11 @@
 					</div>
 				</div>
 				<div class="whitespace-pre-wrap p-6 pt-0">{post.description}</div>
+				<div class="flex min-h-12 gap-4 p-6 pt-0">
+					{#if metadata}
+						<Metadata {metadata} />
+					{/if}
+				</div>
 			</a>
 		</article>
 	{/each}
