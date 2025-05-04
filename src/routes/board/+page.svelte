@@ -62,7 +62,13 @@
 			bind:masonryHeight
 		>
 			{#snippet children({ item: { src, text, href } })}
-				<LinkHoverTitle {href} title={text} target="_blank">
+				<LinkHoverTitle
+					{href}
+					title={text}
+					target="_blank"
+					data-umami-event="board-image"
+					data-umami-event-url={href}
+				>
 					<img class="w-full" alt={text} {src} />
 				</LinkHoverTitle>
 			{/snippet}
