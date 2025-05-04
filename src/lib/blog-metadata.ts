@@ -29,8 +29,6 @@ class BlogMetadataStore {
 
 	async getAll(): Promise<Record<string, BlogMetadata> | undefined> {
 		try {
-			if (this.#articles.size > 0) return Object.fromEntries(this.#articles);
-
 			const response = await fetch(`${PUBLIC_API_URL}/blog/metadata`);
 			if (response.status !== 200) return;
 
