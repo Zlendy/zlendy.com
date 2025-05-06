@@ -49,7 +49,7 @@
 					</div>
 				</div>
 				<div class="whitespace-pre-wrap p-6 pt-0">{post.description}</div>
-				<div class="flex min-h-12 gap-4 p-6 pt-0">
+				<div class="flex h-12 gap-4 p-6 pt-0">
 					{#if metadata}
 						<Metadata {metadata} />
 					{/if}
