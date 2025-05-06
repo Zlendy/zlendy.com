@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Logo from '$lib/components/logo.svelte';
-	import LinkArrow from '$lib/components/link-arrow.svelte';
+  import Logo from '$lib/components/logo.svelte';
+  import LinkArrow from '$lib/components/link-arrow.svelte';
 </script>
 
 # About me
@@ -10,8 +10,8 @@ This has been my username for several years and I don't want to give it up, nor 
 
 ## Quick facts
 
-- I may be one of the few people born in Spain who doesn't like paella.
-- My profile picture was commissioned to Yubrich.
+- I may be one of the few people born in Spain who doesn't like <LinkArrow href="https://en.wikipedia.org/wiki/Paella">paella.</LinkArrow>
+- My profile picture was commissioned to <LinkArrow href="https://yubrich.carrd.co/" data-umami-event="about-yubrich">Yubrich.</LinkArrow>
 - I have been a longtime fan of their work and wanted to personally support them!
 - This website's favicon was drawn by me on my tablet. I have a long way to go before I can call myself a good artist, though.
 
