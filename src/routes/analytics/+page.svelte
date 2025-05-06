@@ -1,10 +1,15 @@
 <script lang="ts">
-	import Logo from '$lib/components/logo.svelte';
-	import LinkArrow from '$lib/components/link-arrow.svelte';
 	import { Label } from '$lib/components/ui/label/index.js';
 	import { Switch } from '$lib/components/ui/switch/index.js';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import type { PageData } from './$types';
+
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	let mounted = $state(false);
 	let tracking = $state(true);
@@ -30,31 +35,7 @@
 </header>
 
 <div class="mx-auto mb-4 max-w-2xl px-4">
-	<p class="mb-8">
-		This website uses
-		<LinkArrow href="https://umami.is/">
-			<Logo name="umami" />
-			Umami Analytics
-		</LinkArrow>
-		to collect privacy-friendly analytics about your visit.
-	</p>
-	<p>I'd like to have access to this information because:</p>
-	<ul class="mb-8 list-disc pl-10">
-		<li>
-			It shows me which blog articles have better engagement. (which ones you read and for how long
-			you've been reading them).
-		</li>
-		<li>
-			I'd like to know which websites are linking to mine
-			<LinkArrow href="https://en.wikipedia.org/wiki/HTTP_referer">(referrer).</LinkArrow>
-		</li>
-	</ul>
-
-	<p>
-		I am a privacy-conscious guy, so I have taken measures to collect as little data about you as
-		possible.
-	</p>
-	<p>Even so, I understand if you'd like to opt-out of getting tracked.</p>
+	<data.component />
 
 	{#if mounted}
 		<div class="flex h-16 items-center justify-center space-x-2" transition:fade={{ delay: 100 }}>
