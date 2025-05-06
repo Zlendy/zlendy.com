@@ -23,10 +23,6 @@
 		{
 			title: 'Board',
 			href: '/board'
-		},
-		{
-			title: 'About',
-			href: '/about'
 		}
 	];
 

@@ -3,6 +3,8 @@
 	import LinkArrow from '$lib/components/link-arrow.svelte';
 </script>
 
+# About me
+
 I go by Zlendy on the internet.
 This has been my username for several years and I don't want to give it up, nor I want to let you down ;)
 
