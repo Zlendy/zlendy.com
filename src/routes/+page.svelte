@@ -1,14 +1,27 @@
 <script lang="ts">
 	import * as Avatar from '$lib/components/ui/avatar';
 	import mediumZoom from 'medium-zoom';
-	import type { PageData } from './$types';
+	import type { PageData, PageServerData } from './$types';
 	import { ChevronDown } from 'lucide-svelte';
+	import BlogCard from '$lib/components/blog-card.svelte';
+	import dayjs from 'dayjs';
+	import { onMount } from 'svelte';
+	import { blogMetadataStore } from '$lib/blog-metadata';
+	import Heading from '$lib/components/heading.svelte';
 
 	interface Props {
 		data: PageData;
 	}
 
 	let { data }: Props = $props();
+	const post = $derived(data.post);
+
+	const now = dayjs();
+
+	onMount(async () => {
+		if (!post) return;
+		await blogMetadataStore.getOne(post.slug);
+	});
 
 	let avatar: HTMLImageElement | null = $state(null);
 	let content = $state<HTMLDivElement>();
@@ -55,5 +68,12 @@
 </div>
 
 <div class="mx-auto mb-4 max-w-2xl px-4" bind:this={content}>
+	{#if post}
+		<div class="mb-8">
+			<Heading tag="h1">Latest blog post</Heading>
+			<BlogCard {post} {now} />
+		</div>
+	{/if}
+
 	<data.component />
 </div>
