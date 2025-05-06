@@ -13,8 +13,8 @@
 	import { PAGE_TRANSITION_MS } from '../../+layout.svelte';
 	import { fade } from 'svelte/transition';
 	import mediumZoom from 'medium-zoom';
-	import { blogMetadataStore, type BlogMetadata } from '$lib/blog-metadata';
-	import Metadata from '$lib/components/metadata.svelte';
+	import { blogMetadataStore, type BlogMetadata } from '$lib/components/metadata/store';
+	import Metadata from '$lib/components/metadata/metadata.svelte';
 
 	interface Props {
 		data: PageData;

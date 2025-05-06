@@ -6,7 +6,7 @@
 	import BlogCard from '$lib/components/blog-card.svelte';
 	import dayjs from 'dayjs';
 	import { onMount } from 'svelte';
-	import { blogMetadataStore } from '$lib/blog-metadata';
+	import { blogMetadataStore } from '$lib/components/metadata/store';
 	import Heading from '$lib/components/heading.svelte';
 
 	interface Props {

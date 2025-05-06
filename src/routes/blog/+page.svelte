@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
 	import dayjs from 'dayjs';
-	import { blogMetadataStore } from '$lib/blog-metadata';
+	import { blogMetadataStore } from '$lib/components/metadata/store';
 	import { onMount } from 'svelte';
 	import BlogCard from '$lib/components/blog-card.svelte';
 

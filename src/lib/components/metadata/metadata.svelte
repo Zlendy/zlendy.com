@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { BlogMetadata } from '$lib/blog-metadata';
+	import type { BlogMetadata } from '$lib/components/metadata/store';
 	import * as Tooltip from '$lib/components/ui/tooltip';
 	import { Eye, MessageCircleMore, SmilePlus } from 'lucide-svelte';
 

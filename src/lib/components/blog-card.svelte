@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Datetooltip from '../../lib/components/datetooltip.svelte';
 	import dayjs from 'dayjs';
-	import { blogMetadataStore } from '$lib/blog-metadata';
-	import Metadata from '$lib/components/metadata.svelte';
+	import { blogMetadataStore } from '$lib/components/metadata/store';
+	import Metadata from '$lib/components/metadata/metadata.svelte';
 	import type { Post } from '$lib/server/posts';
 
 	interface Props {
