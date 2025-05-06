@@ -15,8 +15,6 @@
 		"test:unit": "vitest"
 	},
 	"devDependencies": {
-		"@fortawesome/free-brands-svg-icons": "^6.7.2",
-		"@fortawesome/free-solid-svg-icons": "^6.7.2",
 		"@lucide/svelte": "^0.503.0",
 		"@lukulent/svelte-umami": "^0.0.4",
 		"@playwright/test": "^1.52.0",
@@ -45,7 +43,6 @@
 		"svelte": "^5.28.2",
 		"svelte-bricks": "^0.3.2",
 		"svelte-check": "^4.1.6",
-		"svelte-fa": "^4.0.4",
 		"svelte-preprocess-import-assets": "^1.1.0",
 		"svelte-toc": "^0.6.0",
 		"tailwind-merge": "^3.2.0",

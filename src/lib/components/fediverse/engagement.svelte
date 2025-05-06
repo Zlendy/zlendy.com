@@ -3,10 +3,9 @@
 	import { fade } from 'svelte/transition';
 	import { type Note } from './types';
 	import Button from '../ui/button/button.svelte';
-	import Fa from 'svelte-fa';
-	import { faRepeat, faReply } from '@fortawesome/free-solid-svg-icons';
 	import { PUBLIC_FEDIVERSE_HOST } from '$env/static/public';
 	import Emoji from './emoji.svelte';
+	import { MessageCircleMore, Repeat2 } from 'lucide-svelte';
 
 	interface Props {
 		note: Note;
@@ -24,10 +23,10 @@
 <div class="flex flex-col gap-4">
 	<div class="flex flex-wrap justify-start gap-2">
 		<Button size="sm" {href} target="_blank">
-			<Fa icon={faReply} /> &nbsp; {note.repliesCount}
+			<MessageCircleMore /> &nbsp; {note.repliesCount}
 		</Button>
 		<Button size="sm" {href} target="_blank">
-			<Fa icon={faRepeat} /> &nbsp; {note.renoteCount}
+			<Repeat2 /> &nbsp; {note.renoteCount}
 		</Button>
 	</div>
 
