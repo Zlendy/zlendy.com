@@ -70,7 +70,9 @@
 <div class="mx-auto mb-4 max-w-2xl px-4" bind:this={content}>
 	{#if post}
 		<div class="mb-8">
-			<Heading tag="h1">Latest blog post</Heading>
+			<div class="mb-4">
+				<Heading tag="h1">Latest blog post</Heading>
+			</div>
 			<BlogCard {post} {now} />
 		</div>
 	{/if}
