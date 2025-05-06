@@ -25,6 +25,7 @@
 		<Avatar.Image
 			bind:ref={avatar}
 			src="/images/avatar.avif"
+			data-zoom-src="/images/avatar-full.avif"
 			class="rounded-full"
 			alt="Zlendy's avatar"
 		/>
