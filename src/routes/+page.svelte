@@ -71,7 +71,7 @@
 	{#if post}
 		<div class="mb-8">
 			<div class="mb-4">
-				<Heading tag="h1">Latest blog post</Heading>
+				<Heading tag="h1">Latest post</Heading>
 			</div>
 			<BlogCard {post} {now} />
 		</div>
