@@ -38,41 +38,47 @@
 	const drawParams2: DrawParams = { duration: millis, easing: sineInOut };
 </script>
 
+{#snippet svg(show: boolean, className: string = '')}
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="24"
+		height="24"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		class="lucide-icon lucide lucide-hash absolute left-0 top-0 h-[1em] w-[1em] {className}"
+	>
+		{#if show}
+			<line transition:draw={drawParams1} x1="4" x2="20" y1="9" y2="9"></line>
+			<line transition:draw={drawParams2} x2="4" x1="20" y2="15" y1="15"></line>
+			<line transition:draw={drawParams2} x2="10" x1="8" y2="3" y1="21"></line>
+			<line transition:draw={drawParams1} x1="16" x2="14" y1="3" y2="21"></line>
+		{/if}
+	</svg>
+{/snippet}
+
 <svelte:element
 	this={tag}
 	bind:this={element}
-	class="{styles[tag]} hyphens-auto break-words"
+	class="{styles[tag]} relative hyphens-auto break-words"
 	{id}
 	role="heading"
 >
-	<span onpointerenter={() => (hover = true)} onpointerleave={() => (hover = false)}>
-		{@render children?.()}
+	<button
+		class="h-[1em] w-[1em]"
+		onclick={(e) => {
+			e.preventDefault();
+			smoothScroll(element);
+		}}
+		onpointerenter={() => (hover = true)}
+		onpointerleave={() => (hover = false)}
+	>
+		{@render svg(true, 'opacity-25')}
+		{@render svg(hover)}
+	</button>
 
-		<button
-			onclick={(e) => {
-				e.preventDefault();
-				smoothScroll(element);
-			}}
-		>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="24"
-				height="24"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				class="lucide-icon lucide lucide-hash inline h-[1em] w-[1em]"
-			>
-				{#if hover}
-					<line transition:draw={drawParams1} x1="4" x2="20" y1="9" y2="9"></line>
-					<line transition:draw={drawParams2} x2="4" x1="20" y2="15" y1="15"></line>
-					<line transition:draw={drawParams2} x2="10" x1="8" y2="3" y1="21"></line>
-					<line transition:draw={drawParams1} x1="16" x2="14" y1="3" y2="21"></line>
-				{/if}
-			</svg>
-		</button>
-	</span>
+	{@render children?.()}
 </svelte:element>
