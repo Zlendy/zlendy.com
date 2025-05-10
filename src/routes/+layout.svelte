@@ -37,7 +37,7 @@
 <Header />
 {#key data.currentRoute}
 	<main
-		class="h-full min-h-screen"
+		class="mb-4 h-full min-h-screen"
 		in:fade={{ duration: PAGE_TRANSITION_MS, delay: PAGE_TRANSITION_MS }}
 		out:fade={{ duration: PAGE_TRANSITION_MS }}
 	>
