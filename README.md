@@ -6,7 +6,7 @@ This is the SvelteKit codebase that powers [zlendy.com](https://zlendy.com/).
 
 Install dependencies with `npm ci`.
 
-Copy `example.env` to `.env` and modify it if necessary
+Copy `.env.example` to `.env` and modify it if necessary
 
 ## Developing
 
