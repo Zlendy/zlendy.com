@@ -6,7 +6,7 @@ export const prerender = true;
 // Thank you Casper Feng!
 // https://www.casperfeng.com/blog/generating-dynamic-sitemaps-in-sveltekit
 
-const pages = ['about', 'blog', 'board'];
+const pages = ['blog', 'board', 'developer'];
 
 export async function GET() {
 	const body = sitemap(pages);
