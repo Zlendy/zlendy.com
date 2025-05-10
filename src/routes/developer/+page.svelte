@@ -215,7 +215,7 @@
 		{/each}
 	</div>
 
-	<Heading tag="h1">Contributions</Heading>
+	<Heading tag="h1">FOSS Contributions</Heading>
 	<p class="my-4">Some contributions I have made to Open Source projects</p>
 	<div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-2">
 		{#each contributions as contribution}
