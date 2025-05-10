@@ -196,7 +196,7 @@
 
 	<Heading tag="h1">Languages and Tools</Heading>
 	<p class="my-4">I have used all of these either at work or home</p>
-	<div class="my-4 flex flex-wrap gap-4">
+	<div class="my-4 flex flex-wrap justify-center gap-4">
 		{#each langtools as { icon, name, href }}
 			<LinkHoverTitle
 				class="flex aspect-square size-14 items-center justify-center rounded-xl bg-muted transition-all hover:border-4 hover:border-primary"
