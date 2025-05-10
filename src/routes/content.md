@@ -39,3 +39,7 @@ This has been my username for several years and I don't want to give it up, nor 
 - <LinkArrow rel="me" href="https://steamcommunity.com/id/Zlendy" data-umami-event="about-steam">
       <Logo name="steam" /> Steam
   </LinkArrow>
+
+- <LinkArrow rel="me" href="https://listenbrainz.org/user/zlendy/" data-umami-event="about-listenbrainz">
+      <Logo name="musicbrainz" /> ListenBrainz
+  </LinkArrow>
