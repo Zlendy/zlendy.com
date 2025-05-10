@@ -21,7 +21,7 @@ This has been my username for several years and I don't want to give it up, nor 
   </LinkArrow>
 
 - <LinkArrow rel="me" href="https://social.zlendy.com/@zlendy" title="ActivityPub-compatible server" data-umami-event="about-fediverse">
-      <Logo name="activitypub" /> Sharkey
+      <Logo name="activitypub" /> Fediverse
   </LinkArrow>
 
 - <LinkArrow rel="me" href="https://bsky.app/profile/zlendy.com" data-umami-event="about-bluesky">
