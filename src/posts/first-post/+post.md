@@ -1,7 +1,7 @@
 ---
 title: First post
 createdAt: '2024-11-24 18:07 UTC'
-updatedAt: '2024-12-01 09:00 UTC'
+updatedAt: '2025-05-12 16:47 UTC'
 description: Hello world! This blog is now live
 fediverse: a0zhni07qhel00bx
 ---
@@ -16,7 +16,7 @@ My first real post will be an in-depth guide of how to install [Arch Linux](http
 
 There are some features still missing from the blog, though. Some of them are:
 
-- [ ] View counter
+- [x] View counter
 - [x] Table of Contents
 - [ ] Share button
 - [ ] Tags
