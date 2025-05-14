@@ -133,7 +133,7 @@
 
 	const contributions: Project[] = [
 		{
-			name: 'gethomepage/homepage',
+			name: 'gethomepage / homepage',
 			license: 'GPLv3',
 			status: 'Active',
 			description:
@@ -142,7 +142,7 @@
 			techstack: ['javascript', 'nextjs', 'react', 'tailwindcss']
 		},
 		{
-			name: 'CyferShepard/Jellystat',
+			name: 'CyferShepard / Jellystat',
 			license: 'MIT',
 			status: 'Active',
 			description:
