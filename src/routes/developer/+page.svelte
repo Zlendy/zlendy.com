@@ -199,7 +199,7 @@
 	<div class="my-4 flex flex-wrap justify-center gap-4">
 		{#each langtools as { icon, name, href }}
 			<LinkHoverTitle
-				class="flex aspect-square size-14 items-center justify-center rounded-xl bg-muted transition-all hover:border-4 hover:border-primary"
+				class="flex aspect-square size-14 items-center justify-center rounded-xl bg-muted transition-all hover:border-2 hover:border-primary hover:drop-shadow-[0_0_1em_hsl(var(--primary))]"
 				title={name}
 				{href}
 			>
