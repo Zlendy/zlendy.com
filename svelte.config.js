@@ -34,7 +34,7 @@ const config = {
 				}
 			},
 			layout: {
-				_: './src/lib/components/mdsvex/layouts/custom.svelte'
+				_: import.meta.dirname + '/src/lib/components/mdsvex/layouts/custom.svelte'
 			},
 			remarkPlugins: [customImages]
 		}),
