@@ -121,6 +121,11 @@
 			icon: 'vue',
 			name: 'Vue',
 			href: 'https://vuejs.org/'
+		},
+		{
+			icon: 'tauri',
+			name: 'Tauri',
+			href: 'https://v2.tauri.app/'
 		}
 	];
 
