@@ -3,7 +3,7 @@
 	import * as Card from '$lib/components/ui/card/index.js';
 	import Logo from '$lib/components/logo.svelte';
 	import Badge from '$lib/components/ui/badge/badge.svelte';
-	import LinkHoverTitle from '$lib/components/link-hover-title.svelte';
+	import * as Tooltip from '$lib/components/ui/tooltip';
 
 	interface LanguageOrTool {
 		icon: string;
@@ -14,91 +14,113 @@
 	const langtools: LanguageOrTool[] = [
 		{
 			icon: 'bash',
-			name: 'GNU Bash'
+			name: 'GNU Bash',
+			href: 'https://www.gnu.org/software/bash/'
 		},
 		{
 			icon: 'csharp',
-			name: 'C#'
+			name: 'C#',
+			href: 'https://dotnet.microsoft.com/en-us/languages/csharp'
 		},
 		{
 			icon: 'css',
-			name: 'CSS'
+			name: 'CSS',
+			href: 'https://developer.mozilla.org/en-US/docs/Web/CSS'
 		},
 		{
 			icon: 'django',
-			name: 'Django'
+			name: 'Django',
+			href: 'https://www.djangoproject.com/'
 		},
 		{
 			icon: 'docker',
-			name: 'Docker'
+			name: 'Docker',
+			href: 'https://www.docker.com/'
 		},
 		{
 			icon: 'dotnet',
-			name: '.NET'
+			name: '.NET',
+			href: 'https://dotnet.microsoft.com/en-us/'
 		},
 		{
 			icon: 'git',
-			name: 'Git'
+			name: 'Git',
+			href: 'https://git-scm.com/'
 		},
 		{
 			icon: 'html',
-			name: 'HTML'
+			name: 'HTML',
+			href: 'https://developer.mozilla.org/en-US/docs/Web/HTML'
 		},
 		{
 			icon: 'javascript',
-			name: 'JavaScript'
+			name: 'JavaScript',
+			href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript'
 		},
 		{
 			icon: 'linux',
-			name: 'GNU/Linux'
+			name: 'GNU/Linux',
+			href: 'https://www.kernel.org/category/about.html'
 		},
 		{
-			icon: 'mysql',
-			name: 'MySQL'
+			icon: 'mariadb',
+			name: 'MariaDB',
+			href: 'https://mariadb.org/'
 		},
 		{
 			icon: 'sqlserver',
-			name: 'SQL Server'
+			name: 'SQL Server',
+			href: 'https://www.microsoft.com/en-us/sql-server'
 		},
 		{
 			icon: 'nestjs',
-			name: 'NestJS'
+			name: 'NestJS',
+			href: 'https://nestjs.com/'
 		},
 		{
 			icon: 'nodejs',
-			name: 'Node.js'
+			name: 'Node.js',
+			href: 'https://nodejs.org/'
 		},
 		{
 			icon: 'postgresql',
-			name: 'PostgreSQL'
+			name: 'PostgreSQL',
+			href: 'https://www.postgresql.org/'
 		},
 		{
 			icon: 'python',
-			name: 'Python'
+			name: 'Python',
+			href: 'https://www.python.org/'
 		},
 		{
 			icon: 'rust',
-			name: 'Rust'
+			name: 'Rust',
+			href: 'https://www.rust-lang.org/'
 		},
 		{
 			icon: 'selenium',
-			name: 'Selenium'
+			name: 'Selenium',
+			href: 'https://www.selenium.dev/'
 		},
 		{
 			icon: 'svelte',
-			name: 'Svelte'
+			name: 'Svelte',
+			href: 'https://svelte.dev/'
 		},
 		{
 			icon: 'tailwindcss',
-			name: 'Tailwind CSS'
+			name: 'Tailwind CSS',
+			href: 'https://tailwindcss.com/'
 		},
 		{
 			icon: 'typescript',
-			name: 'TypeScript'
+			name: 'TypeScript',
+			href: 'https://www.typescriptlang.org/'
 		},
 		{
 			icon: 'vue',
-			name: 'Vue'
+			name: 'Vue',
+			href: 'https://vuejs.org/'
 		}
 	];
 
@@ -198,13 +220,22 @@
 	<p class="my-4">I have used all of these either at work or home</p>
 	<div class="my-4 flex flex-wrap justify-center gap-4">
 		{#each langtools as { icon, name, href }}
-			<LinkHoverTitle
-				class="flex aspect-square size-14 items-center justify-center rounded-xl bg-muted transition-all hover:border-2 hover:border-primary hover:drop-shadow-[0_0_1em_hsl(var(--primary))]"
-				title={name}
-				{href}
-			>
-				<Logo class="!size-10" name={icon} />
-			</LinkHoverTitle>
+			<Tooltip.Provider>
+				<Tooltip.Root>
+					<Tooltip.Trigger>
+						<a
+							class="flex aspect-square size-14 items-center justify-center rounded-xl bg-muted transition-all hover:border-2 hover:border-primary hover:drop-shadow-[0_0_1em_hsl(var(--primary))]"
+							{href}
+							target="_blank"
+						>
+							<Logo class="!size-10" name={icon} />
+						</a>
+					</Tooltip.Trigger>
+					<Tooltip.Content>
+						{name}
+					</Tooltip.Content>
+				</Tooltip.Root>
+			</Tooltip.Provider>
 		{/each}
 	</div>
 
