@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { BlogMetadata } from '$lib/components/metadata/store';
 	import * as Tooltip from '$lib/components/ui/tooltip';
-	import { Eye, MessageCircleMore, SmilePlus } from 'lucide-svelte';
+	import { Eye, MessageCircleMore, SmilePlus } from '@lucide/svelte';
 
 	interface Props {
 		metadata: BlogMetadata;

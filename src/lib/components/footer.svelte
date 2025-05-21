@@ -1,7 +1,7 @@
 <script lang="ts">
 	import LinkHoverTitle from './link-hover-title.svelte';
 	import LinkArrow from './link-arrow.svelte';
-	import { Activity, ChartNoAxesCombined, CodeXml, Rss } from 'lucide-svelte';
+	import { Activity, ChartNoAxesCombined, CodeXml, Rss } from '@lucide/svelte';
 	import Logo from './logo.svelte';
 	import dayjs from 'dayjs';
 </script>

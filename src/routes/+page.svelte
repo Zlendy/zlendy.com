@@ -2,7 +2,7 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 	import mediumZoom from 'medium-zoom';
 	import type { PageData, PageServerData } from './$types';
-	import { ChevronDown } from 'lucide-svelte';
+	import { ChevronDown } from '@lucide/svelte';
 	import BlogCard from '$lib/components/blog-card.svelte';
 	import dayjs from 'dayjs';
 	import { onMount } from 'svelte';

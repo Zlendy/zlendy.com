@@ -2,7 +2,7 @@
 	import { page } from '$app/state';
 	import { Button } from '$lib/components/ui/button';
 	import * as Sheet from '$lib/components/ui/sheet';
-	import { Menu, Search } from 'lucide-svelte';
+	import { Menu, Search } from '@lucide/svelte';
 	import ModeToggle from './modetoggle.svelte';
 
 	interface Route {

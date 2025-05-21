@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { SquareArrowOutUpRight } from 'lucide-svelte';
+	import { SquareArrowOutUpRight } from '@lucide/svelte';
 	import LinkHoverTitle from './link-hover-title.svelte';
 	import { getAnchorTarget, isSameOrigin, smoothScroll } from './link';
 	import type { ComponentProps, Snippet } from 'svelte';

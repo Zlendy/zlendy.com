@@ -6,7 +6,7 @@
 	import Toc from 'svelte-toc';
 	import * as Sheet from '$lib/components/ui/sheet';
 	import { Button } from '$lib/components/ui/button';
-	import { TableOfContents } from 'lucide-svelte';
+	import { TableOfContents } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 	import Datetooltip from '$lib/components/datetooltip.svelte';
 	import Progress from '$lib/components/ui/progress/progress.svelte';

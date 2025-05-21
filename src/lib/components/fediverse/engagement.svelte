@@ -5,7 +5,7 @@
 	import Button from '../ui/button/button.svelte';
 	import { PUBLIC_FEDIVERSE_HOST } from '$env/static/public';
 	import Emoji from './emoji.svelte';
-	import { MessageCircleMore, Repeat2 } from 'lucide-svelte';
+	import { MessageCircleMore, Repeat2 } from '@lucide/svelte';
 
 	interface Props {
 		note: Note;
