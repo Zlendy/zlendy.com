@@ -38,7 +38,7 @@
 		"prettier-plugin-svelte": "^3.4.0",
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"rollup-plugin-visualizer": "^5.14.0",
-		"sass": "^1.88.0",
+		"sass": "^1.89.0",
 		"shiki": "^3.4.1",
 		"svelte": "^5.30.1",
 		"svelte-bricks": "^0.3.2",
