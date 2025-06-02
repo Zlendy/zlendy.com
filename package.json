@@ -30,7 +30,7 @@
 		"dayjs": "^1.11.13",
 		"eslint": "^9.26.0",
 		"eslint-config-prettier": "^10.1.5",
-		"eslint-plugin-svelte": "^3.6.0",
+		"eslint-plugin-svelte": "^3.9.1",
 		"globals": "^16.1.0",
 		"mdsvex": "^0.12.6",
 		"postcss": "^8.5.3",
