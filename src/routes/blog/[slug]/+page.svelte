@@ -70,7 +70,7 @@
 	<Button
 		variant="outline"
 		size={tocPinned ? 'icon' : undefined}
-		class="invisible sticky left-full top-4 z-50 mr-4 mt-4 shrink-0 transition-all
+		class="invisible sticky top-4 left-full z-50 mt-4 mr-4 shrink-0 transition-all
 		{tocEnabled && 'visible'}"
 		onclick={() => (tocOpen = !tocOpen)}
 	>
@@ -78,7 +78,7 @@
 		<span class="sr-only">Table of Contents</span>
 		<span class="not-sr-only {tocPinned ? 'hidden' : undefined}">Table of Contents</span>
 	</Button>
-	<Sheet.Content side="right" class="toc-sheet" preventScroll={false}>
+	<Sheet.Content side="right" class="toc-sheet p-6" preventScroll={false}>
 		{#snippet overlay()}
 			<Sheet.Overlay class="bg-transparent backdrop-blur-none" />
 		{/snippet}
@@ -109,7 +109,7 @@
 
 <article bind:this={articleElement} class="mx-auto mb-4 max-w-3xl px-4">
 	<header class="flex min-h-48 flex-col items-center justify-center text-center">
-		<h1 class="toc-exclude mb-4 text-5xl font-bold leading-tight">{title}</h1>
+		<h1 class="toc-exclude mb-4 text-5xl leading-tight font-bold">{title}</h1>
 		<h2 class="toc-exclude">
 			<Datetooltip prefix="Created" {now} date={dayjs(createdAt)} />
 		</h2>

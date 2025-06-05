@@ -42,15 +42,15 @@
 	let menuOpen = $state(false);
 </script>
 
-<header class="flex h-16 items-center gap-4 border-b bg-background px-4">
+<header class="bg-background flex h-16 items-center gap-4 border-b px-4">
 	<nav
 		class="hidden gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6"
 	>
 		{#each routes as route}
 			<a
 				href={route.href}
-				class="text-foreground transition-colors hover:text-foreground {route.active
-					? 'font-bold text-foreground'
+				class="text-foreground hover:text-foreground transition-colors {route.active
+					? 'text-foreground font-bold'
 					: 'text-muted-foreground'}"
 			>
 				{route.title}
@@ -67,7 +67,7 @@
 			<Menu class="h-5 w-5" />
 			<span class="sr-only">Toggle navigation menu</span>
 		</Button>
-		<Sheet.Content side="left">
+		<Sheet.Content side="left" class="p-6">
 			<nav class="grid gap-6 text-lg font-medium">
 				{#each routes as route}
 					<a
