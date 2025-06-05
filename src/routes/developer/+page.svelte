@@ -185,7 +185,7 @@
 </svelte:head>
 
 <header class="flex min-h-48 flex-col items-center justify-center text-center">
-	<h1 class="mb-4 text-5xl font-bold leading-tight">Developer</h1>
+	<h1 class="mb-4 text-5xl leading-tight font-bold">Developer</h1>
 </header>
 
 {#snippet projectCard({ icon, name, license, status, description, repository, techstack }: Project)}
@@ -229,7 +229,7 @@
 				<Tooltip.Root>
 					<Tooltip.Trigger>
 						<a
-							class="flex aspect-square size-14 items-center justify-center rounded-xl bg-muted transition-all hover:border-2 hover:border-primary hover:drop-shadow-[0_0_1em_hsl(var(--primary))]"
+							class="bg-muted hover:border-primary flex aspect-square size-14 items-center justify-center rounded-xl transition-all hover:border-2 hover:drop-shadow-[0_0_1em_var(--primary)]"
 							{href}
 							target="_blank"
 						>
