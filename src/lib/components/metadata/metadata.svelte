@@ -12,7 +12,7 @@
 
 <Tooltip.Provider>
 	<Tooltip.Root>
-		<Tooltip.Trigger>
+		<Tooltip.Trigger class="hover:cursor-help">
 			<Eye class="inline" />
 			{metadata.views}
 		</Tooltip.Trigger>
@@ -22,7 +22,7 @@
 
 <Tooltip.Provider>
 	<Tooltip.Root>
-		<Tooltip.Trigger>
+		<Tooltip.Trigger class="hover:cursor-help">
 			<MessageCircleMore class="inline" />
 			{metadata.comments}
 		</Tooltip.Trigger>
@@ -32,7 +32,7 @@
 
 <Tooltip.Provider>
 	<Tooltip.Root>
-		<Tooltip.Trigger>
+		<Tooltip.Trigger class="hover:cursor-help">
 			<SmilePlus class="inline" />
 			{metadata.reactions}
 		</Tooltip.Trigger>

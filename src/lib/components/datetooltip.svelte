@@ -17,7 +17,7 @@
 
 <Tooltip.Provider>
 	<Tooltip.Root>
-		<Tooltip.Trigger>
+		<Tooltip.Trigger class="hover:cursor-help">
 			{prefix}
 			{now.diff(date, 'days', true) < 7 // Posted in the last week
 				? date.from(now) // Show relative time
