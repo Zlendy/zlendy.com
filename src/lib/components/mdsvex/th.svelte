@@ -15,7 +15,7 @@
 
 <style lang="scss">
 	th {
-		border-bottom: 2px solid hsl(var(--foreground) / 75%);
+		border-bottom: 2px solid hsl(from var(--foreground) h s l / 75%);
 	}
 
 	th:not([align]) {

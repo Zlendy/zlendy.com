@@ -41,7 +41,7 @@
 			if (!avatar) return;
 
 			mediumZoom(avatar, {
-				background: 'hsl(var(--background))',
+				background: 'var(--background)',
 				margin: 16
 			});
 		}}

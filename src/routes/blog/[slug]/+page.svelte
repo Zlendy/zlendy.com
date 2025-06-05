@@ -49,7 +49,7 @@
 		}, PAGE_TRANSITION_MS * 2); // Wait until the page transition is completed to store this value
 
 		mediumZoom('[data-zoomable]', {
-			background: 'hsl(var(--background))',
+			background: 'var(--background)',
 			margin: 16
 		});
 
@@ -89,7 +89,7 @@
 			--toc-title-margin="0 0 2rem 0"
 			--toc-active-font-weight="bold"
 			--toc-active-bg="none"
-			--toc-active-color="hsl(var(--foreground)"
+			--toc-active-color="var(--foreground)"
 			--toc-li-hover-color="none"
 			--toc-max-height="90dvh"
 			--toc-font-size="0.6em"
