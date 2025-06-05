@@ -1,6 +1,7 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
 
-@config '../tailwind.config.ts';
+@custom-variant dark (&:is(.dark *));
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -11,82 +12,119 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
 }
 
-@layer base {
-	:root {
-		--background: 32 57% 95%;
-		--foreground: 248 19% 40%;
-		--muted: 32 12% 90%;
-		--muted-foreground: 32 12% 30%;
-		--popover: 32 57% 92%;
-		--popover-foreground: 248 19% 30%;
-		--card: 32 57% 93%;
-		--card-foreground: 248 19% 35%;
-		--border: 32 47% 90%;
-		--input: 32 47% 87%;
-		--primary: 248 19% 40%;
-		--primary-foreground: 248 19% 100%;
-		--secondary: 248 9% 75%;
-		--secondary-foreground: 248 9% 15%;
-		--accent: 32 57% 80%;
-		--accent-foreground: 32 57% 20%;
-		--destructive: 6 95% 20%;
-		--destructive-foreground: 6 95% 80%;
-		--warning: 39.8 77.2% 31%;
-		--warning-foreground: 6 95% 80%;
-		--ring: 248 19% 40%;
-		--radius: 0.5rem;
+:root {
+	--background: hsl(32 57% 95%);
+	--foreground: hsl(248 19% 40%);
+	--muted: hsl(32 12% 90%);
+	--muted-foreground: hsl(32 12% 30%);
+	--popover: hsl(32 57% 92%);
+	--popover-foreground: hsl(248 19% 30%);
+	--card: hsl(32 57% 93%);
+	--card-foreground: hsl(248 19% 35%);
+	--border: hsl(32 47% 90%);
+	--input: hsl(32 47% 87%);
+	--primary: hsl(248 19% 40%);
+	--primary-foreground: hsl(248 19% 100%);
+	--secondary: hsl(248 9% 75%);
+	--secondary-foreground: hsl(248 9% 15%);
+	--accent: hsl(32 57% 80%);
+	--accent-foreground: hsl(32 57% 20%);
+	--destructive: hsl(6 95% 20%);
+	--destructive-foreground: hsl(6 95% 80%);
+	--warning: hsl(39.8 77.2% 31%);
+	--warning-foreground: hsl(6 95% 80%);
+	--ring: hsl(248 19% 40%);
 
-		--sidebar-background: 0 0% 98%;
-		--sidebar-foreground: 240 5.3% 26.1%;
-		--sidebar-primary: 240 5.9% 10%;
-		--sidebar-primary-foreground: 0 0% 98%;
-		--sidebar-accent: 240 4.8% 95.9%;
-		--sidebar-accent-foreground: 240 5.9% 10%;
-		--sidebar-border: 220 13% 91%;
-		--sidebar-ring: 217.2 91.2% 59.8%;
-	}
+	--sidebar-background: hsl(0 0% 98%);
+	--sidebar-foreground: hsl(240 5.3% 26.1%);
+	--sidebar-primary: hsl(240 5.9% 10%);
+	--sidebar-primary-foreground: hsl(0 0% 98%);
+	--sidebar-accent: hsl(240 4.8% 95.9%);
+	--sidebar-accent-foreground: hsl(240 5.9% 10%);
+	--sidebar-border: hsl(220 13% 91%);
+	--sidebar-ring: hsl(217.2 91.2% 59.8%);
 
-	.dark {
-		--background: 249 22% 12%;
-		--foreground: 245 50% 91%;
-		--muted: 249 12% 16%;
-		--muted-foreground: 249 12% 66%;
-		--popover: 249 22% 9%;
-		--popover-foreground: 0 0% 100%;
-		--card: 249 22% 10%;
-		--card-foreground: 245 50% 96%;
-		--border: 249 12% 17%;
-		--input: 249 12% 20%;
-		--primary: 245 50% 91%;
-		--primary-foreground: 245 50% 31%;
-		--secondary: 245 30% 25%;
-		--secondary-foreground: 245 30% 85%;
-		--accent: 249 22% 27%;
-		--accent-foreground: 249 22% 87%;
-		--destructive: 1 80% 60%;
-		--destructive-foreground: 0 0% 100%;
-		--warning: 41.4 64.9% 55.3%;
-		--warning-foreground: 0 0% 100%;
-		--ring: 245 50% 91%;
+	--radius: 0.5rem;
+}
 
-		--sidebar-background: 240 5.9% 10%;
-		--sidebar-foreground: 240 4.8% 95.9%;
-		--sidebar-primary: 224.3 76.3% 48%;
-		--sidebar-primary-foreground: 0 0% 100%;
-		--sidebar-accent: 240 3.7% 15.9%;
-		--sidebar-accent-foreground: 240 4.8% 95.9%;
-		--sidebar-border: 240 3.7% 15.9%;
-		--sidebar-ring: 217.2 91.2% 59.8%;
-	}
+.dark {
+	--background: hsl(249 22% 12%);
+	--foreground: hsl(245 50% 91%);
+	--muted: hsl(249 12% 16%);
+	--muted-foreground: hsl(249 12% 66%);
+	--popover: hsl(249 22% 9%);
+	--popover-foreground: hsl(0 0% 100%);
+	--card: hsl(249 22% 10%);
+	--card-foreground: hsl(245 50% 96%);
+	--border: hsl(249 12% 17%);
+	--input: hsl(249 12% 20%);
+	--primary: hsl(245 50% 91%);
+	--primary-foreground: hsl(245 50% 31%);
+	--secondary: hsl(245 30% 25%);
+	--secondary-foreground: hsl(245 30% 85%);
+	--accent: hsl(249 22% 27%);
+	--accent-foreground: hsl(249 22% 87%);
+	--destructive: hsl(1 80% 60%);
+	--destructive-foreground: hsl(0 0% 100%);
+	--warning: hsl(41.4 64.9% 55.3%);
+	--warning-foreground: hsl(0 0% 100%);
+	--ring: hsl(245 50% 91%);
+
+	--sidebar-background: hsl(240 5.9% 10%);
+	--sidebar-foreground: hsl(240 4.8% 95.9%);
+	--sidebar-primary: hsl(224.3 76.3% 48%);
+	--sidebar-primary-foreground: hsl(0 0% 100%);
+	--sidebar-accent: hsl(240 3.7% 15.9%);
+	--sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+	--sidebar-border: hsl(240 3.7% 15.9%);
+	--sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+@theme inline {
+	/* Radius (for rounded-*) */
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+
+	/* Colors */
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-ring: var(--ring);
+	--color-radius: var(--radius);
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
 }
 
 @layer base {
