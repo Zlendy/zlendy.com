@@ -22,7 +22,7 @@
 </script>
 
 <LinkHoverTitle
-	class="bg-[linear-gradient(hsl(var(--foreground)/25%),hsl(var(--foreground)/25%))] bg-size-[100%_0.25rem] bg-position-[0%_100%]
+	class="bg-[linear-gradient(hsl(from_var(--foreground)_h_s_l_/_0.25),hsl(from_var(--foreground)_h_s_l_/_0.25))] bg-size-[100%_0.25rem] bg-position-[0%_100%]
 	bg-no-repeat px-1 transition-all hover:bg-size-[100%_100%]"
 	{...rest}
 	{href}
