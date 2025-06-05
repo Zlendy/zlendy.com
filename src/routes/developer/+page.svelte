@@ -233,7 +233,7 @@
 							{href}
 							target="_blank"
 						>
-							<Logo class="!size-10" name={icon} />
+							<Logo class="size-10!" name={icon} />
 						</a>
 					</Tooltip.Trigger>
 					<Tooltip.Content>

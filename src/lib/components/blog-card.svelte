@@ -22,11 +22,11 @@
 				{post.title}
 			</h3>
 			<div class="mt-1">
-				<p class="!mt-0 text-sm text-muted-foreground">
+				<p class="mt-0! text-sm text-muted-foreground">
 					<Datetooltip prefix="Created" {now} date={dayjs(post.createdAt)} />
 				</p>
 				{#if post.updatedAt}
-					<p class="!mt-0 text-sm text-muted-foreground">
+					<p class="mt-0! text-sm text-muted-foreground">
 						<Datetooltip prefix="Updated" {now} date={dayjs(post.updatedAt)} />
 					</p>
 				{/if}

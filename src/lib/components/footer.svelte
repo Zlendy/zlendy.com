@@ -31,7 +31,7 @@
 				target="_blank"
 				data-umami-event="footer-fediverse-blog"
 			>
-				<Logo name="activitypub" class="!block !h-[1.5em] !w-[1.5em]" />
+				<Logo name="activitypub" class="block! h-[1.5em]! w-[1.5em]!" />
 			</LinkHoverTitle>
 			<LinkHoverTitle title="RSS feed" href="/rss.xml" target="_blank">
 				<Rss />
