@@ -55,12 +55,12 @@
 		/>
 		<Avatar.Fallback class="text-[5rem]">ZY</Avatar.Fallback>
 	</Avatar.Root>
-	<h1 class="mb-4 text-5xl font-bold leading-tight">Zlendy</h1>
+	<h1 class="mb-4 text-5xl leading-tight font-bold">Zlendy</h1>
 	<p class="text-lg">Hi there! Welcome to my little slice of the internet</p>
 	<p class="mb-8 text-lg">I'm a web developer from Spain who loves contributing to FOSS projects</p>
 
 	<button
-		class="mb-16 animate-bounce opacity-25 transition-opacity hover:opacity-100"
+		class="mb-16 animate-bounce opacity-25 transition-opacity hover:cursor-pointer hover:opacity-100"
 		onclick={() => content?.scrollIntoView({ behavior: 'smooth' })}
 	>
 		<ChevronDown size={64} />

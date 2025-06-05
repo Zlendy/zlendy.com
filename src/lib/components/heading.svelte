@@ -49,7 +49,7 @@
 		stroke-width="2"
 		stroke-linecap="round"
 		stroke-linejoin="round"
-		class="lucide-icon lucide lucide-hash absolute left-0 top-0 h-[1em] w-[1em] {className}"
+		class="lucide-icon lucide lucide-hash absolute top-0 left-0 h-[1em] w-[1em] {className}"
 	>
 		{#if show}
 			<line transition:draw={drawParams1} x1="4" x2="20" y1="9" y2="9"></line>
@@ -63,12 +63,12 @@
 <svelte:element
 	this={tag}
 	bind:this={element}
-	class="{styles[tag]} relative gap-2 hyphens-auto break-words"
+	class="{styles[tag]} relative gap-2 break-words hyphens-auto"
 	{id}
 	role="heading"
 >
 	<button
-		class="h-[1em] w-[1em] align-bottom"
+		class="h-[1em] w-[1em] align-bottom hover:cursor-pointer"
 		onclick={(e) => {
 			e.preventDefault();
 			smoothScroll(element);
