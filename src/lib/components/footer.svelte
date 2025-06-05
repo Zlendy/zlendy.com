@@ -12,7 +12,7 @@
 	</a>
 
 	<div
-		class="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0"
+		class="mx-auto flex w-full max-w-[1400px] flex-col items-center justify-between gap-4 px-8 py-10 md:h-24 md:flex-row md:py-0"
 	>
 		<p>
 			zlendy.com © {dayjs().year()} Zlendy.
