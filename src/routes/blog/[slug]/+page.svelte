@@ -49,7 +49,7 @@
 		}, PAGE_TRANSITION_MS * 2); // Wait until the page transition is completed to store this value
 
 		mediumZoom('[data-zoomable]', {
-			background: 'hsl(var(--background))',
+			background: 'var(--background)',
 			margin: 16
 		});
 
@@ -70,7 +70,7 @@
 	<Button
 		variant="outline"
 		size={tocPinned ? 'icon' : undefined}
-		class="invisible sticky left-full top-4 z-50 mr-4 mt-4 shrink-0 transition-all
+		class="invisible sticky top-4 left-full z-50 mt-4 mr-4 shrink-0 transition-all
 		{tocEnabled && 'visible'}"
 		onclick={() => (tocOpen = !tocOpen)}
 	>
@@ -78,7 +78,7 @@
 		<span class="sr-only">Table of Contents</span>
 		<span class="not-sr-only {tocPinned ? 'hidden' : undefined}">Table of Contents</span>
 	</Button>
-	<Sheet.Content side="right" class="toc-sheet" preventScroll={false}>
+	<Sheet.Content side="right" class="toc-sheet p-6" preventScroll={false}>
 		{#snippet overlay()}
 			<Sheet.Overlay class="bg-transparent backdrop-blur-none" />
 		{/snippet}
@@ -89,7 +89,7 @@
 			--toc-title-margin="0 0 2rem 0"
 			--toc-active-font-weight="bold"
 			--toc-active-bg="none"
-			--toc-active-color="hsl(var(--foreground)"
+			--toc-active-color="var(--foreground)"
 			--toc-li-hover-color="none"
 			--toc-max-height="90dvh"
 			--toc-font-size="0.6em"
@@ -103,13 +103,13 @@
 
 {#if 0 < progressValue && progressValue < contentOffsetHeight}
 	<div transition:fade={{ duration: 500 }}>
-		<Progress value={progressValue} max={contentOffsetHeight} class="fixed top-0 z-[100] h-1" />
+		<Progress value={progressValue} max={contentOffsetHeight} class="fixed top-0 z-100 h-1" />
 	</div>
 {/if}
 
 <article bind:this={articleElement} class="mx-auto mb-4 max-w-3xl px-4">
 	<header class="flex min-h-48 flex-col items-center justify-center text-center">
-		<h1 class="toc-exclude mb-4 text-5xl font-bold leading-tight">{title}</h1>
+		<h1 class="toc-exclude mb-4 text-5xl leading-tight font-bold">{title}</h1>
 		<h2 class="toc-exclude">
 			<Datetooltip prefix="Created" {now} date={dayjs(createdAt)} />
 		</h2>

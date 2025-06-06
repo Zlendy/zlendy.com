@@ -14,10 +14,10 @@
 
 <style lang="scss">
 	tbody :global(tr:nth-child(odd)) {
-		background-color: hsl(var(--foreground) / 5%);
+		background-color: hsl(from var(--foreground) h s l / 5%);
 	}
 
 	tbody :global(tr:hover) {
-		background-color: hsl(var(--foreground) / 10%);
+		background-color: hsl(from var(--foreground) h s l / 10%);
 	}
 </style>
