@@ -57,7 +57,7 @@
 					in:fade|global={{ duration: 250, delay: fadeInDelay * index + fadeInDelay * layer }}
 				>
 					<Card.Root>
-						<div class="flex items-center space-y-1.5 p-6 pb-0">
+						<div class="flex items-center space-y-1.5 px-6 pb-0">
 							<a href={userLink} target="_blank">
 								<Avatar.Root>
 									<Avatar.Image src={user.avatarUrl} alt="{handle}'s avatar" />
@@ -70,7 +70,7 @@
 									</Avatar.Fallback>
 								</Avatar.Root>
 							</a>
-							<a class="overflow-hidden break-words" href={userLink} target="_blank">
+							<a class="w-full overflow-hidden break-words" href={userLink} target="_blank">
 								<Card.Header class="p-0 pl-6">
 									<Card.Title>{user.name}</Card.Title>
 									<Card.Description>{handle}</Card.Description>
@@ -90,7 +90,7 @@
 					<Comments style="margin-left: {replyMarginLeft}" noteId={note.id} layer={replyLayer} />
 				{:else if hasReplies}
 					<Card.Root class="mb-4" style="margin-left: {replyMarginLeft}">
-						<div class="p-6">
+						<div class="px-6">
 							<LinkArrow href={postLink}>View thread continuation</LinkArrow>
 						</div>
 					</Card.Root>
