@@ -31,7 +31,7 @@
 </svelte:head>
 
 <header class="flex min-h-48 flex-col items-center justify-center text-center">
-	<h1 class="mb-4 text-5xl font-bold leading-tight">Analytics</h1>
+	<h1 class="mb-4 text-5xl leading-tight font-bold">Analytics</h1>
 </header>
 
 <div class="mx-auto mb-4 max-w-2xl px-4">

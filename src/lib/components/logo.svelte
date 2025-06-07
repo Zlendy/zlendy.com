@@ -9,7 +9,7 @@
 </script>
 
 <i
-	class="inline-block h-[1em] w-[1em] bg-foreground {className}"
+	class="bg-foreground inline-block h-[1em] w-[1em] {className}"
 	style="mask: url(/icons/logos/{name}.svg) center center / cover no-repeat"
 	{...rest}
 ></i>

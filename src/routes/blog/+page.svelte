@@ -23,7 +23,7 @@
 </svelte:head>
 
 <header class="flex min-h-48 flex-col items-center justify-center text-center">
-	<h1 class="mb-4 text-5xl font-bold leading-tight">Blog</h1>
+	<h1 class="mb-4 text-5xl leading-tight font-bold">Blog</h1>
 </header>
 
 <div class="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-4 px-4">
