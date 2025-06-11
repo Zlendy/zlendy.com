@@ -88,14 +88,15 @@
 			headingSelector={tocHeadingSelector}
 			--toc-title-margin="0 0 2rem 0"
 			--toc-active-font-weight="bold"
-			--toc-active-bg="none"
-			--toc-active-color="var(--foreground)"
-			--toc-li-hover-color="none"
+			--toc-active-color="var(--primary-foreground)"
+			--toc-active-bg="var(--primary)"
+			--toc-li-hover-color="var(--secondary-foreground)"
+			--toc-li-hover-bg="var(--secondary)"
 			--toc-max-height="90dvh"
-			--toc-font-size="0.6em"
+			--toc-font="0.6em sans-serif"
 		>
 			{#snippet title_snippet()}
-				<h1 class="text-base">Table of Contents</h1>
+				<h1 class="text-xl font-medium">Table of Contents</h1>
 			{/snippet}
 		</Toc>
 	</Sheet.Content>
