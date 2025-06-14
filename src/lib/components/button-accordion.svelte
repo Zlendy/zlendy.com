@@ -15,7 +15,7 @@
 	class="border-accent bg-card hover:border-accent/25 my-4 w-full rounded-xl border-2 transition-colors"
 >
 	<Accordion.Item value="item-1" class="border-b-0">
-		<Accordion.Trigger class="p-4 text-left hover:no-underline">
+		<Accordion.Trigger class="p-4 text-left hover:cursor-pointer hover:no-underline">
 			{@render trigger?.()}
 		</Accordion.Trigger>
 		<Accordion.Content class="-mb-4 p-4">
