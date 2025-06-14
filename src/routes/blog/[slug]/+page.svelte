@@ -7,7 +7,7 @@
 	import * as Sheet from '$lib/components/ui/sheet';
 	import { Button } from '$lib/components/ui/button';
 	import { TableOfContents } from '@lucide/svelte';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import Datetooltip from '$lib/components/datetooltip.svelte';
 	import Progress from '$lib/components/ui/progress/progress.svelte';
 	import { PAGE_TRANSITION_MS } from '../../+layout.svelte';
@@ -15,6 +15,8 @@
 	import mediumZoom from 'medium-zoom';
 	import { blogMetadataStore, type BlogMetadata } from '$lib/components/metadata/store';
 	import Metadata from '$lib/components/metadata/metadata.svelte';
+	import { trackEvent } from '@lukulent/svelte-umami';
+	import { browser } from '$app/environment';
 
 	interface Props {
 		data: PageData;
@@ -40,6 +42,8 @@
 
 	let metadata = $derived<BlogMetadata | undefined>(blogMetadataStore.articles.get(slug));
 
+	let readingIntervalId = $state<number>();
+
 	onMount(async () => {
 		tocEnabled = articleElement.querySelector(tocHeadingSelector) !== null;
 
@@ -48,12 +52,22 @@
 			contentOffsetHeight = contentElement.offsetHeight;
 		}, PAGE_TRANSITION_MS * 2); // Wait until the page transition is completed to store this value
 
+		readingIntervalId = window.setInterval(() => {
+			trackEvent('reading-blog', {
+				slug
+			});
+		}, 1000 * 60);
+
 		mediumZoom('[data-zoomable]', {
 			background: 'var(--background)',
 			margin: 16
 		});
 
 		await blogMetadataStore.getOne(slug);
+	});
+
+	onDestroy(() => {
+		if (browser) window.clearInterval(readingIntervalId);
 	});
 </script>
 
