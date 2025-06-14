@@ -7,9 +7,8 @@ import { customImages } from './custom-img.js';
 
 const mdsvexExtensions = ['.md'];
 
-const theme = 'github-dark';
 const highlighter = await createHighlighter({
-	themes: [theme],
+	themes: ['rose-pine-dawn', 'rose-pine-moon'],
 	langs: ['javascript', 'typescript', 'python', 'c#', 'vb', 'rust', 'docker', 'dockerfile', 'bash']
 });
 
@@ -28,9 +27,18 @@ const config = {
 			highlight: {
 				highlighter: async (code, lang = 'text') => {
 					/** @type {string} */
-					let html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme }));
+					let html = escapeSvelte(
+						highlighter.codeToHtml(code, {
+							lang,
+							themes: {
+								light: 'rose-pine-dawn',
+								dark: 'rose-pine-moon'
+							},
+							defaultColor: 'light'
+						})
+					);
 					html = html.replaceAll('&#123;&#123;', '{').replaceAll('&#125;&#125;', '}');
-					return `<Components.pre>${html}</Components.pre>`;
+					return `<Components.pre lang="${lang}">${html}</Components.pre>`;
 				}
 			},
 			layout: {
