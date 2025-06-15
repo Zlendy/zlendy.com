@@ -5,7 +5,7 @@ updatedAt: null
 description: |
   I recently bought an Apple Macbook Air M2 and wanted to fully run Linux on it, as I'm used to doing with most of my devices.
   I have no interest in switching to macOS nor getting invested into the "Apple Ecosystem", so I just installed Fedora Asahi Remix on it.
-fediverse: null
+fediverse: 'a911cxfcgxdg0026'
 ---
 
 <script lang="ts">
