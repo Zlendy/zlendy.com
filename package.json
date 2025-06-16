@@ -30,7 +30,7 @@
 		"bits-ui": "^2.5.0",
 		"clsx": "^2.1.1",
 		"dayjs": "^1.11.13",
-		"eslint": "^9.28.0",
+		"eslint": "^9.29.0",
 		"eslint-config-prettier": "^10.1.5",
 		"eslint-plugin-svelte": "^3.9.2",
 		"globals": "^16.2.0",
