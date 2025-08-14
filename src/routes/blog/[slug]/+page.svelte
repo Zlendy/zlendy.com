@@ -59,7 +59,7 @@
 		}, 1000 * 60);
 
 		mediumZoom('[data-zoomable]', {
-			background: 'var(--background)',
+			background: 'transparent',
 			margin: 16
 		});
 
@@ -122,9 +122,12 @@
 	</div>
 {/if}
 
-<article bind:this={articleElement} class="mx-auto mb-4 max-w-3xl px-4">
+<article
+	bind:this={articleElement}
+	class="bg-background/40 dark:bg-background/80 mx-auto my-4 max-w-3xl rounded-xl border-2 px-4 pb-4 backdrop-blur-md"
+>
 	<header class="flex min-h-48 flex-col items-center justify-center text-center">
-		<h1 class="toc-exclude mb-4 text-5xl leading-tight font-bold">{title}</h1>
+		<h1 class="toc-exclude my-4 text-5xl leading-tight font-bold">{title}</h1>
 		<h2 class="toc-exclude">
 			<Datetooltip prefix="Created" {now} date={dayjs(createdAt)} />
 		</h2>

@@ -6,7 +6,7 @@
 	import dayjs from 'dayjs';
 </script>
 
-<footer class="border-t">
+<footer class="bg-background border-t">
 	<a class="hidden" rel="me" href="https://social.zlendy.com/@zlendy">
 		Fediverse link verification
 	</a>

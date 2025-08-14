@@ -41,7 +41,7 @@
 			if (!avatar) return;
 
 			mediumZoom(avatar, {
-				background: 'var(--background)',
+				background: 'transparent',
 				margin: 16
 			});
 		}}
@@ -71,7 +71,10 @@
 	</button>
 </div>
 
-<div class="mx-auto mb-4 max-w-2xl px-4" bind:this={content}>
+<div
+	class="bg-background/40 dark:bg-background/80 mx-auto mb-4 max-w-3xl rounded-xl border-2 px-4 pt-4 backdrop-blur-md"
+	bind:this={content}
+>
 	{#if post}
 		<div class="mb-8">
 			<div class="mb-4">

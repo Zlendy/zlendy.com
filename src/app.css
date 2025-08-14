@@ -135,9 +135,16 @@
 	* {
 		@apply border-border;
 	}
-	body {
-		@apply bg-background text-foreground;
+	html {
+		@apply bg-background bg-fixed;
 	}
+	body {
+		@apply not-dark:bg-background/60 text-foreground bg-[url(/images/alex-rybin-UygEIZ9DLxM-unsplash.avif)] bg-cover bg-fixed bg-center bg-no-repeat not-dark:bg-blend-lighten;
+	}
+}
+
+.medium-zoom-overlay {
+	@apply backdrop-blur-md;
 }
 
 pre.shiki {

@@ -53,8 +53,8 @@ It's basically like time travel for your computer, but _better_. Because you'll 
 
 Load your preferred keyboard layout if the default (`en`) is not appropriate for you. You can list them all by running the following command:
 
-<Alert.Root variant="info" class="my-4">
-<TriangleAlert class="size-4" />
+<Alert.Root class="my-4">
+<Info class="size-4" />
 <Alert.Title>Info</Alert.Title>
 <Alert.Description style="margin: -1rem 0;">
 
@@ -504,7 +504,7 @@ This will allow you to perform your first rollback should you ever need it.
 snapper create -d "Initial subvolume" --read-write
 ```
 
-<Alert.Root class="my-4">
+<Alert.Root variant="default" class="my-4">
 <Info class="size-4" />
 <Alert.Title>Info</Alert.Title>
 <Alert.Description style="margin: -1rem 0;">
