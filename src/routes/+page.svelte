@@ -56,10 +56,10 @@
 		<Avatar.Fallback class="text-[5rem]">ZY</Avatar.Fallback>
 	</Avatar.Root>
 	<h1 class="mb-4 text-5xl leading-tight font-bold">Zlendy</h1>
-	<p class="animate-fade-in text-lg opacity-0 [animation-delay:_250ms]">
+	<p class="animate-fade-in text-lg font-semibold opacity-0 [animation-delay:_250ms]">
 		Hi there! Welcome to my little slice of the internet
 	</p>
-	<p class="animate-fade-in mb-8 text-lg opacity-0 [animation-delay:_500ms]">
+	<p class="animate-fade-in mb-8 text-lg font-semibold opacity-0 [animation-delay:_500ms]">
 		I'm a web developer from Spain who loves contributing to FOSS projects
 	</p>
 

@@ -56,7 +56,7 @@
 			{items}
 			minColWidth={200}
 			maxColWidth={800}
-			gap={8}
+			gap={4}
 			animate
 			bind:masonryWidth
 			bind:masonryHeight
@@ -69,7 +69,7 @@
 					data-umami-event="board-image"
 					data-umami-event-url={href}
 				>
-					<img class="w-full" alt={text} {src} />
+					<img class="w-full rounded-xl border-2 transition-[filter] duration-300 ease-in-out" alt={text} {src} />
 				</LinkHoverTitle>
 			{/snippet}
 		</Masonry>
@@ -77,12 +77,8 @@
 </div>
 
 <style lang="scss">
-	img {
-		transition: filter 250ms ease-in-out;
-	}
-
 	// When a user hovers over an img, darken them all except the hovered one
 	:has(img:hover) img:not(:hover) {
-		filter: grayscale(75%) opacity(75%);
+		filter: grayscale(75%) opacity(50%);
 	}
 </style>

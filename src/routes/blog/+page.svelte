@@ -26,7 +26,7 @@
 	<h1 class="mb-4 text-5xl leading-tight font-bold">Blog</h1>
 </header>
 
-<div class="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-4 px-4">
+<div class="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-4 px-4">
 	{#each data.posts as post}
 		<BlogCard {post} {now} />
 	{/each}

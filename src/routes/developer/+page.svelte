@@ -216,7 +216,9 @@
 	</a>
 {/snippet}
 
-<div class="mx-auto mb-4 max-w-2xl px-4">
+<div
+	class="bg-background/40 dark:bg-background/80 mx-auto mb-4 max-w-3xl rounded-xl border-2 px-4 pt-4 backdrop-blur-md"
+>
 	<p class="mb-4">
 		I'm primarily a Web Developer, although I sometimes code stuff outside of that realm.
 	</p>
@@ -229,7 +231,7 @@
 				<Tooltip.Root>
 					<Tooltip.Trigger>
 						<a
-							class="bg-muted hover:border-primary flex aspect-square size-14 items-center justify-center rounded-xl transition-all hover:border-2 hover:drop-shadow-[0_0_1em_var(--primary)]"
+							class="bg-popover hover:border-primary flex aspect-square size-14 items-center justify-center rounded-xl transition-all hover:border-2 hover:drop-shadow-[0_0_1em_var(--primary)]"
 							{href}
 							target="_blank"
 						>

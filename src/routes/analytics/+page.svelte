@@ -34,7 +34,7 @@
 	<h1 class="mb-4 text-5xl leading-tight font-bold">Analytics</h1>
 </header>
 
-<div class="mx-auto mb-4 max-w-2xl px-4">
+<div class="bg-background/40 dark:bg-background/80 mx-auto mb-4 max-w-3xl rounded-xl border-2 px-4 backdrop-blur-md">
 	<data.component />
 
 	{#if mounted}
