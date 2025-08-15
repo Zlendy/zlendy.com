@@ -118,13 +118,17 @@
 
 {#if 0 < progressValue && progressValue < contentOffsetHeight}
 	<div transition:fade={{ duration: 500 }}>
-		<Progress value={progressValue} max={contentOffsetHeight} class="fixed top-0 z-100 h-1" />
+		<Progress
+			value={progressValue}
+			max={contentOffsetHeight}
+			class="fixed top-0 left-0 z-100 h-1"
+		/>
 	</div>
 {/if}
 
 <article
 	bind:this={articleElement}
-	class="bg-background/40 dark:bg-background/80 mx-auto my-4 max-w-3xl rounded-xl border-2 px-4 pb-4 backdrop-blur-md"
+	class="bg-background/40 dark:bg-background/80 mx-2 my-4 w-[calc(100%-1rem)] max-w-3xl rounded-xl border-2 px-4 pb-4 backdrop-blur-md"
 >
 	<header class="flex min-h-48 flex-col items-center justify-center text-center">
 		<h1 class="toc-exclude my-4 text-5xl leading-tight font-bold">{title}</h1>
@@ -151,7 +155,7 @@
 </article>
 
 {#if fediverse}
-	<section id="fediverse" class="toc-exclude mx-auto max-w-3xl px-4">
+	<section id="fediverse" class="toc-exclude w-full max-w-3xl px-4">
 		<Post noteId={fediverse} />
 		<Comments noteId={fediverse} />
 	</section>

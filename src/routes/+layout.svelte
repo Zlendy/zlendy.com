@@ -42,7 +42,7 @@
 
 {#key data.currentRoute}
 	<main
-		class="h-full min-h-screen pb-4"
+		class="flex min-h-screen w-full flex-col flex-wrap items-center justify-start pb-4"
 		in:fade={{ duration: PAGE_TRANSITION_MS, delay: PAGE_TRANSITION_MS }}
 		out:fade={{ duration: PAGE_TRANSITION_MS }}
 	>
