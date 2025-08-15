@@ -9,7 +9,7 @@ const mdsvexExtensions = ['.md'];
 
 const highlighter = await createHighlighter({
 	themes: ['rose-pine-dawn', 'rose-pine-moon'],
-	langs: ['javascript', 'typescript', 'python', 'c#', 'vb', 'rust', 'docker', 'dockerfile', 'bash']
+	langs: ['bash', 'ini']
 });
 
 /** @type {import('@sveltejs/kit').Config} */

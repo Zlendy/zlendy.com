@@ -14,10 +14,20 @@
 	let { children, lang }: Props = $props();
 
 	let shikiElement = $state<HTMLElement>();
-	let cleanedLang = $derived.by(() => {
+	let cleanedLang = $derived.by<null | { icon: boolean; text: string }>(() => {
 		if (typeof lang !== 'string') return null;
-		if (lang === 'undefined' || lang === 'null') return null;
-		return lang;
+		if (['undefined', 'null'].includes(lang)) return null;
+
+		if (['text', 'ini'].includes(lang))
+			return {
+				icon: false,
+				text: lang
+			};
+
+		return {
+			icon: true,
+			text: lang
+		};
 	});
 
 	enum ClipboardEnum {
@@ -54,10 +64,10 @@
 >
 	<div class="border-primary/25 text-primary flex justify-between border-b-2 px-4 py-2">
 		<span>
-			{#if cleanedLang}
-				<Logo name={cleanedLang} class="!bg-primary" />&nbsp;
+			{#if cleanedLang?.icon}
+				<Logo name={cleanedLang.text} class="!bg-primary" />&nbsp;
 			{/if}
-			{cleanedLang ?? 'text'}
+			{cleanedLang?.text ?? 'text'}
 		</span>
 		<Tooltip.Provider delayDuration={0} disableCloseOnTriggerClick>
 			<Tooltip.Root>
