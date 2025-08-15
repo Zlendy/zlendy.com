@@ -34,16 +34,20 @@
 />
 <ModeWatcher />
 
-<div class="backdrop-blur-sm dark:backdrop-brightness-50">
-	<Header />
-	{#key data.currentRoute}
-		<main
-			class="h-full min-h-screen pb-4"
-			in:fade={{ duration: PAGE_TRANSITION_MS, delay: PAGE_TRANSITION_MS }}
-			out:fade={{ duration: PAGE_TRANSITION_MS }}
-		>
-			{@render children?.()}
-		</main>
-	{/key}
-	<Footer />
-</div>
+<div
+	class="not-dark:bg-background/60 fixed top-0 right-0 left-0 -z-1 h-screen w-screen border-2 bg-[url(/images/alex-rybin-UygEIZ9DLxM-unsplash.avif)] bg-cover bg-fixed bg-center bg-no-repeat blur-sm not-dark:bg-blend-lighten dark:brightness-50"
+></div>
+
+<Header />
+
+{#key data.currentRoute}
+	<main
+		class="h-full min-h-screen pb-4"
+		in:fade={{ duration: PAGE_TRANSITION_MS, delay: PAGE_TRANSITION_MS }}
+		out:fade={{ duration: PAGE_TRANSITION_MS }}
+	>
+		{@render children?.()}
+	</main>
+{/key}
+
+<Footer />
