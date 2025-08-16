@@ -3,7 +3,7 @@ title: 'PSA: Beware of the "tuned" package in your Proxmox VE homelab'
 createdAt: '2025-08-16 16:48 UTC'
 updatedAt: null
 description: This is a short post to warn others about a recent headache I had in my Proxmox VE homelab.
-fediverse: null
+fediverse: abi28q9y6sue001j
 ---
 
 This is a short post to warn others about a recent headache I had in my Proxmox VE homelab.
