@@ -8,6 +8,7 @@
 	const limit = 50;
 	let masonryWidth: number | undefined = $state(0);
 	let masonryHeight: number | undefined = $state(0);
+	let masonryImagesLoaded: boolean[] = $state([]);
 
 	interface BoardImageData {
 		id: string;
@@ -57,11 +58,11 @@
 			minColWidth={200}
 			maxColWidth={800}
 			gap={4}
-			animate
+			animate={false}
 			bind:masonryWidth
 			bind:masonryHeight
 		>
-			{#snippet children({ item: { src, text, href } })}
+			{#snippet children({ idx, item: { src, text, href } })}
 				<LinkHoverTitle
 					{href}
 					title={text}
@@ -69,7 +70,13 @@
 					data-umami-event="board-image"
 					data-umami-event-url={href}
 				>
-					<img class="w-full rounded-xl border-2 transition-[filter] duration-300 ease-in-out" alt={text} {src} />
+					<img
+						onload={() => (masonryImagesLoaded[idx] = true)}
+						class="w-full rounded-xl border-2 transition-[filter] duration-300 ease-in-out"
+						class:border-transparent={!masonryImagesLoaded[idx]}
+						alt={text}
+						{src}
+					/>
 				</LinkHoverTitle>
 			{/snippet}
 		</Masonry>
