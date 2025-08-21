@@ -117,11 +117,11 @@
 </Sheet.Root>
 
 {#if 0 < progressValue && progressValue < contentOffsetHeight}
-	<div transition:fade={{ duration: 500 }}>
+	<div class="z-100" transition:fade={{ duration: 500 }}>
 		<Progress
 			value={progressValue}
 			max={contentOffsetHeight}
-			class="fixed top-0 left-0 z-100 h-1"
+			class="fixed top-0 left-0 h-1"
 		/>
 	</div>
 {/if}
