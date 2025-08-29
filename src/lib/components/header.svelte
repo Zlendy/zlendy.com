@@ -2,10 +2,11 @@
 	import { page } from '$app/state';
 	import { Button } from '$lib/components/ui/button';
 	import * as Sheet from '$lib/components/ui/sheet';
-	import { Menu, Search } from '@lucide/svelte';
+	import { Braces, House, Icon, Images, Menu, Newspaper } from '@lucide/svelte';
 	import ModeToggle from './modetoggle.svelte';
 
 	interface Route {
+		icon: typeof Icon;
 		title: string;
 		href: string;
 		active?: boolean;
@@ -13,18 +14,22 @@
 
 	const base_routes: Route[] = [
 		{
+			icon: House,
 			title: 'Home',
 			href: '/'
 		},
 		{
+			icon: Newspaper,
 			title: 'Blog',
 			href: '/blog'
 		},
 		{
+			icon: Images,
 			title: 'Board',
 			href: '/board'
 		},
 		{
+			icon: Braces,
 			title: 'Developer',
 			href: '/developer'
 		}
@@ -42,7 +47,9 @@
 	let menuOpen = $state(false);
 </script>
 
-<header class="bg-background flex h-16 items-center gap-4 border-b px-4">
+<header
+	class="bg-background/40 dark:bg-background/80 sticky top-2 z-50 m-2 flex h-16 items-center gap-4 rounded-xl border px-4 backdrop-blur-md"
+>
 	<nav
 		class="hidden gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6"
 	>
@@ -53,6 +60,7 @@
 					? 'text-foreground font-bold'
 					: 'text-muted-foreground'}"
 			>
+				<route.icon class="inline" size={18} />
 				{route.title}
 			</a>
 		{/each}
@@ -77,6 +85,7 @@
 						class:font-bold={route.active}
 						onclick={() => (menuOpen = false)}
 					>
+						<route.icon class="inline" size={18} />
 						{route.title}
 					</a>
 				{/each}
@@ -86,12 +95,4 @@
 	<div class="ml-auto flex flex-row">
 		<ModeToggle />
 	</div>
-	<!-- <div class="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-        <form class="ml-auto flex-1 sm:flex-initial">
-            <div class="relative">
-                <Search class="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                <Input type="search" placeholder="Search..." class="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]" />
-            </div>
-        </form>
-    </div> -->
 </header>

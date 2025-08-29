@@ -144,6 +144,11 @@
 	@apply backdrop-blur-md;
 }
 
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+	@apply z-[999];
+}
+
 pre.shiki {
 	@apply overflow-auto p-4;
 }

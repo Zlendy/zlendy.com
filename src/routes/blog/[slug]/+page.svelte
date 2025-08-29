@@ -84,8 +84,9 @@
 	<Button
 		variant="outline"
 		size={tocPinned ? 'icon' : undefined}
-		class="invisible sticky top-4 left-full z-50 mt-4 mr-4 shrink-0 transition-all
-		{tocEnabled && 'visible'}"
+		class="invisible sticky top-5.5 left-full z-40 mt-4 mr-4 shrink-0 duration-[0]
+		{tocEnabled && 'visible'}
+		{tocPinned && 'z-50 mr-18'}"
 		onclick={() => (tocOpen = !tocOpen)}
 	>
 		<TableOfContents class="h-5 w-5" />
@@ -118,11 +119,7 @@
 
 {#if 0 < progressValue && progressValue < contentOffsetHeight}
 	<div class="z-100" transition:fade={{ duration: 500 }}>
-		<Progress
-			value={progressValue}
-			max={contentOffsetHeight}
-			class="fixed top-0 left-0 h-1"
-		/>
+		<Progress value={progressValue} max={contentOffsetHeight} class="fixed top-0 left-0 h-1" />
 	</div>
 {/if}
 
