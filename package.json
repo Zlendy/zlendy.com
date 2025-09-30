@@ -27,7 +27,7 @@
 		"@types/eslint": "^9.6.1",
 		"@types/node": "^24.5.1",
 		"autoprefixer": "^10.4.21",
-		"bits-ui": "^2.9.9",
+		"bits-ui": "^2.11.4",
 		"clsx": "^2.1.1",
 		"dayjs": "^1.11.18",
 		"eslint": "^9.35.0",
