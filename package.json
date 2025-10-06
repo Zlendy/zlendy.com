@@ -42,7 +42,7 @@
 		"rollup-plugin-visualizer": "^6.0.3",
 		"sass": "^1.92.1",
 		"shiki": "^3.12.2",
-		"svelte": "^5.38.10",
+		"svelte": "^5.39.9",
 		"svelte-bricks": "^0.3.2",
 		"svelte-check": "^4.3.1",
 		"svelte-preprocess-import-assets": "^1.1.0",
