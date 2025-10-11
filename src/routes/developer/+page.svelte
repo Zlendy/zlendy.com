@@ -3,7 +3,7 @@
 	import * as Card from '$lib/components/ui/card/index.js';
 	import Logo from '$lib/components/logo.svelte';
 	import Badge from '$lib/components/ui/badge/badge.svelte';
-	import * as Tooltip from '$lib/components/ui/tooltip';
+	import GlowingIcon from '$lib/components/glowing-icon.svelte';
 
 	interface LanguageOrTool {
 		icon: string;
@@ -227,22 +227,9 @@
 	<p class="my-4">I have used all of these either at work or home</p>
 	<div class="my-4 flex flex-wrap justify-center gap-4">
 		{#each langtools as { icon, name, href }}
-			<Tooltip.Provider>
-				<Tooltip.Root>
-					<Tooltip.Trigger>
-						<a
-							class="bg-popover hover:border-primary flex aspect-square size-14 items-center justify-center rounded-xl transition-all hover:border-2 hover:drop-shadow-[0_0_1em_var(--primary)]"
-							{href}
-							target="_blank"
-						>
-							<Logo class="size-10!" name={icon} />
-						</a>
-					</Tooltip.Trigger>
-					<Tooltip.Content>
-						{name}
-					</Tooltip.Content>
-				</Tooltip.Root>
-			</Tooltip.Provider>
+			<GlowingIcon {href} title={name}>
+				<Logo class="size-10!" name={icon} />
+			</GlowingIcon>
 		{/each}
 	</div>
 
