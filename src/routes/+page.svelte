@@ -8,6 +8,7 @@
 	import { onMount } from 'svelte';
 	import { blogMetadataStore } from '$lib/components/metadata/store';
 	import Heading from '$lib/components/heading.svelte';
+	import Button from '$lib/components/ui/button/button.svelte';
 
 	interface Props {
 		data: PageData;
@@ -76,11 +77,10 @@
 	bind:this={content}
 >
 	{#if post}
-		<div class="mb-8">
-			<div class="mb-4">
-				<Heading tag="h1">Latest post</Heading>
-			</div>
+		<div class="mb-8 flex flex-col gap-4">
+			<Heading tag="h1">Latest blog post</Heading>
 			<BlogCard {post} {now} />
+			<Button class="md:self-center" href="/blog">All blog posts</Button>
 		</div>
 	{/if}
 
