@@ -14,7 +14,7 @@ fediverse: a6b3n78go85w001k
 <script lang="ts">
   import TriangleAlert from "@lucide/svelte/icons/triangle-alert";
   import Info from "@lucide/svelte/icons/info";
-  import * as Alert from "$lib/components/ui/alert/index.js";
+  import Alert from "$lib/components/alert.svelte";
   import ButtonAccordion from "$lib/components/button-accordion.svelte";
   import UserInput from "$lib/components/user-input.svelte";
 
@@ -53,14 +53,11 @@ It's basically like time travel for your computer, but _better_. Because you'll 
 
 Load your preferred keyboard layout if the default (`en`) is not appropriate for you. You can list them all by running the following command:
 
-<Alert.Root class="my-4">
-<Info class="size-4" />
-<Alert.Title>Info</Alert.Title>
-<Alert.Description style="margin: -1rem 0;">
+<Alert variant="default">
 
 If you can't type `-` because your keyboard layout is different from `en` you can type `localectl list` instead and then press `TAB` to autocomplete to `list-keymaps` and then press `ENTER` to confirm your selection.
-</Alert.Description>
-</Alert.Root>
+
+</Alert>
 
 ```bash
 localectl list-keymaps
@@ -92,13 +89,11 @@ In every screenshot of this post I will be referring to your target drive as `/d
 
 ## Create system partitions
 
-<Alert.Root variant="destructive" class="my-4">
-<TriangleAlert class="size-4" />
-<Alert.Title>Be careful!</Alert.Title>
-<Alert.Description>
+<Alert variant="destructive">
+
 Choosing the wrong drive here will lead to data loss. If you want to be sure that no mistake will be made, unplug all drives from your computer except the one you will be installing Arch Linux on.
-</Alert.Description>
-</Alert.Root>
+
+</Alert>
 
 I prefer using `gdisk` instead of `fdisk` as the Arch Wiki suggests because it's designed for GPT table partitions and has a few Quailty-of-Life features that `fdisk` lacks. Feel free to use your preferred partition manager if you have a preference of your own.
 
@@ -144,13 +139,11 @@ You can print the current partition layout with: `p`
 
 ### Write the changes to the disk
 
-<Alert.Root variant="destructive" class="my-4">
-<TriangleAlert class="size-4" />
-<Alert.Title>Be careful!</Alert.Title>
-<Alert.Description>
+<Alert variant="destructive">
+
 This is a destructive operation, double check that there are no mistakes in the partition layout before proceeding.
-</Alert.Description>
-</Alert.Root>
+
+</Alert>
 
 Press `w` to write all changes made this far to the disk.
 
@@ -174,16 +167,13 @@ mkfs.btrfs {{drive}}2
 
 ## Mount the partitions
 
-<Alert.Root variant="warning" class="my-4">
-<TriangleAlert class="size-4" />
-<Alert.Title>Warning</Alert.Title>
-<Alert.Description style="margin: -1rem 0;">
+<Alert variant="warning">
 
 You must mount the root partition **before** the boot partition, otherwise your system won't be able to boot when you finish this guide.
 
 If you mount <Components.code>{drive}1</Components.code> (EFI) before <Components.code>{drive}2</Components.code> (btrfs), <Components.code>{drive}2</Components.code> will shadow the first mount and therefore your system will be in an unbootable state because <Components.code>{drive}1</Components.code> **won't** have GRUB installed.
-</Alert.Description>
-</Alert.Root>
+
+</Alert>
 
 Mount the root partition
 
@@ -276,13 +266,11 @@ mount -t btrfs {{drive}}2 /mnt/home -o subvol=/home
 
 Luckily, this task can be easily automated with a bash script.
 
-<Alert.Root variant="warning" class="my-4">
-<TriangleAlert class="size-4" />
-<Alert.Title>Warning</Alert.Title>
-<Alert.Description>
+<Alert variant="warning">
+
 This subvolume layout is meant for use with SDDM + KDE Plasma, you must make changes if you plan to use GDM + GNOME or any other DE/WM.
-</Alert.Description>
-</Alert.Root>
+
+</Alert>
 
 ```bash
 SUBVOLUMES=(
@@ -504,14 +492,11 @@ This will allow you to perform your first rollback should you ever need it.
 snapper create -d "Initial subvolume" --read-write
 ```
 
-<Alert.Root variant="default" class="my-4">
-<Info class="size-4" />
-<Alert.Title>Info</Alert.Title>
-<Alert.Description style="margin: -1rem 0;">
+<Alert variant="default">
 
 `snapper {SUBCOMMAND}` is the same as `snapper -c root {SUBCOMMAND}`
-</Alert.Description>
-</Alert.Root>
+
+</Alert>
 
 `snapper create` by default makes snapshots, in other words, _read-only_ subvolumes.
 
@@ -528,13 +513,11 @@ btrfs subvolume set-default $SNAPSHOT_ID /
 
 ![Setting the default btrfs subvolume](./btrfs-default-subvolume.avif)
 
-<Alert.Root variant="destructive" class="my-4">
-<TriangleAlert class="size-4" />
-<Alert.Title>Be careful!</Alert.Title>
-<Alert.Description>
+<Alert variant="destructive">
+
 Reboot your computer before going on with the guide. Otherwise any further progress you make will be undone.
-</Alert.Description>
-</Alert.Root>
+
+</Alert>
 
 ### Create snapshots automatically
 
@@ -598,13 +581,11 @@ After I boot into snapshot number 4, `cowsay` is gone.
 
 ## Roll back to a previous snapshot
 
-<Alert.Root variant="warning" class="my-4">
-<TriangleAlert class="size-4" />
-<Alert.Title>Warning</Alert.Title>
-<Alert.Description>
+<Alert variant="warning">
+
 You should only execute this command when currently booted into a snapshot.
-</Alert.Description>
-</Alert.Root>
+
+</Alert>
 
 ```bash
 snapper rollback
@@ -626,14 +607,11 @@ Manually edit the number of the subvolume to the newly created one and boot it u
 
 ![Manual edit of GRUB entry](./snapper-rollback-grub-edit.avif)
 
-<Alert.Root variant="destructive" class="my-4">
-<TriangleAlert class="size-4" />
-<Alert.Title>Be careful!</Alert.Title>
-<Alert.Description style="margin: -1rem 0;">
+<Alert variant="destructive">
 
 You must [reinstall GRUB](#grub) every time you roll back.
-</Alert.Description>
-</Alert.Root>
+
+</Alert>
 
 ## Deleting old snapshots
 
