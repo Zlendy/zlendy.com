@@ -16,7 +16,7 @@
 	},
 	"devDependencies": {
 		"@internationalized/date": "^3.10.0",
-		"@lucide/svelte": "^0.545.0",
+		"@lucide/svelte": "^0.546.0",
 		"@lukulent/svelte-umami": "^0.0.4",
 		"@playwright/test": "^1.56.0",
 		"@svelte-put/intersect": "^4.0.0",
