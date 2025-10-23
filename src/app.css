@@ -136,7 +136,7 @@
 		@apply border-border;
 	}
 	body {
-		@apply text-foreground;
+		@apply text-foreground bg-background bg-[url(/images/rounded-plus-connected__light.svg)] dark:bg-[url(/images/rounded-plus-connected__dark.svg)];
 	}
 }
 

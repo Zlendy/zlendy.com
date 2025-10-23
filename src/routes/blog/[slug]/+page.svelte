@@ -125,7 +125,7 @@
 
 <article
 	bind:this={articleElement}
-	class="bg-background/40 dark:bg-background/80 mx-2 my-4 w-[calc(100%-1rem)] max-w-3xl rounded-xl border-2 px-4 pb-4 backdrop-blur-md"
+	class="bg-background/25 dark:bg-background/50 mx-2 my-4 w-[calc(100%-1rem)] max-w-3xl rounded-xl border-2 px-4 pb-4 backdrop-blur-xs"
 >
 	<header class="flex min-h-48 flex-col items-center justify-center text-center">
 		<h1 class="toc-exclude my-4 text-5xl leading-tight font-bold">{title}</h1>

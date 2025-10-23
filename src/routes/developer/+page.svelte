@@ -217,7 +217,7 @@
 {/snippet}
 
 <div
-	class="bg-background/40 dark:bg-background/80 mx-2 mb-4 w-[calc(100%-1rem)] max-w-3xl rounded-xl border-2 px-4 pt-4 backdrop-blur-md"
+	class="bg-background/25 dark:bg-background/50 mx-2 mb-4 w-[calc(100%-1rem)] max-w-3xl rounded-xl border-2 px-4 pt-4 backdrop-blur-xs"
 >
 	<p class="mb-4">
 		I'm primarily a Web Developer, although I sometimes code stuff outside of that realm.
