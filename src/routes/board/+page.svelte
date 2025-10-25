@@ -57,13 +57,14 @@
 			{items}
 			minColWidth={200}
 			maxColWidth={800}
-			gap={4}
+			gap={24}
 			animate={false}
 			bind:masonryWidth
 			bind:masonryHeight
 		>
 			{#snippet children({ idx, item: { src, text, href } })}
 				<LinkHoverTitle
+					class="bg-background hover:border-primary overflow-hidden rounded-xl border-2 border-transparent transition-all duration-300 ease-in-out hover:drop-shadow-[0_0_1em_var(--primary)]"
 					{href}
 					title={text}
 					target="_blank"
@@ -72,7 +73,7 @@
 				>
 					<img
 						onload={() => (masonryImagesLoaded[idx] = true)}
-						class="w-full rounded-xl border-2 transition-[filter] duration-300 ease-in-out"
+						class="w-full transition-[filter] duration-300 ease-in-out"
 						class:border-transparent={!masonryImagesLoaded[idx]}
 						alt={text}
 						{src}
