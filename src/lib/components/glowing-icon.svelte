@@ -2,15 +2,13 @@
 	import * as Tooltip from '$lib/components/ui/tooltip';
 	import type { Snippet } from 'svelte';
 	import type { HTMLAnchorAttributes } from 'svelte/elements';
-	import Logo from './logo.svelte';
 
-	interface Props {
+	interface Props extends HTMLAnchorAttributes {
 		children: Snippet;
-		href?: HTMLAnchorAttributes['href'];
 		title: string;
 	}
 
-	const { children, href, title }: Props = $props();
+	const { children, href, title, ...rest }: Props = $props();
 </script>
 
 <Tooltip.Provider>
@@ -19,6 +17,7 @@
 			<a
 				class="bg-popover hover:border-primary flex aspect-square size-14 items-center justify-center rounded-xl transition-all hover:border-2 hover:drop-shadow-[0_0_1em_var(--primary)]"
 				{href}
+				{...rest}
 				target="_blank"
 			>
 				{@render children?.()}

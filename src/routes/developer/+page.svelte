@@ -189,7 +189,12 @@
 </header>
 
 {#snippet projectCard({ icon, name, license, status, description, repository, techstack }: Project)}
-	<a href={repository}>
+	<a
+		href={repository}
+		target="_blank"
+		data-umami-event="developer-project"
+		data-umami-event-url={repository}
+	>
 		<Card.Root>
 			<Card.Header>
 				<Card.Title>
@@ -206,7 +211,7 @@
 				{description}
 			</Card.Content>
 			<Card.Footer class="flex flex-wrap gap-2">
-				{#each techstack as item}
+				{#each techstack as item (item)}
 					<Badge>
 						{item}
 					</Badge>
@@ -226,8 +231,13 @@
 	<Heading tag="h1">Languages and Tools</Heading>
 	<p class="my-4">I have used all of these either at work or home</p>
 	<div class="my-4 flex flex-wrap justify-center gap-4">
-		{#each langtools as { icon, name, href }}
-			<GlowingIcon {href} title={name}>
+		{#each langtools as { icon, name, href } (href)}
+			<GlowingIcon
+				{href}
+				title={name}
+				data-umami-event="developer-langtool"
+				data-umami-event-url={href}
+			>
 				<Logo class="size-10!" name={icon} />
 			</GlowingIcon>
 		{/each}
@@ -235,7 +245,7 @@
 
 	<Heading tag="h1">Projects</Heading>
 	<div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-2">
-		{#each projects as project}
+		{#each projects as project (project.repository)}
 			{@render projectCard(project)}
 		{/each}
 	</div>
@@ -243,7 +253,7 @@
 	<Heading tag="h1">FOSS Contributions</Heading>
 	<p class="my-4">Some contributions I have made to Open Source projects</p>
 	<div class="my-4 grid grid-cols-1 gap-4 md:grid-cols-2">
-		{#each contributions as contribution}
+		{#each contributions as contribution (contribution.repository)}
 			{@render projectCard(contribution)}
 		{/each}
 	</div>
