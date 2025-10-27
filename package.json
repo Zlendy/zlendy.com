@@ -56,7 +56,7 @@
 		"typescript-eslint": "^8.46.2",
 		"valibot": "^1.1.0",
 		"vite": "^7.1.12",
-		"vitest": "^4.0.3"
+		"vitest": "^4.0.4"
 	},
 	"type": "module",
 	"dependencies": {
