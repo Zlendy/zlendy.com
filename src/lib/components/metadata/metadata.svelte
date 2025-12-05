@@ -17,7 +17,7 @@
 			<Eye class="inline" />
 			<FormatNumber value={metadata.views} />
 		</Tooltip.Trigger>
-		<Tooltip.Content>Views</Tooltip.Content>
+		<Tooltip.Content>{metadata.views} Views</Tooltip.Content>
 	</Tooltip.Root>
 </Tooltip.Provider>
 
@@ -27,7 +27,7 @@
 			<MessageCircleMore class="inline" />
 			<FormatNumber value={metadata.comments} />
 		</Tooltip.Trigger>
-		<Tooltip.Content>Comments</Tooltip.Content>
+		<Tooltip.Content>{metadata.comments} Comments</Tooltip.Content>
 	</Tooltip.Root>
 </Tooltip.Provider>
 
@@ -37,6 +37,6 @@
 			<SmilePlus class="inline" />
 			<FormatNumber value={metadata.reactions} />
 		</Tooltip.Trigger>
-		<Tooltip.Content>Reactions</Tooltip.Content>
+		<Tooltip.Content>{metadata.reactions} Reactions</Tooltip.Content>
 	</Tooltip.Root>
 </Tooltip.Provider>
