@@ -48,6 +48,7 @@
 		{ icon: 'aperture_laboratories.png', href: 'https://thinkwithportals.com' },
 		{ icon: 'archlinux.png', href: 'https://archlinux.org' },
 		{ icon: 'banana.png' },
+		{ icon: 'bluesky.webp', href: 'https://bsky.app/profile/zlendy.com' },
 		{ icon: 'deltarune.png', href: 'https://deltarune.com/' },
 		{ icon: 'deltarune_spamton.png' },
 		{ icon: 'half_life.png', href: 'https://half-life.com' },
