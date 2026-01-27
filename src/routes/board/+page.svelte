@@ -51,7 +51,7 @@
 	<h1 class="mb-4 text-5xl leading-tight font-bold">Board</h1>
 </header>
 
-<div class="mx-[20vw] my-4">
+<div class="my-4 w-full px-[20vw]">
 	{#await loadData() then items}
 		<Masonry
 			{items}
@@ -64,7 +64,7 @@
 		>
 			{#snippet children({ idx, item: { src, text, href } })}
 				<LinkHoverTitle
-					class="bg-background hover:border-primary overflow-hidden rounded-xl border-2 border-transparent transition-all duration-300 ease-in-out hover:drop-shadow-[0_0_1em_var(--primary)]"
+					class="bg-background hover:border-primary block overflow-hidden rounded-xl border-2 border-transparent transition-all duration-300 ease-in-out hover:drop-shadow-[0_0_1em_var(--primary)]"
 					{href}
 					title={text}
 					target="_blank"
