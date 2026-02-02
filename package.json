@@ -44,7 +44,7 @@
 		"shiki": "^3.21.0",
 		"svelte": "^5.48.4",
 		"svelte-bricks": "^0.4.1",
-		"svelte-check": "^4.3.5",
+		"svelte-check": "^4.3.6",
 		"svelte-preprocess-import-assets": "^1.1.0",
 		"svelte-toc": "^0.6.2",
 		"tailwind-merge": "^3.4.0",
