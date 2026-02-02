@@ -18,7 +18,7 @@
 		"@internationalized/date": "^3.10.1",
 		"@lucide/svelte": "^0.563.1",
 		"@lukulent/svelte-umami": "^0.0.4",
-		"@playwright/test": "^1.58.0",
+		"@playwright/test": "^1.58.1",
 		"@svelte-put/intersect": "^4.0.0",
 		"@sveltejs/adapter-static": "^3.0.10",
 		"@sveltejs/kit": "^2.50.1",
