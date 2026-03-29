@@ -15,6 +15,9 @@
 
 	const debug = false;
 
+	const MIN_PLAYERS = 3;
+	const MAX_PLAYERS = 10;
+
 	function getRandomInt(max: number) {
 		return Math.floor(Math.random() * max);
 	}
@@ -116,6 +119,7 @@
 		}
 
 		if (rolePlayerLast) {
+			firstTurnPlayerIndex = getRandomInt(playerCount);
 			gameState = GameState.VOTING;
 			return;
 		}
@@ -125,6 +129,7 @@
 	}
 
 	/* VOTING */
+	let firstTurnPlayerIndex = $state(0);
 
 	function votePlayer(index: number) {
 		const player = playerData.at(index);
@@ -210,7 +215,12 @@
 					</Card.Header>
 					<Card.Content>
 						<Label for="player-count" class="mb-2">Número de jugadores</Label>
-						<Input id="player-count" type="number" min="3" max="10" bind:value={playerCount}
+						<Input
+							id="player-count"
+							type="number"
+							min={MIN_PLAYERS}
+							max={MAX_PLAYERS}
+							bind:value={playerCount}
 						></Input>
 						{#each playerData as player, index (index)}
 							{@const playerNumber = index + 1}
@@ -291,9 +301,10 @@
 					</Card.Footer>
 				</Card.Root>
 			{:else if gameState === GameState.VOTING}
-				¿Quién creéis que es el impostor?
+				<p class="mb-4">¿Quién creéis que es el impostor?</p>
+				<p class="mb-4">Empieza {playerData.at(firstTurnPlayerIndex)?.name}</p>
 
-				<div class="my-4 grid grid-cols-2 gap-4 md:grid-cols-3">
+				<div class="mb-4 grid grid-cols-2 gap-4 md:grid-cols-3">
 					{#each playerData as player, index (index)}
 						<Button onclick={() => votePlayer(index)} disabled={!player.alive}>
 							{player.name}
