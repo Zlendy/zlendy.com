@@ -2,7 +2,16 @@
 	import { page } from '$app/state';
 	import { Button } from '$lib/components/ui/button';
 	import * as Sheet from '$lib/components/ui/sheet';
-	import { Braces, House, Icon, Images, Menu, Newspaper, RefreshCw } from '@lucide/svelte';
+	import {
+		Braces,
+		House,
+		Icon,
+		Images,
+		Menu,
+		Newspaper,
+		RefreshCw,
+		Gamepad2
+	} from '@lucide/svelte';
 	import ModeToggle from './modetoggle.svelte';
 
 	interface Route {
@@ -37,6 +46,11 @@
 			icon: RefreshCw,
 			title: 'Webrings',
 			href: '/webrings'
+		},
+		{
+			icon: Gamepad2,
+			title: 'Minigames',
+			href: '/minigames'
 		}
 	];
 

@@ -29,7 +29,7 @@
 <header class="flex min-h-48 flex-col items-center justify-center text-center">
 	<h1 class="mb-4 text-5xl leading-tight font-bold">Blog</h1>
 	Get notified when I publish new articles using:
-	<div class="flex flex-wrap gap-4 mt-2">
+	<div class="mt-2 flex flex-wrap gap-4">
 		<GlowingIcon href="/rss.xml" title="RSS">
 			<Rss class="size-8" />
 		</GlowingIcon>

@@ -32,7 +32,7 @@
 <Alert.Root {variant} class="my-4">
 	<derivedVariant.icon class="size-4" />
 	<Alert.Title>{derivedVariant.title}</Alert.Title>
-	<Alert.Description class="-my-4 mx-0 block">
+	<Alert.Description class="mx-0 -my-4 block">
 		{@render children?.()}
 	</Alert.Description>
 </Alert.Root>
